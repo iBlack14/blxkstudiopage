@@ -79,8 +79,8 @@ const SocialIcon = memo(function SocialIcon({ name }: { name: string }) {
   }
 })
 
-// Get current year statically to avoid hydration mismatch
-const CURRENT_YEAR = new Date().getFullYear()
+// Hardcoded year to avoid hydration mismatch (update annually)
+const CURRENT_YEAR = 2025
 
 function FooterComponent() {
   return (
