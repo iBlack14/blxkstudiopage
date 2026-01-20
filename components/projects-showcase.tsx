@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import Image from "next/image"
 import { ExternalLink, Play } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -159,10 +160,12 @@ export function ProjectsShowcase() {
             <p className="text-muted-foreground mb-6">
               ¿Tienes un proyecto en mente?
             </p>
-            <Button size="lg" className="neon-glow bg-primary text-primary-foreground hover:bg-primary/90">
-              Solicitar Cotización
-              <ExternalLink className="w-4 h-4 ml-2" />
-            </Button>
+            <Link href="/contacto">
+              <Button size="lg" className="neon-glow bg-primary text-primary-foreground hover:bg-primary/90">
+                Solicitar Cotización
+                <ExternalLink className="w-4 h-4 ml-2" />
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

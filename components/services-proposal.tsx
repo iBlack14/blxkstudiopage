@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import { servicesProposalData } from "@/lib/services-proposal-data"
 import { CheckCircle2, TrendingUp, Users, Zap } from "lucide-react"
 
@@ -71,11 +72,10 @@ export function ServicesProposal({ isHomeVersion = false }) {
                                 e.stopPropagation()
                                 setActiveTab(tab.id)
                               }}
-                              className={`px-4 py-2 rounded-lg font-semibold text-sm whitespace-nowrap transition-all ${
-                                activeTab === tab.id
-                                  ? "bg-primary text-primary-foreground"
-                                  : "bg-primary/10 text-primary hover:bg-primary/20"
-                              }`}
+                              className={`px-4 py-2 rounded-lg font-semibold text-sm whitespace-nowrap transition-all ${activeTab === tab.id
+                                ? "bg-primary text-primary-foreground"
+                                : "bg-primary/10 text-primary hover:bg-primary/20"
+                                }`}
                             >
                               {tab.icon} {tab.label}
                             </button>
@@ -153,9 +153,11 @@ export function ServicesProposal({ isHomeVersion = false }) {
                       </div>
 
                       {/* CTA */}
-                      <button className="w-full mt-4 px-4 py-3 bg-primary/10 hover:bg-primary/20 text-primary text-base font-semibold rounded-lg transition-colors">
-                        Solicitar Más Información
-                      </button>
+                      <Link href="/contacto" className="block w-full">
+                        <button className="w-full mt-4 px-4 py-3 bg-primary/10 hover:bg-primary/20 text-primary text-base font-semibold rounded-lg transition-colors">
+                          Solicitar Más Información
+                        </button>
+                      </Link>
                     </div>
                   )}
 
