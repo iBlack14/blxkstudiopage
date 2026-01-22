@@ -13,31 +13,28 @@
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.25 0.08 240);
   /* Azul Marino */
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.25 0.08 240);
-  /* Azul Marino */
-  --primary: oklch(0.82 0.12 160);
-  /* Verde Menta Pastel */
-  --primary-foreground: oklch(0.25 0.08 240);
-  /* Azul Marino */
-  --secondary: oklch(0.85 0.1 240);
-  /* Azul Cielo Pastel */
+  --primary: oklch(0.65 0.15 210);
+  /* Celeste Vibrante - New Brand Color */
+  --primary-foreground: oklch(0.98 0.01 200);
+  /* Blanco */
+  --secondary: oklch(0.95 0.05 210);
+  /* Celeste Muy Suave */
   --secondary-foreground: oklch(0.25 0.08 240);
   /* Azul Marino */
-  --muted: oklch(0.96 0.01 220);
-  /* Gris Azulado Suave */
-  --muted-foreground: oklch(0.35 0.05 240);
+  --muted: oklch(0.97 0.02 210);
+  /* Gris Azulado Hielo */
+  --muted-foreground: oklch(0.45 0.05 240);
   /* Azul Marino Muted */
-  --accent: oklch(0.8 0.12 190);
-  /* Turquesa Suave */
+  --accent: oklch(0.92 0.08 210);
+  /* Celeste Claro */
   --accent-foreground: oklch(0.25 0.08 240);
   /* Azul Marino */
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.88 0 0);
-  --input: oklch(0.96 0 0);
-  --ring: oklch(0.82 0.12 160);
-  --chart-1: oklch(0.646 0.222 41.116);
+  --border: oklch(0.90 0.05 210);
+  --input: oklch(0.92 0.05 210);
+  --ring: oklch(0.65 0.15 210);
+  --chart-1: oklch(0.65 0.15 210);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
@@ -46,14 +43,14 @@
   --sidebar: oklch(0.98 0.01 200);
   --sidebar-foreground: oklch(0.25 0.08 240);
   /* Azul Marino */
-  --sidebar-primary: oklch(0.82 0.12 160);
-  --sidebar-primary-foreground: oklch(0.25 0.08 240);
-  /* Azul Marino */
-  --sidebar-accent: oklch(0.96 0.01 220);
+  --sidebar-primary: oklch(0.65 0.15 210);
+  --sidebar-primary-foreground: oklch(0.98 0.01 200);
+  /* Blanco */
+  --sidebar-accent: oklch(0.95 0.05 210);
   --sidebar-accent-foreground: oklch(0.25 0.08 240);
   /* Azul Marino */
-  --sidebar-border: oklch(0.96 0.01 220);
-  --sidebar-ring: oklch(0.82 0.12 160);
+  --sidebar-border: oklch(0.90 0.05 210);
+  --sidebar-ring: oklch(0.65 0.15 210);
 }
 
 /* Dark theme - Night mode (Deep Blue & Mint) */
@@ -211,8 +208,8 @@
   }
 
   .light .neon-text {
-    color: oklch(0.6 0.15 160);
-    text-shadow: 0 0 8px oklch(0.6 0.15 160 / 0.4), 0 0 16px oklch(0.6 0.15 160 / 0.2);
+    color: oklch(0.55 0.18 210);
+    text-shadow: 0 0 8px oklch(0.55 0.18 210 / 0.4), 0 0 16px oklch(0.55 0.18 210 / 0.2);
   }
 
   .neon-text-sm {
@@ -221,8 +218,8 @@
   }
 
   .light .neon-text-sm {
-    color: oklch(0.6 0.15 160);
-    text-shadow: 0 0 4px oklch(0.6 0.15 160 / 0.3), 0 0 8px oklch(0.6 0.15 160 / 0.2);
+    color: oklch(0.55 0.18 210);
+    text-shadow: 0 0 4px oklch(0.55 0.18 210 / 0.3), 0 0 8px oklch(0.55 0.18 210 / 0.2);
   }
 
   .neon-border {
@@ -265,9 +262,9 @@
   }
 
   .light .neon-card {
-    background: linear-gradient(135deg, oklch(0.98 0.01 200) 0%, oklch(0.96 0.01 200) 100%);
-    border: 1px solid oklch(0.6 0.15 160 / 0.4);
-    box-shadow: 0 0 15px oklch(0.6 0.15 160 / 0.15);
+    background: linear-gradient(135deg, oklch(0.99 0.01 210) 0%, oklch(0.97 0.02 210) 100%);
+    border: 1px solid oklch(0.6 0.15 210 / 0.3);
+    box-shadow: 0 0 20px oklch(0.6 0.15 210 / 0.1);
   }
 
   /* Mejorar neon-card-rotating para que el borde esté siempre visible y se pause en hover */
@@ -475,11 +472,11 @@
 
   /* Hero Section Styles */
   .hero-gradient-bg {
-    background: linear-gradient(135deg, oklch(0.1 0.05 240) 0%, oklch(0.1 0.05 240) 50%, oklch(0.12 0.08 160) 100%);
+    background: linear-gradient(135deg, oklch(0.1 0.05 240) 0%, oklch(0.1 0.05 240) 50%, oklch(0.12 0.08 210) 100%);
   }
 
   .light .hero-gradient-bg {
-    background: linear-gradient(135deg, oklch(0.98 0.01 200) 0%, oklch(0.96 0.02 160) 50%, oklch(0.92 0.06 160) 100%);
+    background: linear-gradient(135deg, oklch(0.99 0.005 240) 0%, oklch(0.97 0.01 220) 50%, oklch(0.94 0.04 210) 100%);
   }
 
   .hero-grid-pattern {

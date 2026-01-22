@@ -20,211 +20,402 @@ export async function POST(request: NextRequest) {
     }
 
     const fromEmail = "admin@blxkstudio.com"
-    const adminEmail = process.env.ADMIN_EMAIL || "alonsoyhc@gmail.com"
+    const adminEmails = ["alonsoyhc@gmail.com", "admin@blxkstudio.com"]
 
-    // Send user confirmation email
+    // Send user confirmation email (New Design)
     const userEmailResult = await resend.emails.send({
       from: `BLXK STUDIO <${fromEmail}>`,
       to: email,
       subject: "Hemos recibido tu solicitud - BLXK STUDIO",
       html: `
-        <!DOCTYPE html>
-        <html>
-          <head>
-            <meta charset="utf-8">
-            <style>
-              body { margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0a0a0a; }
-              .container { max-width: 600px; margin: 0 auto; background: #0f0f0f; }
-              .header { background: linear-gradient(135deg, #00d9ff 0%, #0099cc 100%); padding: 40px 20px; text-align: center; }
-              .header h1 { margin: 0; color: #fff; font-size: 28px; font-weight: 700; letter-spacing: 1px; }
-              .header p { margin: 8px 0 0 0; color: rgba(255,255,255,0.9); font-size: 14px; }
-              .content { padding: 40px 30px; }
-              .greeting { color: #00d9ff; font-size: 18px; font-weight: 600; margin-bottom: 15px; }
-              .message { color: #ccc; font-size: 15px; line-height: 1.6; margin-bottom: 30px; }
-              .details-box { 
-                background: linear-gradient(135deg, rgba(0, 217, 255, 0.1) 0%, rgba(255, 0, 255, 0.05) 100%);
-                border: 2px solid #00d9ff;
-                border-radius: 12px;
-                padding: 25px;
-                margin: 30px 0;
-                box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
-              }
-              .details-box h3 { color: #00d9ff; margin: 0 0 20px 0; font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
-              .detail-row { display: flex; margin-bottom: 15px; }
-              .detail-label { color: #00d9ff; font-weight: 600; min-width: 100px; font-size: 13px; }
-              .detail-value { color: #e0e0e0; flex: 1; font-size: 14px; word-break: break-word; }
-              .message-content { color: #e0e0e0; font-size: 14px; line-height: 1.7; white-space: pre-wrap; word-wrap: break-word; }
-              .footer { padding: 30px; text-align: center; border-top: 1px solid rgba(0, 217, 255, 0.2); }
-              .footer p { margin: 8px 0; color: #888; font-size: 12px; }
-              .cta-button { 
-                display: inline-block;
-                background: linear-gradient(135deg, #00d9ff 0%, #0099cc 100%);
-                color: #000;
-                padding: 12px 30px;
-                border-radius: 6px;
-                text-decoration: none;
-                font-weight: 600;
-                font-size: 14px;
-                margin-top: 20px;
-                box-shadow: 0 0 15px rgba(0, 217, 255, 0.4);
-              }
-            </style>
-          </head>
-          <body>
-            <div class="container">
-              <div class="header">
-                <h1>BLXK STUDIO</h1>
-                <p>Solicitud de Proyecto Recibida</p>
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Confirmación de Solicitud - BLXK STUDIO</title>
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+          
+          body { margin: 0; padding: 0; font-family: 'Space Grotesk', 'Helvetica', sans-serif; background-color: #030712; color: #f8fafc; }
+          .container { max-width: 600px; margin: 0 auto; background-color: #0f172a; border-radius: 16px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+          .header { 
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); 
+            padding: 40px 20px; 
+            text-align: center; 
+            position: relative;
+          }
+          .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #06b6d4, transparent);
+            opacity: 0.3;
+          }
+          .logo { 
+            color: #fff; 
+            font-size: 32px; 
+            font-weight: 800; 
+            letter-spacing: -1px; 
+            margin: 0;
+            text-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+          }
+          .logo span { color: #06b6d4; }
+          
+          .content { padding: 40px 30px; }
+          .greeting { 
+            font-size: 24px; 
+            font-weight: 700; 
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+          .text { 
+            color: #94a3b8; 
+            line-height: 1.8; 
+            margin-bottom: 30px; 
+            font-size: 16px;
+          }
+          
+          .card { 
+            background: rgba(30, 41, 59, 0.4);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+          }
+          .card-header {
+            color: #06b6d4;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+          }
+          .card-header::after {
+            content: '';
+            height: 1px;
+            background: linear-gradient(90deg, rgba(6, 182, 212, 0.2), transparent);
+            flex: 1;
+          }
+          
+          .info-row { 
+            display: flex; 
+            margin-bottom: 15px; 
+            padding-bottom: 12px;
+          }
+          .info-row:last-child { margin-bottom: 0; padding-bottom: 0; }
+          
+          .label { 
+            width: 100px; 
+            color: #64748b; 
+            font-size: 13px; 
+            font-weight: 500;
+          }
+          .value { 
+            flex: 1; 
+            color: #f1f5f9; 
+            font-weight: 500; 
+            font-size: 14px;
+          }
+          
+          .footer { 
+            background: #020617; 
+            padding: 30px; 
+            text-align: center;
+          }
+          .social-links { margin-bottom: 20px; }
+          .social-link { 
+            color: #94a3b8; 
+            text-decoration: none; 
+            margin: 0 10px; 
+            font-size: 14px;
+            transition: color 0.2s;
+          }
+          .copyright { 
+            color: #475569; 
+            font-size: 12px; 
+          }
+          
+          .btn {
+            display: inline-block;
+            background: #06b6d4;
+            color: #fff;
+            padding: 14px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="header">
+            <h1 class="logo">BLXK <span>STUDIO</span></h1>
+          </div>
+          
+          <div class="content">
+            <div class="greeting">Hola ${name},</div>
+            <div class="text">
+              Hemos recibido tu solicitud correctamente. Nuestro equipo de especialistas está analizando tu proyecto para brindarte la mejor solución tecnológica.
+            </div>
+            
+            <div class="card">
+              <div class="card-header">Resumen de solicitud</div>
+              <div class="info-row">
+                <div class="label">ID Ref</div>
+                <div class="value">#${Math.floor(Math.random() * 10000)}</div>
               </div>
-              
-              <div class="content">
-                <div class="greeting">Hola ${name},</div>
-                <div class="message">Gracias por tu interés en BLXK STUDIO. Hemos recibido tu solicitud de proyecto y nuestro equipo la está revisando cuidadosamente.</div>
-                
-                <div class="details-box">
-                  <h3>Detalles de tu Solicitud</h3>
-                  <div class="detail-row">
-                    <div class="detail-label">Nombre:</div>
-                    <div class="detail-value">${name}</div>
-                  </div>
-                  <div class="detail-row">
-                    <div class="detail-label">Email:</div>
-                    <div class="detail-value">${email}</div>
-                  </div>
-                  ${phone ? `<div class="detail-row"><div class="detail-label">Teléfono:</div><div class="detail-value">${phone}</div></div>` : ""}
-                  ${company ? `<div class="detail-row"><div class="detail-label">Empresa:</div><div class="detail-value">${company}</div></div>` : ""}
-                  <div class="detail-row" style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(0, 217, 255, 0.2);">
-                    <div class="detail-label" style="vertical-align: top;">Proyecto:</div>
-                    <div class="detail-value message-content">${message}</div>
-                  </div>
-                </div>
-                
-                <div class="message">Nos pondremos en contacto contigo en breve para discutir los detalles de tu proyecto. Si tienes alguna pregunta adicional, no dudes en responder a este email.</div>
+              <div class="info-row">
+                <div class="label">Servicio</div>
+                <div class="value">Solicitud General</div>
               </div>
-              
-              <div class="footer">
-                <p>© 2025 BLXK STUDIO. Todos los derechos reservados.</p>
-                <p>Soluciones digitales innovadoras para tu negocio</p>
+              <div class="info-row">
+                <div class="label">Fecha</div>
+                <div class="value">${new Date().toLocaleDateString()}</div>
               </div>
             </div>
-          </body>
-        </html>
+            
+            <div class="card">
+              <div class="card-header">Tus Datos</div>
+              <div class="info-row">
+                <div class="label">Empresa</div>
+                <div class="value">${company || "N/A"}</div>
+              </div>
+              <div class="info-row">
+                <div class="label">Email</div>
+                <div class="value">${email}</div>
+              </div>
+               ${phone ? `
+              <div class="info-row">
+                 <div class="label">Teléfono</div>
+                 <div class="value">${phone}</div>
+              </div>` : ''}
+            </div>
+
+            <div class="text" style="text-align: center; margin-top: 40px; font-size: 14px;">
+              Nos pondremos en contacto contigo en las próximas 24 horas hábiles.
+            </div>
+            
+            <div style="text-align: center;">
+              <a href="https://blxkstudio.com" class="btn">Ir al Sitio Web</a>
+            </div>
+          </div>
+          
+          <div class="footer">
+            <div class="social-links">
+              <a href="https://twitter.com/blxkstudio" class="social-link">Twitter</a>
+              <a href="https://instagram.com/blxkstudio" class="social-link">Instagram</a>
+            </div>
+            <div class="copyright">
+              © 2026 BLXK Studio. Innovación y Desarrollo.<br>
+              Lima, Perú
+            </div>
+          </div>
+        </div>
+      </body>
+    </html>
       `,
     })
 
     console.log("[v0] User email result:", userEmailResult)
 
-    let adminEmailResult = { data: null, error: null }
-    if (isValidEmail(adminEmail)) {
-      adminEmailResult = await resend.emails.send({
-        from: `BLXK STUDIO <${fromEmail}>`,
-        to: adminEmail,
-        subject: `Nueva Solicitud de Proyecto - ${name}`,
-        html: `
-          <!DOCTYPE html>
-          <html>
-            <head>
-              <meta charset="utf-8">
-              <style>
-                body { margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0a0a0a; }
-                .container { max-width: 600px; margin: 0 auto; background: #0f0f0f; }
-                .header { background: linear-gradient(135deg, #ff00ff 0%, #00d9ff 100%); padding: 40px 20px; text-align: center; }
-                .header h1 { margin: 0; color: #fff; font-size: 28px; font-weight: 700; letter-spacing: 1px; }
-                .header p { margin: 8px 0 0 0; color: rgba(255,255,255,0.9); font-size: 14px; }
-                .content { padding: 40px 30px; }
-                .alert-badge { 
-                  display: inline-block;
-                  background: #ff00ff;
-                  color: #fff;
-                  padding: 6px 12px;
-                  border-radius: 20px;
-                  font-size: 12px;
-                  font-weight: 700;
-                  margin-bottom: 20px;
-                }
-                .details-box { 
-                  background: linear-gradient(135deg, rgba(255, 0, 255, 0.1) 0%, rgba(0, 217, 255, 0.05) 100%);
-                  border: 2px solid #ff00ff;
-                  border-radius: 12px;
-                  padding: 25px;
-                  margin: 20px 0;
-                  box-shadow: 0 0 20px rgba(255, 0, 255, 0.2);
-                }
-                .details-box h3 { color: #ff00ff; margin: 0 0 20px 0; font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
-                .detail-row { display: flex; margin-bottom: 15px; }
-                .detail-label { color: #00d9ff; font-weight: 600; min-width: 100px; font-size: 13px; }
-                .detail-value { color: #e0e0e0; flex: 1; font-size: 14px; word-break: break-word; }
-                .message-content { color: #e0e0e0; font-size: 14px; line-height: 1.7; white-space: pre-wrap; word-wrap: break-word; background: rgba(0, 0, 0, 0.3); padding: 15px; border-radius: 6px; border-left: 3px solid #00d9ff; }
-                .action-buttons { margin-top: 25px; display: flex; gap: 10px; }
-                .btn { 
-                  flex: 1;
-                  display: inline-block;
-                  padding: 12px 20px;
-                  border-radius: 6px;
-                  text-decoration: none;
-                  font-weight: 600;
-                  font-size: 14px;
-                  text-align: center;
-                }
-                .btn-primary { 
-                  background: linear-gradient(135deg, #ff00ff 0%, #ff0080 100%);
-                  color: #fff;
-                  box-shadow: 0 0 15px rgba(255, 0, 255, 0.4);
-                }
-                .btn-secondary { 
-                  background: rgba(0, 217, 255, 0.2);
-                  color: #00d9ff;
-                  border: 1px solid #00d9ff;
-                }
-                .footer { padding: 30px; text-align: center; border-top: 1px solid rgba(255, 0, 255, 0.2); }
-                .footer p { margin: 8px 0; color: #888; font-size: 12px; }
-              </style>
-            </head>
-            <body>
-              <div class="container">
-                <div class="header">
-                  <h1>NUEVA SOLICITUD</h1>
-                  <p>Proyecto Entrante</p>
-                </div>
-                
-                <div class="content">
-                  <div class="alert-badge">ACCION REQUERIDA</div>
-                  
-                  <div class="details-box">
-                    <h3>Informacion del Cliente</h3>
-                    <div class="detail-row">
-                      <div class="detail-label">Nombre:</div>
-                      <div class="detail-value"><strong>${name}</strong></div>
-                    </div>
-                    <div class="detail-row">
-                      <div class="detail-label">Email:</div>
-                      <div class="detail-value"><a href="mailto:${email}" style="color: #00d9ff; text-decoration: none;">${email}</a></div>
-                    </div>
-                    ${phone ? `<div class="detail-row"><div class="detail-label">Teléfono:</div><div class="detail-value">${phone}</div></div>` : ""}
-                    ${company ? `<div class="detail-row"><div class="detail-label">Empresa:</div><div class="detail-value">${company}</div></div>` : ""}
-                  </div>
-                  
-                  <div class="details-box">
-                    <h3>Detalles del Proyecto</h3>
-                    <div class="message-content">${message}</div>
-                  </div>
-                  
-                  <div class="action-buttons">
-                    <a href="mailto:${email}" class="btn btn-primary">Responder al Cliente</a>
-                    <a href="mailto:${email}?subject=Re: Tu solicitud en BLXK STUDIO" class="btn btn-secondary">Borrador</a>
-                  </div>
-                </div>
-                
-                <div class="footer">
-                  <p>© 2025 BLXK STUDIO. Panel de Administración</p>
-                  <p>Gestiona tus proyectos de forma eficiente</p>
-                </div>
+    // Send Admin Notification (New Design) - To BOTH emails
+    const adminEmailResult = await resend.emails.send({
+      from: `BLXK STUDIO <${fromEmail}>`,
+      to: adminEmails,
+      subject: `Nueva Solicitud de Proyecto - ${name}`,
+      html: `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Nuevo Lead - BLXK Admin</title>
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+          
+          body { margin: 0; padding: 0; font-family: 'JetBrains Mono', monospace; background-color: #000; color: #e2e8f0; }
+          .container { max-width: 600px; margin: 0 auto; background-color: #0a0a0a; }
+          .header { 
+            background: #000; 
+            padding: 30px 20px; 
+            text-align: center; 
+          }
+          .badge {
+            background: #d946ef;
+            color: #000;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 12px;
+            display: inline-block;
+            margin-bottom: 10px;
+          }
+          .title { 
+            color: #fff; 
+            font-size: 24px; 
+            font-weight: 700; 
+            margin: 0;
+          }
+          
+          .content { padding: 40px 30px; }
+          
+          .metric-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+          }
+          
+          .metric-card {
+            background: #111;
+            padding: 15px;
+          }
+          
+          .metric-label {
+            color: #666;
+            font-size: 10px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+          }
+          
+          .metric-value {
+            color: #fff;
+            font-weight: 700;
+          }
+          
+          .section-title {
+            color: #d946ef;
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+          }
+          
+          .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+          }
+          .data-table td {
+            padding: 10px 0;
+          }
+          .data-label { color: #888; width: 30%; }
+          .data-val { color: #fff; }
+          .highlight { color: #d946ef; }
+          
+          .message-box {
+            background: #111;
+            border-left: 3px solid #d946ef;
+            padding: 20px;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #ccc;
+            margin-top: 20px;
+          }
+          
+          .actions {
+            margin-top: 30px;
+            display: flex;
+            gap: 10px;
+          }
+          
+          .btn {
+            display: block;
+            text-align: center;
+            padding: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            flex: 1;
+            border-radius: 4px;
+          }
+          .btn-primary { background: #d946ef; color: #000; }
+          .btn-secondary { background: #111; color: #fff; }
+          
+          .footer { 
+            background: #000; 
+            padding: 20px; 
+            text-align: center; 
+            font-size: 10px; 
+            color: #444;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="header">
+            <span class="badge">NUEVO LEAD</span>
+            <h1 class="title">Solicitud de Proyecto</h1>
+          </div>
+          
+          <div class="content">
+            <div class="metric-grid">
+              <div class="metric-card">
+                <div class="metric-label">Origen</div>
+                <div class="metric-value">Formulario Web</div>
               </div>
-            </body>
-          </html>
-        `,
-      })
-    }
+              <div class="metric-card">
+                <div class="metric-label">Prioridad</div>
+                <div class="metric-value highlight">ALTA</div>
+              </div>
+            </div>
+          
+            <div class="section-title">Datos del Prospecto</div>
+            
+            <table class="data-table">
+              <tr>
+                <td class="data-label">Nombre</td>
+                <td class="data-val"><strong>${name}</strong></td>
+              </tr>
+              <tr>
+                <td class="data-label">Email</td>
+                <td class="data-val"><a href="mailto:${email}" style="color: #fff;">${email}</a></td>
+              </tr>
+              <tr>
+                <td class="data-label">Empresa</td>
+                <td class="data-val">${company || "N/A"}</td>
+              </tr>
+              <tr>
+                <td class="data-label">Teléfono</td>
+                <td class="data-val">${phone || "No indicado"}</td>
+              </tr>
+            </table>
+            
+            <div class="section-title" style="margin-top: 30px;">Mensaje</div>
+            <div class="message-box">
+              ${message}
+            </div>
+            
+            <div class="actions">
+              <a href="mailto:${email}" class="btn btn-primary">Responder</a>
+              <a href="#" class="btn btn-secondary">CRM</a>
+            </div>
+          </div>
+          
+          <div class="footer">
+            BLXK ADMIN SYSTEM v2.0<br>
+            ${new Date().toISOString()}
+          </div>
+        </div>
+      </body>
+    </html>
+      `,
+    })
 
     return Response.json({ data: null, error: null }) as any
   } catch (error) {

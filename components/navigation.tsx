@@ -110,9 +110,8 @@ function NavigationContent() {
 
   return (
     <>
-      {/* Desktop Navigation */}
       <nav
-        className={`hidden md:block fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-background/95 backdrop-blur-md neon-border" : "bg-transparent"
+        className={`hidden md:block fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-background/95 backdrop-blur-md shadow-sm border-b border-border/50" : "bg-transparent"
           }`}
       >
         <div className="container mx-auto px-4 py-4">
@@ -158,7 +157,7 @@ function NavigationContent() {
       </nav>
 
       {/* Mobile Navigation - Top Header */}
-      <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-primary/10">
+      <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border/10">
         <div className="container mx-auto px-4 py-3 flex items-center justify-center relative">
           <Link href="/" className="text-xl font-bold neon-text font-mono text-center">
             BLXK STUDIO
