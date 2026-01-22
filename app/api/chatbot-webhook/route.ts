@@ -1,5 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { generateText } from "ai"
+import { openai } from "@ai-sdk/openai"
 
 interface WebhookPayload {
   event: "user_message" | "owner_response" | "timeout"
@@ -171,7 +172,7 @@ async function generateBotResponseWithAI(
       .join("\n")
 
     const { text } = await generateText({
-      model: "openai/gpt-4-mini",
+      model: openai("gpt-4o-mini"),
       system: `Eres un asistente de atención al cliente profesional y amable para BLXK Studio.
 Tu objetivo es ayudar a clientes con preguntas sobre proyectos, servicios, pedidos y soporte técnico.
 Responde en máximo 2-3 líneas, de manera concisa y útil.
