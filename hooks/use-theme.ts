@@ -1,9 +1,15 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import { useTheme as useNextTheme } from "next-themes"
 
 export function useTheme() {
+  const [mounted, setMounted] = useState(false)
   const { theme, setTheme, resolvedTheme } = useNextTheme()
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light")
@@ -15,7 +21,7 @@ export function useTheme() {
     theme: (theme as "light" | "dark") || "dark",
     toggleTheme,
     isDayMode,
-    mounted: resolvedTheme !== undefined
+    mounted
   }
 }
 

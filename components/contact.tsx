@@ -118,12 +118,7 @@ export function Contact() {
             </div>
           </div>
 
-          {/* Footer */}
-          <div className="text-center pt-8 border-t border-border">
-            <p className="text-sm text-muted-foreground">
-              © 2025 BLXK Studio. Innovación, Software y Automatización para Empresas del Futuro.
-            </p>
-          </div>
+
         </div>
       </div>
 
