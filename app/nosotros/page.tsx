@@ -1,16 +1,16 @@
 "use client"
 
 import dynamic from "next/dynamic"
-import { Navigation } from "@/components/navigation"
-import { FounderHero } from "@/components/founder-hero"
+import { Navigation } from "@/components/layout/navigation"
+import { FounderHero } from "@/components/home/founder-hero"
 
 const FloatingThemeToggle = dynamic(
-  () => import("@/components/theme-toggle").then(m => ({ default: m.FloatingThemeToggle })),
+  () => import("@/components/layout/theme-toggle").then(m => ({ default: m.FloatingThemeToggle })),
   { ssr: false }
 )
 
 const BlxkChatbot = dynamic(
-  () => import("@/components/blxk-chatbot").then(m => ({ default: m.BlxkChatbot })),
+  () => import("@/components/home/blxk-chatbot").then(m => ({ default: m.BlxkChatbot })),
   { ssr: false }
 )
 

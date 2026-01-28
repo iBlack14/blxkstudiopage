@@ -1,18 +1,18 @@
 import { Suspense } from "react"
 import dynamic from "next/dynamic"
 import { servicesData } from "@/lib/services-data"
-import { Navigation } from "@/components/navigation"
-import { ServicesProposal } from "@/components/services-proposal"
+import { Navigation } from "@/components/layout/navigation"
+import { ServicesProposal } from "@/components/home/services-proposal"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 
-const FloatingThemeToggle = dynamic(() => import("@/components/theme-toggle").then(m => ({ default: m.FloatingThemeToggle })), {
+const FloatingThemeToggle = dynamic(() => import("@/components/layout/theme-toggle").then(m => ({ default: m.FloatingThemeToggle })), {
   loading: () => null,
 })
-const Contact = dynamic(() => import("@/components/contact").then(m => ({ default: m.Contact })), {
+const Contact = dynamic(() => import("@/components/utilities/contact").then(m => ({ default: m.Contact })), {
   loading: () => null,
 })
-const BlxkChatbot = dynamic(() => import("@/components/blxk-chatbot").then(m => ({ default: m.BlxkChatbot })), {
+const BlxkChatbot = dynamic(() => import("@/components/home/blxk-chatbot").then(m => ({ default: m.BlxkChatbot })), {
   loading: () => null,
 })
 

@@ -1,12 +1,12 @@
 import dynamic from "next/dynamic";
-import { Navigation } from "@/components/navigation";
+import { Navigation } from "@/components/layout/navigation";
 import { ContactSkeleton } from "@/components/skeletons/contact-skeleton";
 
-const Contact = dynamic(() => import("@/components/contact").then(m => ({ default: m.Contact })), {
+const Contact = dynamic(() => import("@/components/utilities/contact").then(m => ({ default: m.Contact })), {
   loading: () => <ContactSkeleton />,
 })
 
-const FloatingThemeToggle = dynamic(() => import("@/components/theme-toggle").then(m => ({ default: m.FloatingThemeToggle })), {
+const FloatingThemeToggle = dynamic(() => import("@/components/layout/theme-toggle").then(m => ({ default: m.FloatingThemeToggle })), {
   loading: () => null,
 })
 
