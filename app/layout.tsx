@@ -3,8 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/react"
 import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
-import { Footer } from "@/components/footer"
+import { ThemeProvider } from "@/components/layout/theme-provider"
+import { Footer } from "@/components/layout/footer"
 
 // Optimized font loading with display: swap
 const geistSans = Geist({
