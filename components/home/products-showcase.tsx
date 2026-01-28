@@ -1,8 +1,6 @@
 "use client"
 
-import React from "react"
 import { Card3DHover } from "@/components/effects/3d-card-hover"
-import React from "react"
 import { Server, Code, Package, CreditCard } from "lucide-react"
 
 export function ProductsShowcase() {
