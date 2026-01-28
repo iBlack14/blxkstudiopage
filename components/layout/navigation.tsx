@@ -8,7 +8,7 @@ import { Home, Info, Briefcase, Code, FolderOpen, Mail } from "lucide-react"
 
 // Lazy load modal only when needed
 const ProjectFormModal = lazy(() =>
-  import("@/components/projects/project-form-modal").then(m => ({ default: m.ProjectFormModal }))
+  import("../projects/project-form-modal").then(m => ({ default: m.ProjectFormModal }))
 )
 
 // Static nav items - defined outside component
