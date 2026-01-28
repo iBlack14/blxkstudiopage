@@ -2,39 +2,39 @@
 
 import { Suspense } from "react"
 import dynamic from "next/dynamic"
-import { FounderHero } from "@/components/founder-hero"
-import { Navigation } from "@/components/navigation"
+import { FounderHero } from "@/components/home/founder-hero"
+import { Navigation } from "@/components/layout/navigation"
 
 // Dynamic imports with skeleton loading for better UX
 // Components below the fold are lazy loaded
 const FloatingThemeToggle = dynamic(
-  () => import("@/components/theme-toggle").then(m => ({ default: m.FloatingThemeToggle })),
+  () => import("@/components/layout/theme-toggle").then(m => ({ default: m.FloatingThemeToggle })),
   { ssr: false } // Client-only component
 )
 
 const ServicesDetailed = dynamic(
-  () => import("@/components/services-detailed").then(m => ({ default: m.ServicesDetailed })),
+  () => import("@/components/home/services-detailed").then(m => ({ default: m.ServicesDetailed })),
   {
     loading: () => <ServicesSkeleton />,
   }
 )
 
 const ServicesProposal = dynamic(
-  () => import("@/components/services-proposal").then(m => ({ default: m.ServicesProposal })),
+  () => import("@/components/home/services-proposal").then(m => ({ default: m.ServicesProposal })),
   {
     loading: () => <div className="py-20 animate-pulse bg-muted/20" />,
   }
 )
 
 const ProductsShowcase = dynamic(
-  () => import("@/components/products-showcase").then(m => ({ default: m.ProductsShowcase })),
+  () => import("@/components/home/products-showcase").then(m => ({ default: m.ProductsShowcase })),
   {
     loading: () => <div className="py-20 animate-pulse bg-muted/10" />,
   }
 )
 
 const BlxkChatbot = dynamic(
-  () => import("@/components/blxk-chatbot").then(m => ({ default: m.BlxkChatbot })),
+  () => import("@/components/home/blxk-chatbot").then(m => ({ default: m.BlxkChatbot })),
   {
     ssr: false // Client-only interactive component
   }

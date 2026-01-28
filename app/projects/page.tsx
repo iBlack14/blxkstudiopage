@@ -1,22 +1,22 @@
 import type { Metadata } from "next"
 import { Suspense } from "react"
 import dynamic from "next/dynamic"
-import { Navigation } from "@/components/navigation"
-import { ProjectsShowcase } from "@/components/projects-showcase"
-import { ProjectsHero } from "@/components/projects-hero"
-import { ProjectsComparison } from "@/components/projects-comparison"
-import { ProjectsTestimonials } from "@/components/projects-testimonials"
-import { ProjectDemos } from "@/components/project-demos"
+import { Navigation } from "@/components/layout/navigation"
+import { ProjectsShowcase } from "@/components/projects/projects-showcase"
+import { ProjectsHero } from "@/components/projects/projects-hero"
+import { ProjectsComparison } from "@/components/projects/projects-comparison"
+import { ProjectsTestimonials } from "@/components/projects/projects-testimonials"
+import { ProjectDemos } from "@/components/home/project-demos"
 
-const ProjectsStats = dynamic(() => import("@/components/projects-stats").then(m => ({ default: m.ProjectsStats })), {
+const ProjectsStats = dynamic(() => import("@/components/projects/projects-stats").then(m => ({ default: m.ProjectsStats })), {
   loading: () => null,
   ssr: true,
 })
-const Contact = dynamic(() => import("@/components/contact").then(m => ({ default: m.Contact })), {
+const Contact = dynamic(() => import("@/components/utilities/contact").then(m => ({ default: m.Contact })), {
   loading: () => null,
   ssr: true,
 })
-const BlxkChatbot = dynamic(() => import("@/components/blxk-chatbot").then(m => ({ default: m.BlxkChatbot })), {
+const BlxkChatbot = dynamic(() => import("@/components/home/blxk-chatbot").then(m => ({ default: m.BlxkChatbot })), {
   loading: () => null,
 })
 
