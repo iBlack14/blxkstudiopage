@@ -160,11 +160,12 @@ function NavigationContent() {
 
       {/* Mobile Navigation - Top Header */}
       <div
-        className={`md:hidden fixed top-0 left-0 right-0 z-50 border-0 overflow-visible transition-all duration-300 bg-transparent ${isScrolled ? "dark:bg-background/95 dark:backdrop-blur-md light:bg-background/80" : ""}`}
+        className={`md:hidden fixed top-0 left-0 right-0 z-50 border-0 overflow-visible transition-all duration-300 ${isScrolled ? "bg-background/95 backdrop-blur-md" : "bg-transparent"}`}
         style={{
           boxShadow: 'none',
           borderBottom: 'none',
-          border: 'none'
+          border: 'none',
+          background: isScrolled ? 'hsl(var(--background) / 0.95)' : 'transparent'
         }}
       >
         <div className="container mx-auto px-4 py-3 flex items-center justify-center relative" style={{ border: 'none', boxShadow: 'none' }}>
