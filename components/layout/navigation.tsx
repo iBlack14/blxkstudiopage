@@ -21,6 +21,9 @@ const NAV_ITEMS = [
   { label: "Contacto", href: "/contacto", icon: Mail, id: "contact" },
 ] as const
 
+// Mobile nav items - limited to 4 main items for better mobile UX
+const MOBILE_NAV_ITEMS = NAV_ITEMS.slice(0, 4)
+
 const ROUTE_TO_SECTION: Record<string, string> = {
   "/": "hero",
   "/nosotros": "about",
@@ -68,13 +71,13 @@ const MobileNavLink = memo(function MobileNavLink({
       key={`${item.href}-${index}`}
       href={item.href}
       data-section={item.id}
-      className={`flex flex-col items-center gap-0.5 transition-all duration-200 px-3 py-2 rounded-lg flex-shrink-0 min-w-fit ${isActive
+      className={`flex flex-col items-center justify-center gap-1 transition-all duration-200 px-2 py-2 rounded-lg flex-1 min-w-0 ${isActive
         ? "text-primary neon-text-sm bg-primary/10 neon-border"
         : "text-muted-foreground hover:text-primary active:scale-95"
         }`}
     >
-      <Icon size={20} className="stroke-current" />
-      <span className="text-[9px] font-medium whitespace-nowrap">{item.label}</span>
+      <Icon size={22} className="stroke-current flex-shrink-0" />
+      <span className="text-[8px] font-semibold whitespace-nowrap truncate">{item.label}</span>
     </Link>
   )
 })
@@ -142,10 +145,10 @@ function NavigationContent() {
       {/* Mobile Navigation - Bottom */}
       <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-t border-primary/30 shadow-[0_-4px_20px_rgba(0,255,255,0.2)] w-full overflow-hidden">
         <div
-          className="flex items-center justify-around gap-1 px-2 py-3 w-full"
+          className="flex items-center justify-around w-full px-1 py-2"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
-          {NAV_ITEMS.map((item, index) => (
+          {MOBILE_NAV_ITEMS.map((item, index) => (
             <MobileNavLink
               key={`${item.href}-${index}`}
               item={item}
