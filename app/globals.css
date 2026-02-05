@@ -164,6 +164,13 @@
       padding-top: 60px;
       padding-bottom: 80px;
     }
+
+    /* Ensure mobile header is always transparent */
+    nav.md\:hidden {
+      background: transparent !important;
+      box-shadow: none !important;
+      border: none !important;
+    }
   }
 
   /* Hide scrollbar utility */
