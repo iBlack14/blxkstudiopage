@@ -165,7 +165,7 @@ function NavigationContent() {
           boxShadow: 'none',
           borderBottom: 'none',
           border: 'none',
-          background: 'hsl(var(--background))',
+          background: 'transparent',
           backdropFilter: 'none'
         }}
       >
