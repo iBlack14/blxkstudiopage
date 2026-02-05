@@ -68,13 +68,13 @@ const MobileNavLink = memo(function MobileNavLink({
       key={`${item.href}-${index}`}
       href={item.href}
       data-section={item.id}
-      className={`flex flex-col items-center gap-1 transition-all duration-200 px-4 py-2 rounded-lg flex-shrink-0 ${isActive
+      className={`flex flex-col items-center gap-0.5 transition-all duration-200 px-3 py-2 rounded-lg flex-shrink-0 min-w-fit ${isActive
         ? "text-primary neon-text-sm bg-primary/10 neon-border"
         : "text-muted-foreground hover:text-primary active:scale-95"
         }`}
     >
       <Icon size={20} className="stroke-current" />
-      <span className="text-[10px] font-medium whitespace-nowrap">{item.label}</span>
+      <span className="text-[9px] font-medium whitespace-nowrap">{item.label}</span>
     </Link>
   )
 })
@@ -142,7 +142,7 @@ function NavigationContent() {
       {/* Mobile Navigation - Bottom */}
       <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-t border-primary/30 shadow-[0_-4px_20px_rgba(0,255,255,0.2)] w-full overflow-hidden">
         <div
-          className="flex items-center gap-2 px-2 py-3 overflow-x-auto scrollbar-hide"
+          className="flex items-center justify-around gap-1 px-2 py-3 w-full"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {NAV_ITEMS.map((item, index) => (
