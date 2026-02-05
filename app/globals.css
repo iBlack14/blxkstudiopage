@@ -163,6 +163,7 @@
     body {
       padding-top: 60px;
       padding-bottom: 80px;
+      background: hsl(var(--background));
       background-attachment: scroll;
     }
   }
