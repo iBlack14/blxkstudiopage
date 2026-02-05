@@ -165,11 +165,12 @@
       padding-bottom: 80px;
     }
 
-    /* Ensure mobile header is always transparent */
-    nav.md\:hidden {
+    /* Ensure mobile header is always transparent and no colored background */
+    div.md\:hidden.fixed.top-0 {
       background: transparent !important;
       box-shadow: none !important;
       border: none !important;
+      background-color: transparent !important;
     }
   }
 
