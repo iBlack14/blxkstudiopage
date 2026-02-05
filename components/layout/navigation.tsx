@@ -142,7 +142,7 @@ function NavigationContent() {
       </nav>
 
       {/* Mobile Navigation - Bottom */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-t border-primary/30 shadow-[0_-4px_20px_rgba(0,255,255,0.2)] w-full overflow-hidden">
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md shadow-[0_-4px_20px_rgba(0,255,255,0.2)] w-full overflow-hidden">
         <div
           className="flex items-center gap-2 px-2 py-3 overflow-x-auto scrollbar-hide"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
