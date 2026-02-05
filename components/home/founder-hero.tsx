@@ -62,7 +62,7 @@ function FounderHeroComponent() {
       <div className="absolute inset-0 pointer-events-none">
         {/* Static gradient background */}
         <div
-          className="absolute inset-0 opacity-[0.03]"
+          className="absolute inset-0 opacity-[0.03] hidden md:block"
           style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cpath d='M0 80L80 0L160 80L80 160Z' stroke='%2300d4aa' fill='none' stroke-width='0.5'/%3E%3C/svg%3E")`,
             backgroundSize: '160px 160px',
