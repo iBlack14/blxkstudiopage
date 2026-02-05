@@ -163,14 +163,7 @@
     body {
       padding-top: 60px;
       padding-bottom: 80px;
-    }
-  }
-
-  /* Mobile header styling */
-  @media (max-width: 768px) {
-    div[style*="top-0"][style*="z-50"] {
-      background-color: transparent !important;
-      background: transparent !important;
+      background-attachment: scroll;
     }
   }
 
