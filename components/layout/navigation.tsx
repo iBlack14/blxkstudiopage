@@ -160,12 +160,13 @@ function NavigationContent() {
 
       {/* Mobile Navigation - Top Header */}
       <div
-        className="md:hidden fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-0 overflow-hidden"
+        className="md:hidden fixed top-0 left-0 right-0 z-50 border-0 overflow-visible"
         style={{
           boxShadow: 'none',
           borderBottom: 'none',
           border: 'none',
-          background: 'hsl(var(--background))'
+          background: 'hsl(var(--background))',
+          backdropFilter: 'none'
         }}
       >
         <div className="container mx-auto px-4 py-3 flex items-center justify-center relative" style={{ border: 'none', boxShadow: 'none' }}>
