@@ -57,7 +57,7 @@ function FounderHeroComponent() {
   }, [])
 
   return (
-    <section className="relative w-full overflow-hidden bg-background flex items-center py-8 md:py-12 lg:py-20 border-0 border-none">
+    <section className="relative w-full overflow-hidden bg-background flex items-center md:py-12 lg:py-20 border-0 border-none" style={{ paddingTop: 0, paddingBottom: 'var(--space-8)' }}>
       {/* Background effects - simplified for performance */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Static gradient background */}
