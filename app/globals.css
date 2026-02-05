@@ -164,13 +164,13 @@
       padding-top: 60px;
       padding-bottom: 80px;
     }
+  }
 
-    /* Ensure mobile header is always transparent and no colored background */
-    div.md\:hidden.fixed.top-0 {
-      background: transparent !important;
-      box-shadow: none !important;
-      border: none !important;
+  /* Mobile header styling */
+  @media (max-width: 768px) {
+    div[style*="top-0"][style*="z-50"] {
       background-color: transparent !important;
+      background: transparent !important;
     }
   }
 
