@@ -159,9 +159,9 @@ function NavigationContent() {
       </nav>
 
       {/* Mobile Navigation - Top Header */}
-      <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md">
-        <div className="container mx-auto px-4 py-3 flex items-center justify-center relative">
-          <Link href="/" className="text-xl font-bold neon-text font-mono text-center">
+      <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-none">
+        <div className="container mx-auto px-4 py-3 flex items-center justify-center relative border-b-0">
+          <Link href="/" className="text-xl font-bold neon-text font-mono text-center border-b-0">
             BLXK STUDIO
           </Link>
           <div className="absolute right-4 top-1/2 -translate-y-1/2">
