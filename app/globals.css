@@ -146,14 +146,7 @@
 
 @layer base {
   * {
-    @apply outline-ring/50;
-  }
-
-  /* Only apply borders on desktop */
-  @media (min-width: 768px) {
-    * {
-      @apply border-border;
-    }
+    @apply border-border outline-ring/50;
   }
 
   body {
