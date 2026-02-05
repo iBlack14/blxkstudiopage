@@ -21,8 +21,7 @@ const NAV_ITEMS = [
   { label: "Contacto", href: "/contacto", icon: Mail, id: "contact" },
 ] as const
 
-// Mobile nav items - limited to 4 main items for better mobile UX
-const MOBILE_NAV_ITEMS = NAV_ITEMS.slice(0, 4)
+
 
 const ROUTE_TO_SECTION: Record<string, string> = {
   "/": "hero",
@@ -145,10 +144,10 @@ function NavigationContent() {
       {/* Mobile Navigation - Bottom */}
       <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-t border-primary/30 shadow-[0_-4px_20px_rgba(0,255,255,0.2)] w-full overflow-hidden">
         <div
-          className="flex items-center gap-2 px-2 py-3 overflow-x-auto scrollbar-hide justify-around"
+          className="flex items-center gap-2 px-2 py-3 overflow-x-auto scrollbar-hide"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
-          {MOBILE_NAV_ITEMS.map((item, index) => (
+          {NAV_ITEMS.map((item, index) => (
             <MobileNavLink
               key={`${item.href}-${index}`}
               item={item}
