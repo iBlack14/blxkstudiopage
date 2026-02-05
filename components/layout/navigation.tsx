@@ -21,6 +21,8 @@ const NAV_ITEMS = [
   { label: "Contacto", href: "/contacto", icon: Mail, id: "contact" },
 ] as const
 
+
+
 const ROUTE_TO_SECTION: Record<string, string> = {
   "/": "hero",
   "/nosotros": "about",
@@ -157,7 +159,7 @@ function NavigationContent() {
       </nav>
 
       {/* Mobile Navigation - Top Header */}
-      <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border/10">
+      <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-transparent">
         <div className="container mx-auto px-4 py-3 flex items-center justify-center relative">
           <Link href="/" className="text-xl font-bold neon-text font-mono text-center">
             BLXK STUDIO
