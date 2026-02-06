@@ -30,12 +30,6 @@ const nextConfig = {
     pagesBufferLength: 5,
   },
 
-  // Experimental features for Next.js 16
-  experimental: {
-    // Completely disable Turbopack to avoid WASM bindings issue
-    turbo: false,
-  },
-
   // HTTP headers for performance
   async headers() {
     return [
