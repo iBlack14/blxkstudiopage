@@ -1,11 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Image optimization with modern formats
   images: {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    qualities: [75, 85],
-    minimumCacheTTL: 31536000,
+    qualities: [75, 85], // Added 85 to fix the warning
+    minimumCacheTTL: 31536000, // 1 year cache
     remotePatterns: [
       {
         protocol: 'https',
@@ -14,23 +15,24 @@ const nextConfig = {
     ],
   },
 
+  // Performance optimizations
   compress: true,
   productionBrowserSourceMaps: false,
   poweredByHeader: false,
   reactStrictMode: true,
 
-  allowedDevOrigins: [
-    'http://127.0.0.1:3000',
-    'http://localhost:3000',
-  ],
+  // Allow dev origins to fix cross-origin warning
+  allowedDevOrigins: ['http://127.0.0.1:3000', 'http://localhost:3000'],
 
+  // On-demand entries for development
   onDemandEntries: {
-    maxInactiveAge: 120000,
+    maxInactiveAge: 120000, // 2 minutes
     pagesBufferLength: 5,
   },
 
+  // Experimental features for Next.js 16
   experimental: {
-    turbo: false, // 🔥 FIX DEFINITIVO
+    // Optimize package imports for tree-shaking
     optimizePackageImports: [
       'lucide-react',
       '@radix-ui/react-slot',
@@ -40,14 +42,24 @@ const nextConfig = {
     ],
   },
 
+  // HTTP headers for performance
   async headers() {
     return [
       {
         source: '/(.*)',
         headers: [
-          { key: 'X-Content-Type-Options', value: 'nosniff' },
-          { key: 'X-Frame-Options', value: 'DENY' },
-          { key: 'X-XSS-Protection', value: '1; mode=block' },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block',
+          },
         ],
       },
       {
