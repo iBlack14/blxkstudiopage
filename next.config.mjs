@@ -31,16 +31,7 @@ const nextConfig = {
   },
 
   // Experimental features for Next.js 16
-  experimental: {
-    // Optimize package imports for tree-shaking
-    optimizePackageImports: [
-      'lucide-react',
-      '@radix-ui/react-slot',
-      'clsx',
-      'tailwind-merge',
-      'class-variance-authority',
-    ],
-  },
+  experimental: {},
 
   // HTTP headers for performance
   async headers() {
