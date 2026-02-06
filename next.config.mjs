@@ -32,20 +32,8 @@ const nextConfig = {
 
   // Experimental features for Next.js 16
   experimental: {
-    turbo: {
-      // Disable turbo to avoid WASM bindings issue
-      rules: {
-        '*.svg': {
-          loaders: ['@svgr/webpack'],
-          as: '*.js',
-        },
-      },
-    },
-  },
-
-  // Disable Turbopack for development
-  turbo: {
-    loaders: {},
+    // Completely disable Turbopack to avoid WASM bindings issue
+    turbo: false,
   },
 
   // HTTP headers for performance
