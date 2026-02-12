@@ -12,8 +12,8 @@ export function ServicesProposal({ isHomeVersion = false }) {
   const displayServices = isHomeVersion ? servicesProposalData.slice(0, 2) : servicesProposalData
   const sectionTitle = isHomeVersion ? "Propuesta de Valor Superior" : "Propuesta de Servicios Superior"
   const sectionDesc = isHomeVersion
-    ? "Nuestras soluciones superan los estÃ¡ndares del mercado en rendimiento, seguridad y ROI"
-    : "BLXK Studio se posiciona como el socio estratÃ©gico para el desarrollo digital"
+    ? "Nuestras soluciones superan los estándares del mercado en rendimiento, seguridad y ROI"
+    : "BLXK Studio se posiciona como el socio estratégico para el desarrollo digital"
 
   const toggleExpand = (id: number) => {
     setExpandedId(expandedId === id ? null : id)
@@ -61,10 +61,10 @@ export function ServicesProposal({ isHomeVersion = false }) {
                       <div className="space-y-4">
                         <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap pb-2">
                           {[
-                            { id: "overview", label: "VisiÃ³n General", icon: "ðŸ“‹" },
-                            { id: "comparison", label: "BLXK vs Mercado", icon: "âš–ï¸" },
-                            { id: "advantages", label: "Ventajas", icon: "â­" },
-                            { id: "usecases", label: "Casos de Uso", icon: "ðŸŽ¯" },
+                            { id: "overview", label: "Visión General", icon: "📋" },
+                            { id: "comparison", label: "BLXK vs Mercado", icon: "⚖️" },
+                            { id: "advantages", label: "Ventajas", icon: "⭐" },
+                            { id: "usecases", label: "Casos de Uso", icon: "🎯" },
                           ].map((tab) => (
                             <button
                               key={tab.id}
@@ -86,7 +86,7 @@ export function ServicesProposal({ isHomeVersion = false }) {
                         <div className="space-y-4">
                           {activeTab === "overview" && (
                             <div className="space-y-4">
-                              <h4 className="text-base sm:text-lg font-semibold text-foreground">MÃ©tricas Clave</h4>
+                              <h4 className="text-base sm:text-lg font-semibold text-foreground">Métricas Clave</h4>
                               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                                 {service.metrics.map((metric, idx) => (
                                   <div
@@ -112,7 +112,7 @@ export function ServicesProposal({ isHomeVersion = false }) {
                                   <div className="space-y-2">
                                     <div className="flex flex-col sm:flex-row gap-1 sm:gap-2">
                                       <span className="text-xs sm:text-sm font-medium text-muted-foreground sm:min-w-20">
-                                        EstÃ¡ndar:
+                                        Estándar:
                                       </span>
                                       <span className="text-xs sm:text-sm text-muted-foreground min-w-0 break-words">{feature.standard}</span>
                                     </div>
@@ -155,7 +155,7 @@ export function ServicesProposal({ isHomeVersion = false }) {
                       {/* CTA */}
                       <Link href="/contacto" className="block w-full">
                         <button className="w-full mt-4 px-4 py-3 bg-primary/10 hover:bg-primary/20 text-primary text-sm sm:text-base font-semibold rounded-lg transition-colors">
-                          Solicitar MÃ¡s InformaciÃ³n
+                          Solicitar Más Información
                         </button>
                       </Link>
                     </div>
@@ -190,4 +190,3 @@ export function ServicesProposal({ isHomeVersion = false }) {
     </section>
   )
 }
-

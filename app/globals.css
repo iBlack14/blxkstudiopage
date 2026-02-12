@@ -70,7 +70,7 @@
   --popover-foreground: oklch(0.92 0.08 240);
   /* Azul Marino Claro */
   --primary: oklch(0.75 0.15 160);
-  /* Menta mÃ¡s intenso */
+  /* Menta más intenso */
   --primary-foreground: oklch(0.15 0.05 240);
   /* Azul Marino Oscuro */
   --secondary: oklch(0.25 0.05 240);
@@ -80,7 +80,7 @@
   --muted-foreground: oklch(0.70 0.06 240);
   /* Azul Marino Muted */
   --accent: oklch(0.75 0.15 240);
-  /* Azul Cielo mÃ¡s intenso */
+  /* Azul Cielo más intenso */
   --accent-foreground: oklch(0.15 0.05 240);
   /* Azul Marino Oscuro */
   --destructive: oklch(0.396 0.141 25.723);
@@ -147,6 +147,7 @@
 }
 
 @layer base {
+
   html,
   body {
     overflow-x: clip;
@@ -351,7 +352,7 @@
     pointer-events: none;
   }
 
-  /* Pausar animaciÃ³n del borde en hover */
+  /* Pausar animación del borde en hover */
   .neon-card-rotating:hover::before {
     animation-play-state: paused;
   }
@@ -514,4 +515,3 @@
     mask-image: radial-gradient(ellipse 80% 50% at 50% 50%, #000 70%, transparent 110%);
   }
 }
-
