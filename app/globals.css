@@ -6,32 +6,34 @@
 
 /* Light theme - Day mode (Pastel Mint & Sky) */
 :root {
-  --background: oklch(0.98 0.01 200);
-  /* Blanco Hielo */
-  --foreground: oklch(0.25 0.08 240);
-  /* Azul Marino */
+  --background: oklch(0.99 0 0);
+  /* Blanco Puro */
+  --background-start: oklch(0.99 0 0);
+  --background-end: oklch(0.96 0.01 200);
+  --foreground: oklch(0.20 0.05 240);
+  /* Azul Oscuro Profundo */
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.25 0.08 240);
-  /* Azul Marino */
-  --primary: oklch(0.65 0.15 210);
-  /* Celeste Vibrante - New Brand Color */
-  --primary-foreground: oklch(0.98 0.01 200);
+  --card-foreground: oklch(0.20 0.05 240);
+  /* Azul Oscuro Profundo */
+  --primary: oklch(0.55 0.15 210);
+  /* Azul Vibrante pero legible */
+  --primary-foreground: oklch(1 0 0);
   /* Blanco */
-  --secondary: oklch(0.95 0.05 210);
-  /* Celeste Muy Suave */
-  --secondary-foreground: oklch(0.25 0.08 240);
-  /* Azul Marino */
-  --muted: oklch(0.97 0.02 210);
-  /* Gris Azulado Hielo */
-  --muted-foreground: oklch(0.45 0.05 240);
-  /* Azul Marino Muted */
-  --accent: oklch(0.92 0.08 210);
-  /* Celeste Claro */
-  --accent-foreground: oklch(0.25 0.08 240);
-  /* Azul Marino */
+  --secondary: oklch(0.96 0.02 210);
+  /* Gris Azulado Muy Claro */
+  --secondary-foreground: oklch(0.20 0.05 240);
+  /* Azul Oscuro */
+  --muted: oklch(0.97 0.01 210);
+  /* Gris Claro */
+  --muted-foreground: oklch(0.50 0.05 240);
+  /* Gris Azulado Medio */
+  --accent: oklch(0.94 0.04 210);
+  /* Celeste Muy Claro */
+  --accent-foreground: oklch(0.20 0.05 240);
+  /* Azul Oscuro */
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.90 0.05 210);
+  --border: oklch(0.92 0.02 210);
   --input: oklch(0.92 0.05 210);
   --ring: oklch(0.65 0.15 210);
   --chart-1: oklch(0.65 0.15 210);
@@ -208,8 +210,9 @@
   }
 
   .light .neon-text {
-    color: oklch(0.55 0.18 210);
-    text-shadow: 0 0 8px oklch(0.55 0.18 210 / 0.4), 0 0 16px oklch(0.55 0.18 210 / 0.2);
+    color: oklch(0.45 0.15 210);
+    text-shadow: none;
+    font-weight: 600;
   }
 
   .neon-text-sm {
@@ -218,8 +221,9 @@
   }
 
   .light .neon-text-sm {
-    color: oklch(0.55 0.18 210);
-    text-shadow: 0 0 4px oklch(0.55 0.18 210 / 0.3), 0 0 8px oklch(0.55 0.18 210 / 0.2);
+    color: oklch(0.45 0.15 210);
+    text-shadow: none;
+    font-weight: 600;
   }
 
   .neon-border {

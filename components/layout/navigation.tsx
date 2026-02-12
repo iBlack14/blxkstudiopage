@@ -1,8 +1,9 @@
-"use client"
+﻿"use client"
 
 import { useState, useEffect, useRef, useMemo, memo, useCallback, lazy, Suspense } from "react"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Home, Info, Briefcase, Code, FolderOpen, Mail } from "lucide-react"
 
@@ -116,10 +117,26 @@ function NavigationContent() {
         className={`hidden md:block fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-background/95 backdrop-blur-md shadow-sm border-b border-border/50" : "bg-transparent"
           }`}
       >
-        <div className="container mx-auto px-4 py-4">
+        <div className="container mx-auto px-4 py-4 max-w-7xl">
           <div className="flex items-center justify-between">
-            <Link href="/" className="text-2xl font-bold neon-text font-mono">
-              BLXK STUDIO
+            <Link href="/" className="inline-flex items-center" aria-label="BLXK Studio">
+              <Image
+                src="/logo.png"
+                alt="BLXK Studio"
+                width={44}
+                height={44}
+                className="h-11 w-11 object-contain dark:hidden"
+                priority
+              />
+              <Image
+                src="/logo-blanco.webp"
+                alt="BLXK Studio"
+                width={44}
+                height={44}
+                className="hidden h-11 w-11 object-contain dark:block"
+                priority
+              />
+              <span className="sr-only">BLXK STUDIO</span>
             </Link>
 
             <div className="flex items-center gap-8">
@@ -142,7 +159,7 @@ function NavigationContent() {
       </nav>
 
       {/* Mobile Navigation - Bottom */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-t border-primary/30 shadow-[0_-4px_20px_rgba(0,255,255,0.2)] w-full overflow-hidden">
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-background border-t border-border shadow-lg w-full overflow-hidden">
         <div
           className="flex items-center gap-2 px-2 py-3 overflow-x-auto scrollbar-hide"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
@@ -159,10 +176,29 @@ function NavigationContent() {
       </nav>
 
       {/* Mobile Navigation - Top Header */}
-      <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-transparent">
-        <div className="container mx-auto px-4 py-3 flex items-center justify-center relative">
-          <Link href="/" className="text-xl font-bold neon-text font-mono text-center">
-            BLXK STUDIO
+      <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-background border-none shadow-none outline-none" style={{ border: 'none', boxShadow: 'none' }}>
+        <div className="container mx-auto px-4 py-4 max-w-7xl flex items-center justify-center relative">
+          <Link href="/" className="inline-flex items-center justify-center gap-2.5" aria-label="BLXK Studio">
+            <Image
+              src="/logo.png"
+              alt="BLXK Studio"
+              width={120}
+              height={52}
+              className="h-[52px] w-auto object-contain dark:hidden"
+              priority
+            />
+            <Image
+              src="/logo-blanco.webp"
+              alt="BLXK Studio"
+              width={120}
+              height={52}
+              className="hidden h-[52px] w-auto object-contain dark:block"
+              priority
+            />
+            <div className="flex flex-col leading-none text-left">
+              <span className="text-[15px] font-black tracking-[0.18em] text-foreground">BLXK</span>
+              <span className="text-[13px] font-bold tracking-[0.24em] text-primary">STUDIO</span>
+            </div>
           </Link>
           <div className="absolute right-4 top-1/2 -translate-y-1/2">
             <Button
@@ -190,3 +226,7 @@ function NavigationContent() {
 }
 
 export const Navigation = memo(NavigationContent)
+
+
+
+

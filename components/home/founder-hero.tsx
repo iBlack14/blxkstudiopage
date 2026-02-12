@@ -1,8 +1,7 @@
 "use client"
 
-import { useState, useEffect, memo, useCallback, useMemo } from "react"
+import { useState, useEffect, memo } from "react"
 import { ArrowRight, Zap } from "lucide-react"
-import Image from "next/image"
 
 // Memoized tech stack badges
 const TechBadge = memo(function TechBadge({ tech }: { tech: string }) {
@@ -44,16 +43,18 @@ function FounderHeroComponent() {
     setIsLoaded(true)
   }, [])
 
-  // Memoized particle generation for client
-  const particles = useMemo(() => {
-    if (typeof window === "undefined") return []
-    return [...Array(6)].map((_, i) => ({
+  const [particles, setParticles] = useState<{ id: number; left: number; top: number; duration: number; delay: number }[]>([])
+
+  useEffect(() => {
+    setIsLoaded(true)
+    // Generate particles only on client side after mount
+    setParticles([...Array(6)].map((_, i) => ({
       id: i,
       left: Math.random() * 100,
       top: Math.random() * 100,
       duration: 2 + Math.random() * 2,
       delay: i * 0.3,
-    }))
+    })))
   }, [])
 
   return (
@@ -108,13 +109,11 @@ function FounderHeroComponent() {
             </div>
 
             {/* Main description */}
-            <div className="space-y-5 text-lg md:text-xl text-muted-foreground/90 leading-loose max-w-2xl">
+            <div className="space-y-3 text-base md:text-lg text-muted-foreground/90 leading-relaxed max-w-xl">
               <p>
-                Somos una agencia tecnológica especializada en <span className="text-primary font-semibold">desarrollo web empresarial, automatización inteligente y soluciones digitales escalables</span> para empresas y emprendedores que buscan transformar sus operaciones.
+                Diseñamos y construimos <span className="text-primary font-semibold">software web, automatizaciones e IA aplicada</span> para empresas que exigen velocidad, control y resultados.
               </p>
-              <p>
-                Combinamos experiencia técnica, visión estratégica y creatividad para entregar soluciones reales que impulsan el crecimiento de tu negocio. Desde software personalizado hasta automatizaciones complejas, nos enfocamos en resultados medibles.
-              </p>
+              <p>Soluciones premium, ejecución precisa y foco total en ROI.</p>
             </div>
 
             {/* Stack Tecnológico */}
@@ -139,25 +138,27 @@ function FounderHeroComponent() {
             </div>
           </div>
 
-          {/* Image side */}
+          {/* Video side */}
           <div className={`relative flex justify-center transition-all duration-700 delay-200 ${isLoaded ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"}`}>
-            <div className="relative w-full max-w-sm">
+            <div className="relative w-full max-w-md md:max-w-lg lg:max-w-xl">
               {/* Animated glow background */}
-              <div className="absolute -inset-2 bg-gradient-to-b from-primary/30 via-primary/10 to-transparent rounded-3xl blur-2xl opacity-50" />
+              <div className="absolute -inset-3 bg-gradient-to-b from-primary/35 via-primary/15 to-transparent rounded-3xl blur-2xl opacity-60" />
 
-              {/* Main image container */}
-              <div className="relative aspect-square rounded-2xl overflow-hidden border border-primary/30 bg-gradient-to-br from-card/50 to-card/20 backdrop-blur-xl group">
-                <Image
-                  src="/LOGO-PERFIL.png"
-                  alt="BLXK Studio - Agencia Tecnológica"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 384px"
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  priority
-                  quality={85}
+              {/* Main video container */}
+              <div className="relative aspect-[5/4] rounded-2xl overflow-hidden border border-primary/40 bg-gradient-to-br from-card/60 to-card/20 backdrop-blur-xl shadow-[0_0_35px_rgba(0,212,170,0.25)] group">
+                <video
+                  src="/pagina-web-inicio.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
+                  poster="/logo.png"
+                  className="absolute inset-0 h-full w-full object-cover object-center group-hover:scale-[1.03] transition-transform duration-700"
+                  aria-label="Presentacion BLXK Studio"
                 />
                 {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-40 group-hover:opacity-20 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/75 via-transparent to-transparent opacity-35 group-hover:opacity-20 transition-opacity" />
 
                 {/* Info badge */}
                 <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-background to-transparent">
