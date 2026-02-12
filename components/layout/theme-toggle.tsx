@@ -61,7 +61,7 @@ export function FloatingThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="fixed left-6 top-1/2 -translate-y-1/2 z-40 p-2.5 rounded-full backdrop-blur-sm transition-all duration-300 hover:scale-110 active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary/50"
+      className="hidden md:block fixed left-6 top-1/2 -translate-y-1/2 z-40 p-2.5 rounded-full backdrop-blur-sm transition-all duration-300 hover:scale-110 active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary/50"
       style={{
         background: theme === "light"
           ? "linear-gradient(135deg, #FFE5E5 0%, #FFE5F0 50%, #E5F3FF 100%)"

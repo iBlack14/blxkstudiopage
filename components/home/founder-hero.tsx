@@ -6,7 +6,7 @@ import { ArrowRight, Zap } from "lucide-react"
 // Memoized tech stack badges
 const TechBadge = memo(function TechBadge({ tech }: { tech: string }) {
   return (
-    <span className="px-4 py-2 rounded-full text-sm font-medium border border-primary/30 text-primary/80 backdrop-blur-sm hover:border-primary/70 hover:text-primary transition-colors duration-200 cursor-default">
+    <span className="px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium border border-primary/30 text-primary/80 backdrop-blur-sm hover:border-primary/70 hover:text-primary transition-colors duration-200 cursor-default">
       {tech}
     </span>
   )
@@ -58,7 +58,7 @@ function FounderHeroComponent() {
   }, [])
 
   return (
-    <section className="relative w-full overflow-hidden bg-background flex items-center py-8 md:py-12 lg:py-20">
+    <section className="relative w-full overflow-hidden bg-background flex items-center pt-8 pb-24 md:py-12 lg:py-20">
       {/* Background effects - simplified for performance */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Static gradient background */}
