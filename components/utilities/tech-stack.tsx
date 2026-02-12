@@ -1,4 +1,4 @@
-export function TechStack() {
+﻿export function TechStack() {
   const techCategories = [
     {
       category: "Backend",
@@ -52,7 +52,10 @@ export function TechStack() {
   ]
 
   return (
-    <section id="tech" className="py-24 relative bg-secondary/30">
+    <section
+      id="tech"
+      className="py-24 relative bg-secondary/30"
+    >
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto space-y-12">
           <div className="text-center space-y-4">
@@ -62,12 +65,12 @@ export function TechStack() {
 
           <div className="space-y-12">
             {techCategories.map((category, index) => (
-              <div key={index} className="space-y-8">
+              <div key={index} className="space-y-6">
                 <h3 className="text-2xl font-bold text-primary text-center">{category.category}</h3>
-                <div className="flex flex-wrap items-center justify-center gap-10">
+                <div className="flex md:flex-wrap md:items-center md:justify-center gap-4 md:gap-10 overflow-x-auto md:overflow-visible pb-2 md:pb-0 snap-x snap-mandatory scroll-smooth scrollbar-hide">
                   {category.technologies.map((tech, techIndex) => (
-                    <div key={techIndex} className="flex flex-col items-center gap-4 group">
-                      <div className="w-18 h-18 rounded-lg neon-logo-rotating p-3 flex items-center justify-center relative z-10">
+                    <div key={techIndex} className="flex-shrink-0 snap-start min-w-[104px] md:min-w-0 flex flex-col items-center gap-3 md:gap-4 group">
+                      <div className="w-18 h-18 rounded-lg neon-logo-rotating stack-logo-shell p-3 flex items-center justify-center relative z-10">
                         <img
                           src={tech.logo || "/placeholder.svg"}
                           alt={tech.name}
@@ -90,3 +93,5 @@ export function TechStack() {
     </section>
   )
 }
+
+

@@ -1,4 +1,4 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
@@ -70,7 +70,7 @@
   --popover-foreground: oklch(0.92 0.08 240);
   /* Azul Marino Claro */
   --primary: oklch(0.75 0.15 160);
-  /* Menta más intenso */
+  /* Menta mÃ¡s intenso */
   --primary-foreground: oklch(0.15 0.05 240);
   /* Azul Marino Oscuro */
   --secondary: oklch(0.25 0.05 240);
@@ -80,7 +80,7 @@
   --muted-foreground: oklch(0.70 0.06 240);
   /* Azul Marino Muted */
   --accent: oklch(0.75 0.15 240);
-  /* Azul Cielo más intenso */
+  /* Azul Cielo mÃ¡s intenso */
   --accent-foreground: oklch(0.15 0.05 240);
   /* Azul Marino Oscuro */
   --destructive: oklch(0.396 0.141 25.723);
@@ -271,7 +271,7 @@
     box-shadow: 0 0 20px oklch(0.6 0.15 210 / 0.1);
   }
 
-  /* Mejorar neon-card-rotating para que el borde esté siempre visible y se pause en hover */
+  /* Mejorar neon-card-rotating para que el borde estÃ© siempre visible y se pause en hover */
   .neon-card-rotating {
     position: relative;
     background: transparent;
@@ -279,8 +279,11 @@
     overflow: visible;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     cursor: pointer;
-    box-shadow: 0 0 15px oklch(0.50 0.10 270 / 0.4), inset 0 0 8px oklch(0.50 0.10 270 / 0.1);
-    /* Azul-Púrpura Oscuro Sutil */
+    --rotate-c1: oklch(0.74 0.17 182);
+    --rotate-c2: oklch(0.68 0.18 230);
+    --panel-from: oklch(0.15 0.05 238);
+    --panel-to: oklch(0.18 0.04 248);
+    box-shadow: 0 0 16px oklch(0.72 0.16 200 / 0.34), inset 0 0 10px oklch(0.72 0.12 200 / 0.12);
   }
 
   .neon-card-rotating>* {
@@ -288,32 +291,37 @@
     z-index: 2;
   }
 
+  .dark .neon-card-rotating {
+    --rotate-c1: oklch(0.76 0.16 170);
+    --rotate-c2: oklch(0.70 0.20 225);
+    --panel-from: oklch(0.14 0.05 240);
+    --panel-to: oklch(0.18 0.05 250);
+    box-shadow: 0 0 18px oklch(0.74 0.15 185 / 0.36), inset 0 0 10px oklch(0.74 0.10 185 / 0.12);
+  }
+
   .light .neon-card-rotating {
-    background: linear-gradient(135deg, oklch(0.98 0.01 200) 0%, oklch(0.96 0.01 200) 100%);
-    border: 1.5px solid oklch(0.40 0.10 270 / 0.4);
-    /* Azul-Púrpura Oscuro */
-    box-shadow: 0 0 10px oklch(0.40 0.10 270 / 0.2), inset 0 0 5px oklch(0.40 0.10 270 / 0.08);
-    /* Azul-Púrpura Oscuro */
+    --rotate-c1: oklch(0.57 0.17 245);
+    --rotate-c2: oklch(0.62 0.14 195);
+    --panel-from: oklch(0.985 0.006 220);
+    --panel-to: oklch(0.965 0.012 205);
+    background: linear-gradient(135deg, var(--panel-from) 0%, var(--panel-to) 100%);
+    border: 1.5px solid oklch(0.55 0.10 230 / 0.35);
+    box-shadow: 0 0 14px oklch(0.56 0.12 232 / 0.18), inset 0 0 6px oklch(0.58 0.10 210 / 0.08);
   }
 
   .neon-card-rotating:hover {
-    box-shadow: 0 0 25px oklch(0.55 0.12 270 / 0.5), inset 0 0 15px oklch(0.55 0.12 270 / 0.15);
-    /* Azul-Púrpura Oscuro */
-    border-color: oklch(0.55 0.12 270 / 0.7);
-    /* Azul-Púrpura Oscuro */
+    box-shadow: 0 0 24px color-mix(in oklch, var(--rotate-c1) 70%, transparent), inset 0 0 14px color-mix(in oklch, var(--rotate-c2) 35%, transparent);
+    border-color: color-mix(in oklch, var(--rotate-c1) 70%, var(--rotate-c2) 30%);
   }
 
   .light .neon-card-rotating:hover {
-    box-shadow: 0 0 20px oklch(0.42 0.11 270 / 0.3), inset 0 0 10px oklch(0.42 0.11 270 / 0.12);
-    /* Azul-Púrpura Oscuro */
-    border-color: oklch(0.42 0.11 270 / 0.6);
-    /* Azul-Púrpura Oscuro */
+    box-shadow: 0 0 20px color-mix(in oklch, var(--rotate-c1) 45%, transparent), inset 0 0 10px color-mix(in oklch, var(--rotate-c2) 22%, transparent);
+    border-color: color-mix(in oklch, var(--rotate-c1) 62%, var(--rotate-c2) 38%);
   }
 
   .neon-card-rotating:active {
     transform: scale(0.96);
-    box-shadow: 0 0 35px oklch(0.55 0.12 270 / 0.6), inset 0 0 20px oklch(0.55 0.12 270 / 0.2);
-    /* Azul-Púrpura Oscuro */
+    box-shadow: 0 0 28px color-mix(in oklch, var(--rotate-c1) 72%, transparent), inset 0 0 18px color-mix(in oklch, var(--rotate-c2) 32%, transparent);
   }
 
   .neon-card-rotating::before {
@@ -321,16 +329,15 @@
     position: absolute;
     inset: -2px;
     background: conic-gradient(from var(--angle),
-        oklch(0.50 0.10 270) 0deg,
-        oklch(0.58 0.12 270) 20deg,
-        oklch(0.50 0.10 270) 40deg,
+        var(--rotate-c1) 0deg,
+        var(--rotate-c2) 24deg,
+        var(--rotate-c1) 48deg,
         transparent 60deg,
         transparent 180deg,
-        oklch(0.50 0.10 270) 220deg,
-        oklch(0.58 0.12 270) 240deg,
-        oklch(0.50 0.10 270) 260deg,
+        var(--rotate-c1) 220deg,
+        var(--rotate-c2) 244deg,
+        var(--rotate-c1) 268deg,
         transparent 280deg);
-    /* Azul-Púrpura Oscuro Sutil */
     border-radius: var(--radius-lg);
     animation: rotate-border 2.5s linear infinite;
     z-index: 0;
@@ -338,7 +345,7 @@
     pointer-events: none;
   }
 
-  /* Pausar animación del borde en hover */
+  /* Pausar animaciÃ³n del borde en hover */
   .neon-card-rotating:hover::before {
     animation-play-state: paused;
   }
@@ -347,15 +354,10 @@
     content: "";
     position: absolute;
     inset: 3px;
-    background: linear-gradient(135deg, oklch(0.14 0.06 270) 0%, oklch(0.18 0.06 270) 100%);
-    /* Azul-Púrpura Oscuro Sutil */
+    background: linear-gradient(135deg, var(--panel-from) 0%, var(--panel-to) 100%);
     border-radius: calc(var(--radius-lg) - 3px);
     z-index: 1;
     pointer-events: none;
-  }
-
-  .light .neon-card-rotating::after {
-    background: linear-gradient(135deg, oklch(0.98 0.01 200) 0%, oklch(0.96 0.01 200) 100%);
   }
 
   .neon-logo-rotating {
@@ -392,6 +394,15 @@
 
   .light .neon-logo-rotating::after {
     background: oklch(0.98 0.01 200);
+  }
+
+  /* Stack icon shell: clearer panel in dark mode */
+  .dark .stack-logo-shell::after {
+    background: linear-gradient(145deg, oklch(0.985 0.004 220) 0%, oklch(0.955 0.01 210) 100%);
+  }
+
+  .dark .stack-logo-shell {
+    box-shadow: 0 0 10px oklch(0.60 0.12 210 / 0.22), inset 0 0 5px oklch(0.98 0.01 220 / 0.6);
   }
 
   @keyframes rotate-border {
@@ -497,3 +508,4 @@
     mask-image: radial-gradient(ellipse 80% 50% at 50% 50%, #000 70%, transparent 110%);
   }
 }
+

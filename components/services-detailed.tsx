@@ -369,9 +369,9 @@ const ServiceCard = memo(function ServiceCard({
             </div>
 
             {/* CTA */}
-            <button className="w-full mt-3 px-4 py-2 bg-primary/10 hover:bg-primary/20 text-primary text-sm font-semibold rounded-lg transition-colors">
+            <span className="block w-full mt-3 px-4 py-2 bg-primary/10 text-primary text-sm font-semibold rounded-lg text-center">
               Más información
-            </button>
+            </span>
           </div>
         )}
       </button>
