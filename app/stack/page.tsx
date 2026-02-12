@@ -1,12 +1,12 @@
 import dynamic from "next/dynamic";
-import { Navigation } from "@/components/navigation";
+import { Navigation } from "@/components/layout/navigation";
 import { TechStackSkeleton } from "@/components/skeletons/tech-stack-skeleton";
 
 const TechStack = dynamic(() => import("@/components/tech-stack").then(m => ({ default: m.TechStack })), {
   loading: () => <TechStackSkeleton />,
 })
 
-const FloatingThemeToggle = dynamic(() => import("@/components/theme-toggle").then(m => ({ default: m.FloatingThemeToggle })), {
+const FloatingThemeToggle = dynamic(() => import("@/components/layout/theme-toggle").then(m => ({ default: m.FloatingThemeToggle })), {
   loading: () => null,
 })
 
