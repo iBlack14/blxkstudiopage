@@ -138,6 +138,21 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} scroll-smooth`}
     >
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(() => {
+  try {
+    const removeInjectedNodes = () => {
+      document.querySelectorAll("#pixefy-svg-filters").forEach((el) => el.remove())
+    }
+    removeInjectedNodes()
+    const observer = new MutationObserver(removeInjectedNodes)
+    observer.observe(document.documentElement, { childList: true, subtree: true })
+    window.addEventListener("load", () => observer.disconnect(), { once: true })
+  } catch {}
+})();`,
+          }}
+        />
         {/* DNS prefetch for external resources */}
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />

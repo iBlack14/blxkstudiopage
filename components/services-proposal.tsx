@@ -21,42 +21,42 @@ export function ServicesProposal({ isHomeVersion = false }) {
   }
 
   return (
-    <section className="py-20 relative">
+    <section className="py-12 md:py-20 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-6xl mx-auto space-y-12">
+        <div className="max-w-6xl mx-auto space-y-8 md:space-y-12">
           {/* Header */}
-          <div className="text-center space-y-4">
-            <h2 className="text-4xl md:text-5xl font-bold neon-text-sm">{sectionTitle}</h2>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-loose">
+          <div className="text-center space-y-3 md:space-y-4">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold neon-text-sm">{sectionTitle}</h2>
+            <p className="text-sm sm:text-base md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed md:leading-loose">
               {sectionDesc}
             </p>
           </div>
 
           {/* Services Grid */}
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-4 md:gap-6">
             {displayServices.map((service) => (
               <div
                 key={service.id}
                 onClick={() => toggleExpand(service.id)}
-                className="cursor-pointer"
+                className="cursor-pointer min-w-0"
               >
-                <div className="neon-card-rotating p-6 rounded-lg space-y-4 transition-all duration-300">
+                <div className="neon-card-rotating p-4 sm:p-6 rounded-lg space-y-4 transition-all duration-300 min-w-0 overflow-x-clip">
                   {/* Header */}
-                  <div className="flex items-start gap-4">
-                    <div className="text-4xl">{service.icon}</div>
-                    <div className="flex-1 space-y-1">
-                      <h3 className="text-2xl font-bold text-foreground">{service.title}</h3>
-                      <p className="text-lg text-primary font-semibold">{service.description}</p>
+                  <div className="flex items-start gap-3 sm:gap-4">
+                    <div className="text-3xl sm:text-4xl">{service.icon}</div>
+                    <div className="flex-1 min-w-0 space-y-1">
+                      <h3 className="text-xl sm:text-2xl font-bold text-foreground leading-tight break-words">{service.title}</h3>
+                      <p className="text-base sm:text-lg text-primary font-semibold leading-snug">{service.description}</p>
                     </div>
                   </div>
 
-                  <p className="text-base text-muted-foreground leading-relaxed">{service.introduction}</p>
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{service.introduction}</p>
 
                   {/* Expandable Content */}
                   {expandedId === service.id && (
-                    <div className="pt-6 space-y-6 border-t border-primary/20 animate-in fade-in slide-in-from-top-2 duration-300">
+                    <div className="pt-4 sm:pt-6 space-y-5 sm:space-y-6 border-t border-primary/20 animate-in fade-in slide-in-from-top-2 duration-300">
                       {/* Tabs */}
                       <div className="space-y-4">
                         <div className="flex gap-2 overflow-x-auto pb-2">
@@ -72,7 +72,7 @@ export function ServicesProposal({ isHomeVersion = false }) {
                                 e.stopPropagation()
                                 setActiveTab(tab.id)
                               }}
-                              className={`px-4 py-2 rounded-lg font-semibold text-sm whitespace-nowrap transition-all ${activeTab === tab.id
+                              className={`px-3 sm:px-4 py-2 rounded-lg font-semibold text-xs sm:text-sm whitespace-nowrap transition-all ${activeTab === tab.id
                                 ? "bg-primary text-primary-foreground"
                                 : "bg-primary/10 text-primary hover:bg-primary/20"
                                 }`}
@@ -86,15 +86,15 @@ export function ServicesProposal({ isHomeVersion = false }) {
                         <div className="space-y-4">
                           {activeTab === "overview" && (
                             <div className="space-y-4">
-                              <h4 className="text-lg font-semibold text-foreground">Métricas Clave</h4>
-                              <div className="grid grid-cols-2 gap-4">
+                              <h4 className="text-base sm:text-lg font-semibold text-foreground">Métricas Clave</h4>
+                              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                                 {service.metrics.map((metric, idx) => (
                                   <div
                                     key={idx}
-                                    className="p-4 rounded-lg bg-primary/5 border border-primary/20 space-y-1"
+                                    className="p-3 sm:p-4 rounded-lg bg-primary/5 border border-primary/20 space-y-1"
                                   >
-                                    <p className="text-sm text-muted-foreground">{metric.label}</p>
-                                    <p className="text-xl font-bold text-primary">{metric.value}</p>
+                                    <p className="text-xs sm:text-sm text-muted-foreground">{metric.label}</p>
+                                    <p className="text-lg sm:text-xl font-bold text-primary">{metric.value}</p>
                                   </div>
                                 ))}
                               </div>
@@ -106,19 +106,19 @@ export function ServicesProposal({ isHomeVersion = false }) {
                               {service.features.map((feature, idx) => (
                                 <div
                                   key={idx}
-                                  className="space-y-3 p-4 rounded-lg bg-primary/5 border border-primary/20"
+                                  className="space-y-3 p-3 sm:p-4 rounded-lg bg-primary/5 border border-primary/20"
                                 >
-                                  <h5 className="font-semibold text-foreground text-base">{feature.label}</h5>
+                                  <h5 className="font-semibold text-foreground text-sm sm:text-base">{feature.label}</h5>
                                   <div className="space-y-2">
                                     <div className="flex gap-2">
-                                      <span className="text-sm font-medium text-muted-foreground min-w-20">
+                                      <span className="text-xs sm:text-sm font-medium text-muted-foreground min-w-[64px] sm:min-w-20">
                                         Estándar:
                                       </span>
-                                      <span className="text-sm text-muted-foreground">{feature.standard}</span>
+                                      <span className="text-xs sm:text-sm text-muted-foreground min-w-0 break-words">{feature.standard}</span>
                                     </div>
                                     <div className="flex gap-2">
-                                      <span className="text-sm font-medium text-primary min-w-20">BLXK:</span>
-                                      <span className="text-sm text-primary font-medium">{feature.blxk}</span>
+                                      <span className="text-xs sm:text-sm font-medium text-primary min-w-[64px] sm:min-w-20">BLXK:</span>
+                                      <span className="text-xs sm:text-sm text-primary font-medium min-w-0 break-words">{feature.blxk}</span>
                                     </div>
                                   </div>
                                 </div>
@@ -131,7 +131,7 @@ export function ServicesProposal({ isHomeVersion = false }) {
                               {service.advantages.map((advantage, idx) => (
                                 <div key={idx} className="flex gap-3 items-start">
                                   <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                                  <span className="text-base text-muted-foreground leading-relaxed">
+                                  <span className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                                     {advantage}
                                   </span>
                                 </div>
@@ -144,7 +144,7 @@ export function ServicesProposal({ isHomeVersion = false }) {
                               {service.useCases.map((useCase, idx) => (
                                 <div key={idx} className="flex gap-3 items-start">
                                   <Users className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                                  <span className="text-base text-muted-foreground leading-relaxed">{useCase}</span>
+                                  <span className="text-sm sm:text-base text-muted-foreground leading-relaxed">{useCase}</span>
                                 </div>
                               ))}
                             </div>
@@ -154,7 +154,7 @@ export function ServicesProposal({ isHomeVersion = false }) {
 
                       {/* CTA */}
                       <Link href="/contacto" className="block w-full">
-                        <button className="w-full mt-4 px-4 py-3 bg-primary/10 hover:bg-primary/20 text-primary text-base font-semibold rounded-lg transition-colors">
+                        <button className="w-full mt-4 px-4 py-3 bg-primary/10 hover:bg-primary/20 text-primary text-sm sm:text-base font-semibold rounded-lg transition-colors">
                           Solicitar Más Información
                         </button>
                       </Link>

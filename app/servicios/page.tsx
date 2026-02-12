@@ -18,7 +18,7 @@ const BlxkChatbot = dynamic(() => import("@/components/home/blxk-chatbot").then(
 
 export default function ServicesPage() {
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-background overflow-x-hidden">
       <Navigation />
       <FloatingThemeToggle />
 
@@ -42,21 +42,21 @@ export default function ServicesPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-7xl mx-auto">
             {servicesData.map((service) => (
               <Link key={service.id} href={`/servicios/${service.slug}`}>
-                <div className="neon-card-rotating p-4 md:p-6 rounded-lg h-full cursor-pointer group transition-all hover:scale-105">
+                <div className="neon-card-rotating p-4 md:p-6 rounded-lg h-full cursor-pointer group transition-all md:hover:scale-105 min-w-0 overflow-x-clip">
                   {/* Icon */}
                   <div className="text-4xl md:text-5xl mb-3 md:mb-4">{service.icon}</div>
 
                   {/* Title */}
-                  <h3 className="text-lg md:text-2xl font-bold text-foreground mb-2">{service.title}</h3>
+                  <h3 className="text-lg md:text-2xl font-bold text-foreground mb-2 break-words">{service.title}</h3>
 
                   {/* Subtitle */}
                   <p className="text-xs md:text-sm text-primary font-medium mb-3 md:mb-4">{service.subtitle}</p>
 
                   {/* Description */}
-                  <p className="text-xs md:text-sm text-muted-foreground mb-4 md:mb-6 line-clamp-3">{service.shortDescription}</p>
+                  <p className="text-xs md:text-sm text-muted-foreground mb-4 md:mb-6 line-clamp-3 break-words">{service.shortDescription}</p>
 
                   {/* CTA */}
-                  <div className="flex items-center gap-2 text-primary font-semibold text-sm md:text-base group-hover:translate-x-2 transition-transform">
+                  <div className="flex items-center gap-2 text-primary font-semibold text-sm md:text-base md:group-hover:translate-x-2 transition-transform">
                     Ver detalles
                     <ArrowRight className="w-4 h-4" />
                   </div>
@@ -73,7 +73,7 @@ export default function ServicesPage() {
       {/* Features comparison section */}
       <section className="py-12 md:py-20 relative bg-gradient-to-b from-transparent via-primary/5 to-transparent">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center space-y-6 md:space-y-8">
+          <div className="max-w-5xl mx-auto text-center space-y-6 md:space-y-8">
             <div className="space-y-2 md:space-y-4">
               <h2 className="text-2xl md:text-4xl font-bold neon-text-sm">¿Por qué elegir BLXK?</h2>
               <p className="text-sm md:text-lg text-muted-foreground">Cada solución está diseñada para maximizar tu ROI</p>
