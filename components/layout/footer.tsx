@@ -117,7 +117,7 @@ function FooterComponent() {
       <div className="border-t border-primary/10" />
 
       {/* Main content */}
-      <div className="container mx-auto px-4 py-16 max-w-7xl">
+      <div className="container mx-auto px-4 py-8 md:py-16 max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand section */}
           <div className="space-y-4 col-span-1 lg:col-span-1">
@@ -214,7 +214,7 @@ function FooterComponent() {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-primary/10 py-8">
+        <div className="border-t border-primary/10 py-4 md:py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             {/* Copyright */}
             <p className="text-xs text-muted-foreground text-center md:text-left">

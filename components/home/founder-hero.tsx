@@ -6,9 +6,12 @@ import { ArrowRight, Zap } from "lucide-react"
 // Memoized tech stack badges
 const TechBadge = memo(function TechBadge({ tech }: { tech: string }) {
   return (
-    <span className="px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium border border-primary/30 text-primary/80 backdrop-blur-sm hover:border-primary/70 hover:text-primary transition-colors duration-200 cursor-default">
-      {tech}
-    </span>
+    <div className="group relative px-4 py-2 rounded-xl bg-primary/5 border border-primary/20 backdrop-blur-sm hover:bg-primary/10 hover:border-primary/50 hover:shadow-[0_0_15px_rgba(var(--primary-rgb),0.3)] transition-all duration-300 cursor-default overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+      <span className="relative text-xs md:text-sm font-semibold text-primary/90 group-hover:text-primary tracking-wide">
+        {tech}
+      </span>
+    </div>
   )
 })
 
@@ -86,11 +89,12 @@ function FounderHeroComponent() {
         ))}
       </div>
 
+
       {/* Content container */}
-      <div className="relative z-10 container mx-auto px-4 max-w-7xl">
+      < div className="relative z-10 container mx-auto px-4 max-w-7xl" >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left content */}
-          <div className={`space-y-10 transition-all duration-700 ${isLoaded ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"}`}>
+          <div className={`space-y-10 order-2 lg:order-1 transition-all duration-700 ${isLoaded ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"}`}>
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/30 bg-primary/5 backdrop-blur-sm">
               <Zap className="w-3.5 h-3.5 text-primary" />
@@ -139,7 +143,7 @@ function FounderHeroComponent() {
           </div>
 
           {/* Video side */}
-          <div className={`relative flex justify-center transition-all duration-700 delay-200 ${isLoaded ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"}`}>
+          <div className={`relative flex justify-center order-1 lg:order-2 transition-all duration-700 delay-200 ${isLoaded ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"}`}>
             <div className="relative w-full max-w-md md:max-w-lg lg:max-w-xl">
               {/* Animated glow background */}
               <div className="absolute -inset-3 bg-gradient-to-b from-primary/35 via-primary/15 to-transparent rounded-3xl blur-2xl opacity-60" />
@@ -197,4 +201,8 @@ function FounderHeroComponent() {
   )
 }
 
-export const FounderHero = memo(FounderHeroComponent)
+
+export function FounderHero() {
+  return <FounderHeroComponent />
+}
+
