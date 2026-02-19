@@ -33,12 +33,6 @@ const ProductsShowcase = dynamic(
   }
 )
 
-const BlxkChatbot = dynamic(
-  () => import("@/components/home/blxk-chatbot").then(m => ({ default: m.BlxkChatbot })),
-  {
-    ssr: false // Client-only interactive component
-  }
-)
 
 // Lightweight skeleton for services section
 function ServicesSkeleton() {
@@ -81,9 +75,6 @@ export default function Home() {
       <Suspense fallback={<div className="py-20 animate-pulse bg-muted/10" />}>
         <ProductsShowcase />
       </Suspense>
-
-      {/* Interactive chatbot - client only */}
-      <BlxkChatbot />
     </main>
   )
 }

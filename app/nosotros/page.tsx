@@ -1,6 +1,5 @@
-﻿import { Navigation } from "@/components/layout/navigation"
+import { Navigation } from "@/components/layout/navigation"
 import { FloatingThemeToggle } from "@/components/layout/theme-toggle"
-import { BlxkChatbot } from "@/components/home/blxk-chatbot"
 import { ArrowUpRight, Rocket, ShieldCheck, Sparkles, Target, Users } from "lucide-react"
 
 const PRINCIPLES = [
@@ -124,9 +123,7 @@ export default function NosotrosPage() {
             </button>
           </div>
         </div>
-      </section>
-
-      <BlxkChatbot />
-    </main>
+      </section>`r`n    </main>
   )
 }
+

@@ -1,7 +1,8 @@
 "use client"
 
 import { useState, useRef, useEffect, memo, useCallback } from "react"
-import { MessageCircle, X, Send, Trash2 } from "lucide-react"
+import { X, Send, Trash2 } from "lucide-react"
+import Image from "next/image"
 import { useTheme } from "@/hooks/use-theme"
 import { useChatHistory } from "@/hooks/use-chat-history"
 
@@ -167,7 +168,13 @@ function BlxkChatbotComponent() {
             } hover:scale-110 shadow-lg hover:shadow-2xl`}
           aria-label="Open BLXK Chatbot"
         >
-          <MessageCircle className="w-6 h-6 text-white" />
+          <Image
+            src="/social/whatsapp-white.svg"
+            alt="WhatsApp"
+            width={24}
+            height={24}
+            className="w-6 h-6"
+          />
         </button>
       )}
 

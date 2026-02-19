@@ -6,6 +6,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Home, Info, Briefcase, Code, FolderOpen, Mail } from "lucide-react"
+import { useLanguage } from "@/components/layout/language-provider"
 
 // Lazy load modal only when needed
 const ProjectFormModal = lazy(() =>
@@ -14,12 +15,12 @@ const ProjectFormModal = lazy(() =>
 
 // Static nav items - defined outside component
 const NAV_ITEMS = [
-  { label: "Inicio", href: "/", icon: Home, id: "hero" },
-  { label: "Nosotros", href: "/nosotros", icon: Info, id: "about" },
-  { label: "Servicios", href: "/servicios", icon: Briefcase, id: "services" },
-  { label: "Stack", href: "/stack", icon: Code, id: "tech" },
-  { label: "Portafolio", href: "/projects", icon: FolderOpen, id: "portfolio" },
-  { label: "Contacto", href: "/contacto", icon: Mail, id: "contact" },
+  { labelKey: "home", href: "/", icon: Home, id: "hero" },
+  { labelKey: "about", href: "/nosotros", icon: Info, id: "about" },
+  { labelKey: "services", href: "/servicios", icon: Briefcase, id: "services" },
+  { labelKey: "stack", href: "/stack", icon: Code, id: "tech" },
+  { labelKey: "portfolio", href: "/projects", icon: FolderOpen, id: "portfolio" },
+  { labelKey: "contact", href: "/contacto", icon: Mail, id: "contact" },
 ] as const
 
 
@@ -37,10 +38,12 @@ const ROUTE_TO_SECTION: Record<string, string> = {
 // Memoized nav link component
 const NavLink = memo(function NavLink({
   item,
-  isActive
+  isActive,
+  label,
 }: {
   item: typeof NAV_ITEMS[number]
   isActive: boolean
+  label: string
 }) {
   return (
     <Link
@@ -50,7 +53,7 @@ const NavLink = memo(function NavLink({
         : "text-muted-foreground hover:text-primary"
         }`}
     >
-      {item.label}
+      {label}
     </Link>
   )
 })
@@ -59,11 +62,13 @@ const NavLink = memo(function NavLink({
 const MobileNavLink = memo(function MobileNavLink({
   item,
   isActive,
-  index
+  index,
+  label,
 }: {
   item: typeof NAV_ITEMS[number]
   isActive: boolean
   index: number
+  label: string
 }) {
   const Icon = item.icon
   return (
@@ -77,7 +82,7 @@ const MobileNavLink = memo(function MobileNavLink({
         }`}
     >
       <Icon size={20} className="stroke-current" />
-      <span className="text-[10px] font-medium whitespace-nowrap">{item.label}</span>
+      <span className="text-[10px] font-medium whitespace-nowrap">{label}</span>
     </Link>
   )
 })
@@ -86,6 +91,7 @@ function NavigationContent() {
   const pathname = usePathname()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isFormOpen, setIsFormOpen] = useState(false)
+  const { m } = useLanguage()
   const activeSection = useMemo(() => ROUTE_TO_SECTION[pathname] || "hero", [pathname])
 
   useEffect(() => {
@@ -144,13 +150,14 @@ function NavigationContent() {
                   key={item.href}
                   item={item}
                   isActive={activeSection === item.id}
+                  label={m.nav[item.labelKey]}
                 />
               ))}
               <Button
                 onClick={openForm}
                 className="neon-glow bg-primary text-primary-foreground hover:bg-primary/90"
               >
-                Iniciar Proyecto
+                {m.nav.startProject}
               </Button>
             </div>
           </div>
@@ -169,6 +176,7 @@ function NavigationContent() {
               item={item}
               isActive={activeSection === item.id}
               index={index}
+              label={m.nav[item.labelKey]}
             />
           ))}
         </div>

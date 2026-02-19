@@ -10,9 +10,6 @@ import { notFound } from "next/navigation"
 const Contact = dynamic(() => import("@/components/contact").then(m => ({ default: m.Contact })), {
   loading: () => null,
 })
-const BlxkChatbot = dynamic(() => import("@/components/blxk-chatbot").then(m => ({ default: m.BlxkChatbot })), {
-  loading: () => null,
-})
 
 export function generateStaticParams() {
   return servicesData.map((service) => ({
@@ -205,10 +202,7 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
 
       <Suspense fallback={null}>
         <Contact />
-      </Suspense>
-      <Suspense fallback={null}>
-        <BlxkChatbot />
-      </Suspense>
-    </main>
+      </Suspense>`r`n    </main>
   )
 }
+

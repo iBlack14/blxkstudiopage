@@ -16,9 +16,6 @@ const Contact = dynamic(() => import("@/components/utilities/contact").then(m =>
   loading: () => null,
   ssr: true,
 })
-const BlxkChatbot = dynamic(() => import("@/components/home/blxk-chatbot").then(m => ({ default: m.BlxkChatbot })), {
-  loading: () => null,
-})
 
 export const metadata: Metadata = {
   title: "Portafolio | BLXK Studio",
@@ -172,9 +169,6 @@ export default function ProjectsPage() {
       <ProjectsTestimonials />
       <Suspense fallback={null}>
         <Contact />
-      </Suspense>
-      <Suspense fallback={null}>
-        <BlxkChatbot />
       </Suspense>
       <script
         type="application/ld+json"

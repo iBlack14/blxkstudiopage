@@ -2,9 +2,14 @@ import type { Metadata, Viewport } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/react"
+import { cookies, headers } from "next/headers"
 import "./globals.css"
 import { ThemeProvider } from "@/components/layout/theme-provider"
 import { Footer } from "@/components/layout/footer"
+import { LanguageProvider } from "@/components/layout/language-provider"
+import { FloatingLanguageSelector } from "@/components/layout/language-floating"
+import { BlxkChatbot } from "@/components/home/blxk-chatbot"
+import { DEFAULT_LOCALE, LOCALE_COOKIE, Locale, resolveLocale } from "@/lib/i18n"
 
 // Optimized font loading with display: swap
 const geistSans = Geist({
@@ -153,14 +158,22 @@ const jsonLd = {
   ],
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const cookieStore = await cookies()
+  const headerStore = await headers()
+  const locale = resolveLocale({
+    cookieLocale: cookieStore.get(LOCALE_COOKIE)?.value,
+    countryCode: headerStore.get("x-vercel-ip-country") || headerStore.get("cf-ipcountry"),
+    acceptLanguage: headerStore.get("accept-language"),
+  }) as Locale
+
   return (
     <html
-      lang="es"
+      lang={locale || DEFAULT_LOCALE}
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} scroll-smooth`}
     >
@@ -196,10 +209,14 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased bg-background text-foreground">
         <ThemeProvider>
-          {children}
-          <Footer />
-          <SpeedInsights />
-          <Analytics />
+          <LanguageProvider initialLocale={locale || DEFAULT_LOCALE}>
+            {children}
+            <FloatingLanguageSelector />
+            <BlxkChatbot />
+            <Footer />
+            <SpeedInsights />
+            <Analytics />
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>

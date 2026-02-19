@@ -4,6 +4,7 @@ import { memo } from "react"
 import { Mail, MapPin, Phone, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { useLanguage } from "@/components/layout/language-provider"
 
 // Static data - defined outside component to prevent recreation
 const CONTACT_INFO = {
@@ -50,30 +51,30 @@ const SOCIAL_ICON_CLASS_MAP: Record<string, string> = {
 
 const WHATSAPP_ICON = "/social/whatsapp.svg"
 
-const QUICK_LINKS = [
-  { name: "Inicio", href: "/" },
-  { name: "Servicios", href: "/servicios" },
-  { name: "Proyectos", href: "/projects" },
-  { name: "Stack Tecnológico", href: "/stack" },
-] as const
-
-const LEGAL_LINKS = [
-  { name: "Política de Privacidad", href: "/privacy" },
-  { name: "Términos de Servicio", href: "/terms" },
-] as const
-
 // Hardcoded year to avoid hydration mismatch (update annually)
 const CURRENT_YEAR = 2025
 
 function FooterComponent() {
+  const { m } = useLanguage()
+  const quickLinks = [
+    { name: m.footer.home, href: "/" },
+    { name: m.footer.services, href: "/servicios" },
+    { name: m.footer.projects, href: "/projects" },
+    { name: m.footer.stack, href: "/stack" },
+  ]
+  const legalLinks = [
+    { name: m.footer.privacy, href: "/privacy" },
+    { name: m.footer.terms, href: "/terms" },
+  ]
+
   return (
     <footer className="w-full bg-gradient-to-b from-background to-background/95 border-t border-primary/10">
       {/* Top CTA Section */}
       <div className="container mx-auto px-4 py-8 max-w-7xl">
         <div className="rounded-lg border border-primary/20 bg-primary/5 backdrop-blur-sm p-6 md:p-8 text-center">
-          <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2">¿Listo para transformar tu negocio?</h3>
+          <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2">{m.footer.ctaTitle}</h3>
           <p className="text-muted-foreground mb-4 max-w-2xl mx-auto">
-            Contáctanos hoy y descubre cómo podemos impulsar el crecimiento de tu empresa con soluciones tecnológicas innovadoras.
+            {m.footer.ctaDescription}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a
@@ -89,14 +90,14 @@ function FooterComponent() {
                 height={16}
                 className="opacity-90"
               />
-              Contactar por WhatsApp
+              {m.footer.ctaWhatsapp}
             </a>
             <a
               href={`mailto:${CONTACT_INFO.email}`}
               className="px-6 py-2.5 border border-primary/40 text-primary rounded-lg font-semibold text-sm hover:bg-primary/10 transition-all duration-200 hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2"
             >
               <Mail className="w-4 h-4" />
-              Enviar Email
+              {m.footer.ctaEmail}
             </a>
           </div>
         </div>
@@ -114,18 +115,18 @@ function FooterComponent() {
               <h2 className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
                 BLXK STUDIO
               </h2>
-              <p className="text-sm text-muted-foreground mt-1">Soluciones Tecnológicas Empresariales</p>
+              <p className="text-sm text-muted-foreground mt-1">{m.footer.tagline}</p>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Transformamos negocios con desarrollo web, automatización inteligente y soluciones digitales escalables.
+              {m.footer.aboutText}
             </p>
           </div>
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h3 className="font-semibold text-foreground">Enlaces Rápidos</h3>
+            <h3 className="font-semibold text-foreground">{m.footer.quickLinks}</h3>
             <ul className="space-y-2">
-              {QUICK_LINKS.map((link) => (
+              {quickLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -141,7 +142,7 @@ function FooterComponent() {
 
           {/* Contact Info */}
           <div className="space-y-4">
-            <h3 className="font-semibold text-foreground">Contacto</h3>
+            <h3 className="font-semibold text-foreground">{m.footer.contact}</h3>
             <ul className="space-y-3">
               <li>
                 <a
@@ -172,7 +173,7 @@ function FooterComponent() {
 
           {/* Social Media */}
           <div className="space-y-4">
-            <h3 className="font-semibold text-foreground">Síguenos</h3>
+            <h3 className="font-semibold text-foreground">{m.footer.followUs}</h3>
             <div className="space-y-2">
               {SOCIAL_LINKS.map((social) => (
                 <a
@@ -219,12 +220,12 @@ function FooterComponent() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             {/* Copyright */}
             <p className="text-xs text-muted-foreground text-center md:text-left">
-              © {CURRENT_YEAR} BLXK Studio. Todos los derechos reservados.
+              © {CURRENT_YEAR} BLXK Studio. {m.footer.rights}
             </p>
 
             {/* Legal Links */}
             <div className="flex items-center gap-4">
-              {LEGAL_LINKS.map((link) => (
+              {legalLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}

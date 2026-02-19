@@ -12,9 +12,6 @@ const FloatingThemeToggle = dynamic(() => import("@/components/layout/theme-togg
 const Contact = dynamic(() => import("@/components/utilities/contact").then(m => ({ default: m.Contact })), {
   loading: () => null,
 })
-const BlxkChatbot = dynamic(() => import("@/components/home/blxk-chatbot").then(m => ({ default: m.BlxkChatbot })), {
-  loading: () => null,
-})
 
 export default function ServicesPage() {
   return (
@@ -101,10 +98,7 @@ export default function ServicesPage() {
 
       <Suspense fallback={null}>
         <Contact />
-      </Suspense>
-      <Suspense fallback={null}>
-        <BlxkChatbot />
-      </Suspense>
-    </main>
+      </Suspense>`r`n    </main>
   )
 }
+

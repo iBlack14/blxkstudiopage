@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import Image from "next/image"
 import { ArrowRight, Zap } from "lucide-react"
+import { useLanguage } from "@/components/layout/language-provider"
 
 const TECH_STACK = [
   "Next.js",
@@ -39,6 +40,7 @@ function StatBadge({ value, label }: { value: string; label: string }) {
 
 export function FounderHero() {
   const [loadVideo, setLoadVideo] = useState(false)
+  const { m } = useLanguage()
 
   useEffect(() => {
     const timeoutId = setTimeout(() => setLoadVideo(true), 300)
@@ -62,11 +64,11 @@ export function FounderHero() {
           <div className="space-y-10 order-2 lg:order-1">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/30 bg-primary/5 backdrop-blur-sm">
               <Zap className="w-3.5 h-3.5 text-primary" />
-              <span className="text-xs font-medium text-primary">Soluciones Tecnológicas Empresariales</span>
+              <span className="text-xs font-medium text-primary">{m.hero.badge}</span>
             </div>
 
             <div className="space-y-3">
-              <p className="text-sm font-semibold text-primary/80">TRANSFORMACIÓN DIGITAL</p>
+              <p className="text-sm font-semibold text-primary/80">{m.hero.subtitle}</p>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
                 <span className="block">BLXK</span>
                 <span className="bg-gradient-to-r from-primary via-primary to-primary/70 bg-clip-text text-transparent block">
@@ -77,13 +79,13 @@ export function FounderHero() {
 
             <div className="space-y-3 text-base md:text-lg text-muted-foreground/90 leading-relaxed max-w-xl">
               <p>
-                Creamos <span className="text-primary font-semibold">software web, automatizaciones e IA</span> para empresas que buscan velocidad, control y crecimiento.
+                {m.hero.descriptionMain}
               </p>
-              <p>Ejecución técnica sólida, enfoque en resultados.</p>
+              <p>{m.hero.descriptionSecondary}</p>
             </div>
 
             <div className="space-y-4">
-              <p className="text-sm font-semibold text-primary uppercase tracking-wider">Stack Tecnológico</p>
+              <p className="text-sm font-semibold text-primary uppercase tracking-wider">{m.hero.stackTitle}</p>
               <div className="flex flex-wrap gap-3">
                 {TECH_STACK.map((tech) => (
                   <TechBadge key={tech} tech={tech} />
@@ -93,11 +95,11 @@ export function FounderHero() {
 
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <button className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold text-sm hover:bg-primary/90 transition-all duration-200 hover:scale-105 active:scale-95 flex items-center justify-center gap-2">
-                Explorar Proyectos
+                {m.hero.ctaProjects}
                 <ArrowRight className="w-4 h-4" />
               </button>
               <button className="px-6 py-3 border border-primary/40 text-primary rounded-lg font-semibold text-sm hover:bg-primary/10 transition-all duration-200 hover:scale-105 active:scale-95">
-                Solicitar Consulta
+                {m.hero.ctaConsultation}
               </button>
             </div>
           </div>
@@ -134,13 +136,13 @@ export function FounderHero() {
 
                 <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-background to-transparent">
                   <h3 className="text-lg font-bold text-foreground">BLXK STUDIO</h3>
-                  <p className="text-xs text-primary font-semibold">Agencia Tecnológica</p>
+                  <p className="text-xs text-primary font-semibold">{m.hero.agencyLabel}</p>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-3 mt-6">
-                <StatBadge value="50+" label="Clientes Satisfechos" />
-                <StatBadge value="5+" label="Años de Experiencia" />
+                <StatBadge value="50+" label={m.hero.statClients} />
+                <StatBadge value="5+" label={m.hero.statYears} />
               </div>
             </div>
           </div>
