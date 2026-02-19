@@ -58,10 +58,10 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/logo.png",
-        width: 512,
-        height: 512,
-        alt: "Logo BLXK Studio",
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "BLXK Studio - Desarrollo web, IA y automatización",
         type: "image/png",
       },
     ],
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "BLXK Studio | Desarrollo Web y Automatización",
     description: "Soluciones web, IA y automatización para empresas.",
-    images: ["/logo.png"],
+    images: ["/twitter-image"],
     creator: "@BlxkBusines",
     site: "@BlxkBusines",
   },
@@ -91,6 +91,11 @@ export const metadata: Metadata = {
   formatDetection: {
     telephone: false,
     email: false,
+  },
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
   },
 }
 

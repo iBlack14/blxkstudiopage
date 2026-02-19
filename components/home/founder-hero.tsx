@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import Image from "next/image"
 import { ArrowRight, Zap } from "lucide-react"
 
@@ -37,6 +38,13 @@ function StatBadge({ value, label }: { value: string; label: string }) {
 }
 
 export function FounderHero() {
+  const [loadVideo, setLoadVideo] = useState(false)
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => setLoadVideo(true), 300)
+    return () => clearTimeout(timeoutId)
+  }, [])
+
   return (
     <section className="relative w-full overflow-hidden bg-background flex items-center pt-8 pb-24 md:py-12 lg:py-20">
       <div className="absolute inset-0 pointer-events-none">
@@ -99,28 +107,28 @@ export function FounderHero() {
               <div className="absolute -inset-3 bg-gradient-to-b from-primary/35 via-primary/15 to-transparent rounded-3xl blur-2xl opacity-60" />
 
               <div className="relative aspect-[5/4] rounded-2xl overflow-hidden border border-primary/40 bg-gradient-to-br from-card/60 to-card/20 backdrop-blur-xl shadow-[0_0_35px_rgba(0,212,170,0.25)] group">
-                <div className="absolute inset-0 md:hidden">
-                  <Image
-                    src="/logo-blanco.webp"
-                    alt="Logo BLXK Studio sobre fondo oscuro"
-                    fill
-                    priority
-                    sizes="(max-width: 768px) 92vw"
-                    className="object-contain p-10"
-                  />
-                </div>
-
-                <video
-                  src="/pagina-web-inicio.mp4"
-                  loop
-                  muted
-                  playsInline
-                  autoPlay
-                  preload="none"
-                  poster="/logo-blanco.webp"
-                  className="absolute inset-0 hidden h-full w-full object-cover object-center transition-transform duration-700 md:block md:group-hover:scale-[1.03]"
-                  aria-label="Presentacion BLXK Studio"
+                <Image
+                  src="/logo-blanco.webp"
+                  alt="Logo BLXK Studio sobre fondo oscuro"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 92vw, 48vw"
+                  className="object-contain p-10"
                 />
+
+                {loadVideo && (
+                  <video
+                    src="/pagina-web-inicio.mp4"
+                    loop
+                    muted
+                    playsInline
+                    autoPlay
+                    preload="metadata"
+                    poster="/logo-blanco.webp"
+                    className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 md:group-hover:scale-[1.03]"
+                    aria-label="Presentacion BLXK Studio"
+                  />
+                )}
 
                 <div className="absolute inset-0 bg-gradient-to-t from-background/75 via-transparent to-transparent opacity-35 group-hover:opacity-20 transition-opacity" />
 

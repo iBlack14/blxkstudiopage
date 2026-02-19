@@ -1,24 +1,32 @@
-﻿export function TechStack() {
+export function TechStack() {
   const techCategories = [
     {
       category: "Backend",
       technologies: [
-        { name: "Java", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
-        { name: "Spring Boot", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" },
-        { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
-        { name: "Express", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" },
-        { name: "FastAPI", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" },
+        { name: "Java", logo: "/stack/java.svg" },
+        { name: "Spring Boot", logo: "/stack/spring.svg" },
+        { name: "Node.js", logo: "/stack/nodejs.svg" },
+        {
+          name: "Express",
+          logo: "/stack/express.svg",
+          modeClass: "dark:invert",
+        },
+        { name: "FastAPI", logo: "/stack/fastapi.svg" },
       ],
     },
     {
       category: "Frontend",
       technologies: [
-        { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
-        { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-        { name: "Angular", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angular/angular-original.svg" },
+        {
+          name: "Next.js",
+          logo: "/stack/nextjs.svg",
+          modeClass: "dark:invert",
+        },
+        { name: "React", logo: "/stack/react.svg" },
+        { name: "Angular", logo: "/stack/angular.svg" },
         {
           name: "TailwindCSS",
-          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
+          logo: "/stack/tailwindcss.svg",
         },
       ],
     },
@@ -27,26 +35,34 @@
       technologies: [
         {
           name: "PostgreSQL",
-          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+          logo: "/stack/postgresql.svg",
         },
-        { name: "MySQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
-        { name: "MongoDB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
+        { name: "MySQL", logo: "/stack/mysql.svg" },
+        { name: "MongoDB", logo: "/stack/mongodb.svg" },
       ],
     },
     {
       category: "DevOps & Cloud",
       technologies: [
-        { name: "Docker", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
-        { name: "Git", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
-        { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+        { name: "Docker", logo: "/stack/docker.svg" },
+        { name: "Git", logo: "/stack/git.svg" },
+        {
+          name: "GitHub",
+          logo: "/stack/github.svg",
+          modeClass: "dark:invert",
+        },
+        { name: "WordPress", logo: "/stack/wordpress.svg" },
+        { name: "cPanel", logo: "/stack/cpanel.svg" },
       ],
     },
     {
       category: "Automatización & AI",
       technologies: [
-        { name: "n8n", logo: "/n8n-automation-logo.jpg" },
-        { name: "OpenAI", logo: "/openai-logo-inspired-abstract.png" },
-        { name: "Webhooks", logo: "/webhook-api-icon.jpg" },
+        { name: "n8n", logo: "/stack/n8n.svg" },
+        { name: "OpenAI", logo: "/stack/openai.svg", modeClass: "dark:invert" },
+        { name: "Anthropic", logo: "/stack/anthropic-claude.svg" },
+        { name: "Gemini", logo: "/stack/gemini.svg" },
+        { name: "Hugging Face", logo: "/stack/huggingface.svg" },
       ],
     },
   ]
@@ -74,7 +90,7 @@
                         <img
                           src={tech.logo || "/placeholder.svg"}
                           alt={tech.name}
-                          className="w-full h-full object-contain group-hover:scale-110 transition-transform relative z-10"
+                          className={`w-full h-full object-contain group-hover:scale-110 transition-transform relative z-10 ${tech.modeClass || ""}`}
                           loading="lazy"
                           decoding="async"
                         />

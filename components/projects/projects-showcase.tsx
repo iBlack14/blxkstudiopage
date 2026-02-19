@@ -15,7 +15,7 @@ const PROJECTS = [
     description: "Gateway de pagos vía WhatsApp para WooCommerce",
     tech: ["WordPress", "PHP", "WooCommerce"],
     previewUrl: "https://wazilrest.blxkstudio.com",
-    image: "/projects/whatsapp-payment.png",
+    image: "/projects/proyecto-pagos-whatsapp.png",
     gradient: "from-green-500/20 via-green-600/10 to-transparent",
   },
   {
@@ -25,7 +25,7 @@ const PROJECTS = [
     description: "Flujos automáticos: compra → WhatsApp → CRM",
     tech: ["N8N", "Node.js", "APIs"],
     previewUrl: null,
-    image: "/projects/n8n-automation.png",
+    image: "/projects/proyecto-automatizacion-n8n.png",
     gradient: "from-orange-500/20 via-orange-600/10 to-transparent",
   },
   {
@@ -35,7 +35,7 @@ const PROJECTS = [
     description: "Sistema de gestión de pedidos en tiempo real",
     tech: ["Next.js", "Supabase", "TypeScript"],
     previewUrl: null,
-    image: "/projects/order-system.png",
+    image: "/projects/proyecto-sistema-pedidos.png",
     gradient: "from-blue-500/20 via-blue-600/10 to-transparent",
   },
   {
@@ -45,7 +45,7 @@ const PROJECTS = [
     description: "Bot con IA para atención y toma de pedidos",
     tech: ["OpenAI", "N8N", "WhatsApp API"],
     previewUrl: null,
-    image: "/projects/ai-chatbot.png",
+    image: "/projects/proyecto-chatbot-ia-whatsapp.png",
     gradient: "from-purple-500/20 via-purple-600/10 to-transparent",
   },
   {
@@ -55,7 +55,7 @@ const PROJECTS = [
     description: "Panel administrativo con analytics avanzados",
     tech: ["React", "Recharts", "Supabase"],
     previewUrl: null,
-    image: "/projects/admin-dashboard.png",
+    image: "/projects/proyecto-dashboard-admin.png",
     gradient: "from-cyan-500/20 via-cyan-600/10 to-transparent",
   },
   {
@@ -65,7 +65,7 @@ const PROJECTS = [
     description: "Esta misma web que estás viendo ahora",
     tech: ["Next.js 16", "Tailwind", "Vercel"],
     previewUrl: "https://blxkstudio.com",
-    image: "/projects/blxk-studio.png",
+    image: "/projects/proyecto-web-blxk-studio.png",
     gradient: "from-primary/20 via-primary/10 to-transparent",
   },
   {
@@ -75,7 +75,7 @@ const PROJECTS = [
     description: "Extracción de leads desde Google Maps y redes sociales con envío automatizado vía WhatsApp API",
     tech: ["Python", "Selenium", "WhatsApp API", "PostgreSQL", "Redis"],
     previewUrl: null,
-    image: "/projects/social-data-mining.png",
+    image: "/projects/proyecto-social-data-mining.png",
     gradient: "from-emerald-500/20 via-teal-600/10 to-transparent",
   },
   {
@@ -85,7 +85,7 @@ const PROJECTS = [
     description: "Monitoreo en tiempo real de equipos, procesos y actividad de empleados con alertas instantáneas",
     tech: ["Next.js", "WebSockets", "Node.js", "TimescaleDB", "Electron"],
     previewUrl: null,
-    image: "/projects/liveops-sentinel.png",
+    image: "/projects/proyecto-liveops-sentinel.png",
     gradient: "from-rose-500/20 via-red-600/10 to-transparent",
   },
   {
@@ -95,7 +95,7 @@ const PROJECTS = [
     description: "Sistema de venta de pasajes para transporte interprovincial con gestión de asientos y rutas",
     tech: ["React", "Node.js", "MySQL", "Express", "PDF Generation"],
     previewUrl: null,
-    image: "/projects/combi-pos.png",
+    image: "/projects/proyecto-combipos-ticketing.png",
     gradient: "from-blue-500/20 via-cyan-600/10 to-transparent",
   },
   {
@@ -105,7 +105,7 @@ const PROJECTS = [
     description: "Sistema de facturación electrónica integrado con API de SUNAT para emisión de comprobantes fiscales",
     tech: ["Node.js", "SUNAT API", "PostgreSQL", "PDF", "XML/SOAP"],
     previewUrl: null,
-    image: "/projects/sunat-billing.png",
+    image: "/projects/proyecto-facturacion-sunat.png",
     gradient: "from-green-500/20 via-emerald-600/10 to-transparent",
   },
 ]
