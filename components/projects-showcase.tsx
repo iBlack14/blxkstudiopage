@@ -1,5 +1,7 @@
 "use client"
 
+import { useLanguage } from "@/components/layout/language-provider"
+
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
@@ -111,7 +113,14 @@ const PROJECTS = [
 ]
 
 export function ProjectsShowcase() {
+    const { m } = useLanguage()
     const [hoveredId, setHoveredId] = useState<number | null>(null)
+
+    // Merge static assets with translated content
+    const projects = PROJECTS.map(p => {
+        const t = m.projectsShowcase?.list?.find((i: any) => i.id === p.id)
+        return t ? { ...p, ...t } : p
+    })
 
     return (
         <section id="projects-showcase" className="py-24 relative overflow-hidden">
@@ -136,17 +145,17 @@ export function ProjectsShowcase() {
                     {/* Header */}
                     <div className="text-center space-y-6">
                         <h2 className="text-4xl md:text-6xl font-bold text-foreground tracking-tight">
-                            Portafolio
+                            {m.projectsShowcase?.title}
                         </h2>
                         <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto font-light">
-                            Proyectos reales que demuestran resultados tangibles
+                            {m.projectsShowcase?.subtitle}
                         </p>
                         <div className="w-24 h-1 bg-primary mx-auto rounded-full neon-glow" />
                     </div>
 
                     {/* Grid de Cards */}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {PROJECTS.map((project) => (
+                        {projects.map((project) => (
                             <div
                                 key={project.id}
                                 className="group relative rounded-3xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-md transition-all duration-500 hover:border-primary/50 hover:bg-white/10 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(var(--primary-rgb),0.2)]"
@@ -238,11 +247,11 @@ export function ProjectsShowcase() {
                         <div className="inline-block p-[1px] rounded-full bg-gradient-to-r from-transparent via-primary/50 to-transparent">
                             <div className="bg-background/80 backdrop-blur-md rounded-full p-8 md:p-12 border border-white/5 shadow-2xl">
                                 <p className="text-xl md:text-2xl text-white mb-8 font-light">
-                                    ¿Tienes un proyecto ambicioso en mente?
+                                    {m.projectsShowcase?.ctaTitle}
                                 </p>
                                 <Link href="/contacto">
                                     <Button size="lg" className="text-lg px-8 py-6 rounded-full neon-glow bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(var(--primary-rgb),0.5)]">
-                                        Solicitar Cotización Premium
+                                        {m.projectsShowcase?.ctaButton}
                                         <ExternalLink className="w-5 h-5 ml-2" />
                                     </Button>
                                 </Link>

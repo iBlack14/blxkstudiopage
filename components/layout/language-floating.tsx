@@ -36,20 +36,22 @@ export function FloatingLanguageSelector() {
         </button>
 
         {open && (
-          <div className="absolute left-0 bottom-[calc(100%+8px)] w-full rounded-xl border border-primary/30 bg-background shadow-2xl overflow-hidden">
+          <div className="absolute left-0 bottom-[calc(100%_+_8px)] w-full rounded-xl border border-primary/30 bg-background shadow-2xl overflow-hidden">
             {LOCALE_OPTIONS.map((option) => (
               <button
                 key={option.value}
                 type="button"
                 onClick={() => {
-                  setLocale(option.value as Locale)
                   setOpen(false)
+                  // Small delay to let the UI close the menu first, making it feel snappier
+                  requestAnimationFrame(() => {
+                    setLocale(option.value as Locale)
+                  })
                 }}
-                className={`w-full text-left px-3 py-2 text-xs md:text-sm transition-colors ${
-                  locale === option.value
-                    ? "bg-primary text-primary-foreground font-semibold"
-                    : "text-foreground hover:bg-primary/10"
-                }`}
+                className={`w-full text-left px-3 py-2 text-xs md:text-sm transition-colors ${locale === option.value
+                  ? "bg-primary text-primary-foreground font-semibold"
+                  : "text-foreground hover:bg-primary/10"
+                  }`}
               >
                 {option.label}
               </button>

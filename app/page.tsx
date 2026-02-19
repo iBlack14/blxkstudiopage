@@ -13,7 +13,7 @@ const FloatingThemeToggle = dynamic(
 )
 
 const ServicesDetailed = dynamic(
-  () => import("@/components/home/services-detailed").then(m => ({ default: m.ServicesDetailed })),
+  () => import("@/components/services-detailed").then(m => ({ default: m.ServicesDetailed })),
   {
     loading: () => <ServicesSkeleton />,
   }
@@ -78,3 +78,4 @@ export default function Home() {
     </main>
   )
 }
+

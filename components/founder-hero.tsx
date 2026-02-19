@@ -1,5 +1,7 @@
 "use client"
 
+import { useLanguage } from "@/components/layout/language-provider"
+
 import { useState, useEffect, memo, useCallback, useMemo } from "react"
 import { ArrowRight, Zap } from "lucide-react"
 import Image from "next/image"
@@ -38,6 +40,7 @@ const StatBadge = memo(function StatBadge({ value, label }: { value: string; lab
 })
 
 function FounderHeroComponent() {
+  const { m } = useLanguage()
   const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
@@ -93,12 +96,12 @@ function FounderHeroComponent() {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/30 bg-primary/5 backdrop-blur-sm">
               <Zap className="w-3.5 h-3.5 text-primary" />
-              <span className="text-xs font-medium text-primary">Soluciones Tecnológicas Empresariales</span>
+              <span className="text-xs font-medium text-primary">{m.hero?.badge}</span>
             </div>
 
             {/* Main heading */}
             <div className="space-y-3">
-              <p className="text-sm font-semibold text-primary/80">TRANSFORMACIÓN DIGITAL</p>
+              <p className="text-sm font-semibold text-primary/80">{m.hero?.subtitle}</p>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
                 <span className="block">BLXK</span>
                 <span className="bg-gradient-to-r from-primary via-primary to-primary/70 bg-clip-text text-transparent block">
@@ -110,16 +113,16 @@ function FounderHeroComponent() {
             {/* Main description */}
             <div className="space-y-5 text-lg md:text-xl text-muted-foreground/90 leading-loose max-w-2xl">
               <p>
-                Somos una agencia tecnológica especializada en <span className="text-primary font-semibold">desarrollo web empresarial, automatización inteligente y soluciones digitales escalables</span> para empresas y emprendedores que buscan transformar sus operaciones.
+                {m.hero?.descriptionMain}
               </p>
               <p>
-                Combinamos experiencia técnica, visión estratégica y creatividad para entregar soluciones reales que impulsan el crecimiento de tu negocio. Desde software personalizado hasta automatizaciones complejas, nos enfocamos en resultados medibles.
+                {m.hero?.descriptionSecondary}
               </p>
             </div>
 
             {/* Stack Tecnológico */}
             <div className="space-y-4">
-              <p className="text-sm font-semibold text-primary uppercase tracking-wider">Stack Tecnológico</p>
+              <p className="text-sm font-semibold text-primary uppercase tracking-wider">{m.hero?.stackTitle}</p>
               <div className="flex flex-wrap gap-3">
                 {TECH_STACK.map((tech) => (
                   <TechBadge key={tech} tech={tech} />
@@ -130,11 +133,11 @@ function FounderHeroComponent() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <button className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold text-sm hover:bg-primary/90 transition-all duration-200 hover:scale-105 active:scale-95 flex items-center justify-center gap-2">
-                Explorar Proyectos
+                {m.hero?.ctaProjects}
                 <ArrowRight className="w-4 h-4" />
               </button>
               <button className="px-6 py-3 border border-primary/40 text-primary rounded-lg font-semibold text-sm hover:bg-primary/10 transition-all duration-200 hover:scale-105 active:scale-95">
-                Solicitar Consulta
+                {m.hero?.ctaConsultation}
               </button>
             </div>
           </div>
@@ -162,14 +165,14 @@ function FounderHeroComponent() {
                 {/* Info badge */}
                 <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-background to-transparent">
                   <h3 className="text-lg font-bold text-foreground">BLXK STUDIO</h3>
-                  <p className="text-xs text-primary font-semibold">Agencia Tecnológica</p>
+                  <p className="text-xs text-primary font-semibold">{m.hero?.agencyLabel}</p>
                 </div>
               </div>
 
               {/* Stats badges below image */}
               <div className="grid grid-cols-2 gap-3 mt-6">
-                <StatBadge value="50+" label="Clientes Satisfechos" />
-                <StatBadge value="5+" label="Años de Experiencia" />
+                <StatBadge value="50+" label={m.hero?.statClients || "Clientes Satisfechos"} />
+                <StatBadge value="5+" label={m.hero?.statYears || "Años de Experiencia"} />
               </div>
             </div>
           </div>

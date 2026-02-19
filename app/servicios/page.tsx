@@ -9,7 +9,7 @@ import { ArrowRight } from "lucide-react"
 const FloatingThemeToggle = dynamic(() => import("@/components/layout/theme-toggle").then(m => ({ default: m.FloatingThemeToggle })), {
   loading: () => null,
 })
-const Contact = dynamic(() => import("@/components/utilities/contact").then(m => ({ default: m.Contact })), {
+const Contact = dynamic(() => import("@/components/contact").then(m => ({ default: m.Contact })), {
   loading: () => null,
 })
 

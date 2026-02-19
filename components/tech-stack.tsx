@@ -1,7 +1,11 @@
+import { useLanguage } from "@/components/layout/language-provider"
+
 export function TechStack() {
+  const { m } = useLanguage()
+
   const techCategories = [
     {
-      category: "Backend",
+      category: m.techStack.categories.backend,
       technologies: [
         { name: "Java", logo: "/stack/java.svg" },
         { name: "Spring Boot", logo: "/stack/spring.svg" },
@@ -15,7 +19,7 @@ export function TechStack() {
       ],
     },
     {
-      category: "Frontend",
+      category: m.techStack.categories.frontend,
       technologies: [
         {
           name: "Next.js",
@@ -31,7 +35,7 @@ export function TechStack() {
       ],
     },
     {
-      category: "Bases de Datos",
+      category: m.techStack.categories.database,
       technologies: [
         {
           name: "PostgreSQL",
@@ -42,7 +46,7 @@ export function TechStack() {
       ],
     },
     {
-      category: "DevOps & Cloud",
+      category: m.techStack.categories.devops,
       technologies: [
         { name: "Docker", logo: "/stack/docker.svg" },
         { name: "Git", logo: "/stack/git.svg" },
@@ -56,7 +60,7 @@ export function TechStack() {
       ],
     },
     {
-      category: "Automatización & AI",
+      category: m.techStack.categories.automation,
       technologies: [
         { name: "n8n", logo: "/stack/n8n.svg" },
         { name: "OpenAI", logo: "/stack/openai.svg", modeClass: "dark:invert" },
@@ -75,10 +79,10 @@ export function TechStack() {
       <div className="container mx-auto px-4 relative z-10 mb-8 md:mb-12">
         <div className="text-center space-y-4">
           <h2 className="text-3xl md:text-5xl font-bold text-foreground">
-            Stack Tecnológico
+            {m.techStack.title}
           </h2>
           <p className="text-base md:text-xl text-muted-foreground/80 leading-relaxed max-w-2xl mx-auto">
-            Herramientas de vanguardia para soluciones de clase mundial
+            {m.techStack.subtitle}
           </p>
         </div>
       </div>

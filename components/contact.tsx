@@ -1,5 +1,7 @@
 "use client"
 
+import { useLanguage } from "@/components/layout/language-provider"
+
 import { useState } from "react"
 import { Mail, MapPin, Building2, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -8,14 +10,8 @@ import { ProjectFormModal } from "./project-form-modal"
 export function Contact() {
   const [isFormOpen, setIsFormOpen] = useState(false)
 
-  const industries = [
-    "Agencias de turismo y hospitalidad",
-    "Retail y comercio electrónico",
-    "Startups tecnológicas y SaaS",
-    "Instituciones educativas",
-    "Emprendedores y consultores independientes",
-    "Equipos internos de automatización y IT",
-  ]
+  const { m } = useLanguage()
+  const industries = m.contact?.industries || []
 
   const handleWhatsAppContact = () => {
     window.open(
@@ -33,9 +29,9 @@ export function Contact() {
           {/* Industries */}
           <div className="space-y-8">
             <div className="text-center space-y-4">
-              <h2 className="text-4xl md:text-5xl font-bold neon-text-sm">Sectores e Industrias</h2>
+              <h2 className="text-4xl md:text-5xl font-bold neon-text-sm">{m.contact?.sectorsTitle}</h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Experiencia comprobada en múltiples sectores
+                {m.contact?.sectorsSubtitle}
               </p>
             </div>
 
@@ -55,9 +51,9 @@ export function Contact() {
           {/* Contact Info */}
           <div className="neon-card-rotating p-12 rounded-lg space-y-10">
             <div className="text-center space-y-4">
-              <h2 className="text-3xl md:text-4xl font-bold neon-text-sm">Contacto</h2>
+              <h2 className="text-3xl md:text-4xl font-bold neon-text-sm">{m.contact?.contactTitle}</h2>
               <p className="text-lg md:text-xl text-muted-foreground leading-loose">
-                ¿Listo para transformar tu negocio? Hablemos
+                {m.contact?.contactSubtitle}
               </p>
             </div>
 
@@ -67,7 +63,7 @@ export function Contact() {
                   <Mail className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <p className="text-base text-muted-foreground mb-2 font-semibold">Email</p>
+                  <p className="text-base text-muted-foreground mb-2 font-semibold">{m.contact?.emailLabel}</p>
                   <a
                     href="mailto:admin@blxkstudio.com"
                     className="text-base text-foreground hover:text-primary transition-colors hover:neon-text-sm"
@@ -82,8 +78,8 @@ export function Contact() {
                   <MapPin className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <p className="text-base text-muted-foreground mb-2 font-semibold">Ubicación</p>
-                  <p className="text-base text-foreground">Lima, Perú 🇵🇪</p>
+                  <p className="text-base text-muted-foreground mb-2 font-semibold">{m.contact?.locationLabel}</p>
+                  <p className="text-base text-foreground">{m.contact?.locationValue}</p>
                 </div>
               </div>
 
@@ -92,8 +88,8 @@ export function Contact() {
                   <Building2 className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <p className="text-base text-muted-foreground mb-2 font-semibold">Especialidades</p>
-                  <p className="text-base text-foreground">Desarrollo web · Automatización · IA</p>
+                  <p className="text-base text-muted-foreground mb-2 font-semibold">{m.contact?.specialtiesLabel}</p>
+                  <p className="text-base text-foreground">{m.contact?.specialtiesValue}</p>
                 </div>
               </div>
             </div>
@@ -104,7 +100,7 @@ export function Contact() {
                 onClick={() => setIsFormOpen(true)}
                 className="neon-glow bg-primary text-primary-foreground hover:bg-primary/90 transition-all hover:scale-105 active:scale-95"
               >
-                Iniciar Proyecto
+                {m.contact?.ctaStart}
               </Button>
               <Button
                 size="lg"
@@ -113,7 +109,7 @@ export function Contact() {
                 className="border-primary/50 text-primary hover:bg-primary/10 bg-transparent backdrop-blur-sm transition-all hover:scale-105 active:scale-95"
               >
                 <MessageCircle className="w-5 h-5 mr-2" />
-                WhatsApp
+                {m.contact?.ctaWhatsapp}
               </Button>
             </div>
           </div>

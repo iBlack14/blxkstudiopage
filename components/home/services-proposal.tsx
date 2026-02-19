@@ -2,18 +2,15 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { servicesProposalData } from "@/lib/services-proposal-data"
+import { useLanguage } from "@/components/layout/language-provider"
 import { CheckCircle2, TrendingUp, Users, Zap } from "lucide-react"
 
 export function ServicesProposal({ isHomeVersion = false }) {
+  const { m } = useLanguage()
   const [expandedId, setExpandedId] = useState<number | null>(isHomeVersion ? null : 1)
   const [activeTab, setActiveTab] = useState<string>("overview")
 
-  const displayServices = isHomeVersion ? servicesProposalData.slice(0, 2) : servicesProposalData
-  const sectionTitle = isHomeVersion ? "Propuesta de Valor Superior" : "Propuesta de Servicios Superior"
-  const sectionDesc = isHomeVersion
-    ? "Nuestras soluciones superan los estándares del mercado en rendimiento, seguridad y ROI"
-    : "BLXK Studio se posiciona como el socio estratégico para el desarrollo digital"
+  const displayServices = isHomeVersion ? m.services.list.slice(0, 2) : m.services.list
 
   const toggleExpand = (id: number) => {
     setExpandedId(expandedId === id ? null : id)
@@ -28,9 +25,9 @@ export function ServicesProposal({ isHomeVersion = false }) {
         <div className="max-w-6xl mx-auto space-y-8 md:space-y-12">
           {/* Header */}
           <div className="text-center space-y-3 md:space-y-4">
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold neon-text-sm">{sectionTitle}</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold neon-text-sm">{m.services.title}</h2>
             <p className="text-sm sm:text-base md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed md:leading-loose">
-              {sectionDesc}
+              {m.services.subtitle}
             </p>
           </div>
 
@@ -61,10 +58,10 @@ export function ServicesProposal({ isHomeVersion = false }) {
                       <div className="space-y-4">
                         <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap pb-2">
                           {[
-                            { id: "overview", label: "Visión General", icon: "📋" },
-                            { id: "comparison", label: "BLXK vs Mercado", icon: "⚖️" },
-                            { id: "advantages", label: "Ventajas", icon: "⭐" },
-                            { id: "usecases", label: "Casos de Uso", icon: "🎯" },
+                            { id: "overview", label: m.services.tabs.overview, icon: "📋" },
+                            { id: "comparison", label: m.services.tabs.comparison, icon: "⚖️" },
+                            { id: "advantages", label: m.services.tabs.advantages, icon: "⭐" },
+                            { id: "usecases", label: m.services.tabs.usecases, icon: "🎯" },
                           ].map((tab) => (
                             <button
                               key={tab.id}
@@ -86,7 +83,7 @@ export function ServicesProposal({ isHomeVersion = false }) {
                         <div className="space-y-4">
                           {activeTab === "overview" && (
                             <div className="space-y-4">
-                              <h4 className="text-base sm:text-lg font-semibold text-foreground">Métricas Clave</h4>
+                              <h4 className="text-base sm:text-lg font-semibold text-foreground">{m.services.labels.metrics}</h4>
                               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                                 {service.metrics.map((metric, idx) => (
                                   <div
@@ -112,12 +109,12 @@ export function ServicesProposal({ isHomeVersion = false }) {
                                   <div className="space-y-2">
                                     <div className="flex flex-col sm:flex-row gap-1 sm:gap-2">
                                       <span className="text-xs sm:text-sm font-medium text-muted-foreground sm:min-w-20">
-                                        Estándar:
+                                        {m.services.labels.standard}
                                       </span>
                                       <span className="text-xs sm:text-sm text-muted-foreground min-w-0 break-words">{feature.standard}</span>
                                     </div>
                                     <div className="flex flex-col sm:flex-row gap-1 sm:gap-2">
-                                      <span className="text-xs sm:text-sm font-medium text-primary sm:min-w-20">BLXK:</span>
+                                      <span className="text-xs sm:text-sm font-medium text-primary sm:min-w-20">{m.services.labels.blxk}</span>
                                       <span className="text-xs sm:text-sm text-primary font-medium min-w-0 break-words">{feature.blxk}</span>
                                     </div>
                                   </div>
@@ -155,7 +152,7 @@ export function ServicesProposal({ isHomeVersion = false }) {
                       {/* CTA */}
                       <Link href="/contacto" className="block w-full">
                         <button className="w-full mt-4 px-4 py-3 bg-primary/10 hover:bg-primary/20 text-primary text-sm sm:text-base font-semibold rounded-lg transition-colors">
-                          Solicitar Más Información
+                          {m.services.ctaMore}
                         </button>
                       </Link>
                     </div>
@@ -165,7 +162,7 @@ export function ServicesProposal({ isHomeVersion = false }) {
                   {expandedId !== service.id && (
                     <div className="flex items-center gap-2 text-primary text-sm font-semibold pt-2">
                       <Zap className="w-4 h-4" />
-                      Haz clic para ver detalles
+                      {m.services.labels.clickDetails}
                     </div>
                   )}
                 </div>
@@ -180,7 +177,7 @@ export function ServicesProposal({ isHomeVersion = false }) {
                 href="/servicios"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-all hover:scale-105"
               >
-                Ver Todos los Servicios
+                {m.services.ctaAll}
                 <TrendingUp className="w-4 h-4" />
               </a>
             </div>
