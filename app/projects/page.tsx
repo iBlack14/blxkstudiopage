@@ -21,9 +21,9 @@ const BlxkChatbot = dynamic(() => import("@/components/home/blxk-chatbot").then(
 })
 
 export const metadata: Metadata = {
-  title: "Portafolio Premium | BLXK Studio - Proyectos de Desarrollo Full Stack",
+  title: "Portafolio | BLXK Studio",
   description:
-    "Descubre 5 soluciones empresariales premium desarrolladas por BLXK Studio. Desde WhatsApp Payment Gateway hasta dashboards administrativos. Expertise en automatización, N8N, Next.js, React, Supabase y más.",
+    "Conoce proyectos reales de desarrollo web, automatización e IA creados por BLXK Studio.",
   keywords:
     "portafolio desarrollo web, proyectos fullstack, whatsapp payment, n8n automation, next.js, react, supabase, dashboard administrativo, chatbot whatsapp",
   authors: [{ name: "BLXK Studio" }],
@@ -38,15 +38,17 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_ES",
     url: "https://blxkstudio.com/projects",
-    title: "Portafolio Premium | BLXK Studio - Proyectos de Desarrollo Full Stack",
+    title: "Portafolio | BLXK Studio",
     description:
-      "5 soluciones empresariales que demuestran expertise en desarrollo full stack, automatización y arquitectura de sistemas",
+      "Proyectos de software, automatización e inteligencia artificial para empresas.",
     siteName: "BLXK Studio",
+    images: ["/logo.png"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Portafolio Premium | BLXK Studio",
-    description: "Descubre proyectos premium de desarrollo full stack",
+    title: "Portafolio | BLXK Studio",
+    description: "Proyectos reales de desarrollo web y automatización.",
+    images: ["/logo.png"],
   },
   alternates: {
     canonical: "https://blxkstudio.com/projects",

@@ -122,7 +122,7 @@ function NavigationContent() {
             <Link href="/" className="inline-flex items-center" aria-label="BLXK Studio">
               <Image
                 src="/logo.png"
-                alt="BLXK Studio"
+                alt="Logo BLXK Studio"
                 width={44}
                 height={44}
                 className="h-11 w-11 object-contain dark:hidden"
@@ -130,11 +130,10 @@ function NavigationContent() {
               />
               <Image
                 src="/logo-blanco.webp"
-                alt="BLXK Studio"
+                alt="Logo BLXK Studio en modo oscuro"
                 width={44}
                 height={44}
                 className="hidden h-11 w-11 object-contain dark:block"
-                priority
               />
               <span className="sr-only">BLXK STUDIO</span>
             </Link>
@@ -181,7 +180,7 @@ function NavigationContent() {
           <Link href="/" className="inline-flex items-center justify-center gap-2.5" aria-label="BLXK Studio">
             <Image
               src="/logo.png"
-              alt="BLXK Studio"
+              alt="Logo BLXK Studio"
               width={120}
               height={52}
               className="h-[52px] w-auto object-contain dark:hidden"
@@ -189,11 +188,10 @@ function NavigationContent() {
             />
             <Image
               src="/logo-blanco.webp"
-              alt="BLXK Studio"
+              alt="Logo BLXK Studio en modo oscuro"
               width={120}
               height={52}
               className="hidden h-[52px] w-auto object-contain dark:block"
-              priority
             />
             <div className="flex flex-col leading-none text-left">
               <span className="text-[15px] font-black tracking-[0.18em] text-foreground">BLXK</span>

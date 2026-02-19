@@ -138,7 +138,7 @@ export function ProjectsShowcase() {
                   ) : (
                     <Image
                       src={project.image}
-                      alt={project.title}
+                      alt={`${project.title} - proyecto de ${project.category} desarrollado por BLXK Studio`}
                       fill
                       className="object-cover object-top transition-transform duration-700 group-hover:scale-110"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

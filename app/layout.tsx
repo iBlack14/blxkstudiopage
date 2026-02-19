@@ -33,11 +33,11 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: "Alonso | BLXK Studio - Desarrollo Web, IA y Automatización N8N | Full-Stack Developer Perú",
+  title: "BLXK Studio | Desarrollo Web, IA y Automatización",
   description:
-    "Alonso, fundador de BLXK Studio. Especialista en desarrollo web empresarial, automatización N8N, IA e integraciones API. Transformamos negocios con tecnología escalable y eficiente.",
+    "Desarrollo web, automatización e IA para empresas. En BLXK Studio creamos soluciones rápidas, seguras y escalables.",
   keywords:
-    "Alonso BLXK, desarrollador full-stack Perú, automatización N8N, chatbot WhatsApp, desarrollo web empresarial, agencia software, integraciones API, IA empresarial, transformación digital, backend developer, startup tech",
+    "BLXK Studio, desarrollo web, automatización n8n, inteligencia artificial, integraciones API, software empresarial",
   authors: [{ name: "Alonso", url: "https://blxkstudio.com" }],
   creator: "Alonso",
   metadataBase: new URL("https://blxkstudio.com"),
@@ -49,28 +49,28 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Alonso - BLXK Studio | Desarrollo Web, IA y Automatización",
+    title: "BLXK Studio | Desarrollo Web, IA y Automatización",
     description:
-      "Fundador de BLXK Studio. Especialista en software empresarial, automatización inteligente y soluciones digitales. Transformamos negocios con tecnología.",
+      "Software web, automatización e IA para hacer crecer tu negocio.",
     url: "https://blxkstudio.com",
     siteName: "BLXK Studio",
     locale: "es_PE",
     type: "website",
     images: [
       {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Alonso - BLXK Studio Founder",
-        type: "image/jpeg",
+        url: "/logo.png",
+        width: 512,
+        height: 512,
+        alt: "Logo BLXK Studio",
+        type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "BLXK Studio - Desarrollo Web y Automatización",
-    description: "Soluciones tech premium para transformar tu negocio. N8N, chatbots, APIs y software empresarial.",
-    images: ["/og-image-twitter.jpg"],
+    title: "BLXK Studio | Desarrollo Web y Automatización",
+    description: "Soluciones web, IA y automatización para empresas.",
+    images: ["/logo.png"],
     creator: "@BlxkBusines",
     site: "@BlxkBusines",
   },
@@ -94,36 +94,58 @@ export const metadata: Metadata = {
   },
 }
 
-// JSON-LD Schema as a separate component for cleaner code
+// JSON-LD estructurado en grafo para evitar propiedades inválidas en WebSite
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: "BLXK Studio",
-  url: "https://blxkstudio.com",
-  creator: {
-    "@type": "Person",
-    name: "Alonso",
-    jobTitle: "Founder & Full-Stack Developer",
-    affiliation: {
+  "@graph": [
+    {
       "@type": "Organization",
+      "@id": "https://blxkstudio.com/#organization",
       name: "BLXK Studio",
+      url: "https://blxkstudio.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://blxkstudio.com/logo.png",
+      },
+      description:
+        "Agencia tecnológica peruana especializada en desarrollo web, automatización y soluciones digitales.",
+      sameAs: [
+        "https://x.com/alvaroblxk",
+        "https://linkedin.com/company/blxkstudio",
+        "https://github.com/Darksea030",
+        "https://instagram.com/blxkstudio",
+      ],
+      contactPoint: [
+        {
+          "@type": "ContactPoint",
+          contactType: "customer support",
+          email: "admin@blxkstudio.com",
+          telephone: "+51913259652",
+          areaServed: ["PE", "MX", "CO", "CL", "AR"],
+          availableLanguage: ["es"],
+        },
+      ],
+      areaServed: ["PE", "MX", "CO", "CL", "AR"],
     },
-    knowsAbout: ["Software Development", "N8N Automation", "AI", "API Design"],
-  },
-  organization: {
-    "@type": "Organization",
-    name: "BLXK Studio",
-    url: "https://blxkstudio.com",
-    logo: "https://blxkstudio.com/logo.png",
-    description:
-      "Agencia tecnológica peruana especializada en desarrollo web, automatización y soluciones digitales.",
-    sameAs: [
-      "https://twitter.com/BlxkBusines",
-      "https://linkedin.com/company/blxkstudio",
-      "https://github.com/blxkstudio",
-    ],
-    areaServed: ["PE", "MX", "CO", "CL", "AR"],
-  },
+    {
+      "@type": "Person",
+      "@id": "https://blxkstudio.com/#founder",
+      name: "Alonso",
+      jobTitle: "Founder & Full-Stack Developer",
+      worksFor: { "@id": "https://blxkstudio.com/#organization" },
+      affiliation: { "@id": "https://blxkstudio.com/#organization" },
+      knowsAbout: ["Software Development", "N8N Automation", "AI", "API Design"],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://blxkstudio.com/#website",
+      name: "BLXK Studio",
+      url: "https://blxkstudio.com",
+      inLanguage: "es-PE",
+      publisher: { "@id": "https://blxkstudio.com/#organization" },
+      about: { "@id": "https://blxkstudio.com/#founder" },
+    },
+  ],
 }
 
 export default function RootLayout({
