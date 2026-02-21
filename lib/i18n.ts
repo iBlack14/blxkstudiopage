@@ -1490,6 +1490,32 @@ export const messages: Record<Locale, Messages> = {
         },
       ],
     },
+    digitalProducts: {
+      title: "BLXK Digital Products",
+      subtitle: "Ready-to-launch solutions to grow your business: hosting, templates, payments, and automations.",
+      list: [
+        {
+          id: 1,
+          title: "Reseller Hosting",
+          description: "Entrepreneur, Business, and Premium plans with cPanel, WHM, and SSL. Ideal for hosting resale.",
+        },
+        {
+          id: 2,
+          title: "Elementor Templates",
+          description: "Professional ready-to-use templates optimized for conversion.",
+        },
+        {
+          id: 3,
+          title: "Payment Integrations",
+          description: "Implementation of Yape, Plin, Izipay QR, and other payment gateways.",
+        },
+        {
+          id: 4,
+          title: "Pre-configured Automations",
+          description: "Ready-made n8n flows to connect WhatsApp, CRM, and notifications.",
+        },
+      ],
+    },
 
   },
   pt: {
