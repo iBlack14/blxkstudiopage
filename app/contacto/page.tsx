@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 import { Navigation } from "@/components/layout/navigation";
 import { ContactSkeleton } from "@/components/skeletons/contact-skeleton";
 
-const Contact = dynamic(() => import("@/components/utilities/contact").then(m => ({ default: m.Contact })), {
+const Contact = dynamic(() => import("@/components/contact").then(m => ({ default: m.Contact })), {
   loading: () => <ContactSkeleton />,
 })
 

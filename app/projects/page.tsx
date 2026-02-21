@@ -12,7 +12,7 @@ const ProjectsStats = dynamic(() => import("@/components/projects/projects-stats
   loading: () => null,
   ssr: true,
 })
-const Contact = dynamic(() => import("@/components/utilities/contact").then(m => ({ default: m.Contact })), {
+const Contact = dynamic(() => import("@/components/contact").then(m => ({ default: m.Contact })), {
   loading: () => null,
   ssr: true,
 })

@@ -2,30 +2,59 @@
 
 import { Star, Quote } from "lucide-react"
 import { Card } from "@/components/ui/card"
+import { useLanguage } from "@/components/layout/language-provider"
 
 export function ProjectsTestimonials() {
-  const testimonials = [
-    {
-      quote:
-        "BLXK Studio transformó completamente nuestro flujo de ventas. La integración WhatsApp aumentó nuestras conversiones en 340%.",
-      author: "Carlos Mendoza",
-      role: "CEO, E-commerce Perú",
-      stars: 5,
-    },
-    {
-      quote:
-        "El dashboard administrativo es increíble. Ahora gestionamos todo desde un mismo lugar. Imposible vivir sin él.",
-      author: "María García",
-      role: "Operations Manager, Startup Tech",
-      stars: 5,
-    },
-    {
-      quote: "La automatización con N8N eliminó horas de trabajo manual. Fue la mejor inversión que hicimos este año.",
-      author: "Jorge López",
-      role: "Director de Operaciones, Retail",
-      stars: 5,
-    },
-  ]
+  const { locale } = useLanguage()
+  const isEs = locale === "es"
+  const sectionTitle = isEs ? "Lo que dicen nuestros clientes" : "What our clients say"
+  const sectionSubtitle = isEs ? "Testimonios reales de empresas transformadas" : "Real testimonials from transformed companies"
+  const testimonials = isEs
+    ? [
+        {
+          quote:
+            "BLXK Studio transformo completamente nuestro flujo de ventas. La integracion WhatsApp aumento nuestras conversiones en 340%.",
+          author: "Carlos Mendoza",
+          role: "CEO, E-commerce Peru",
+          stars: 5,
+        },
+        {
+          quote:
+            "El dashboard administrativo es increible. Ahora gestionamos todo desde un mismo lugar.",
+          author: "Maria Garcia",
+          role: "Operations Manager, Startup Tech",
+          stars: 5,
+        },
+        {
+          quote: "La automatizacion con N8N elimino horas de trabajo manual. Fue la mejor inversion del ano.",
+          author: "Jorge Lopez",
+          role: "Director de Operaciones, Retail",
+          stars: 5,
+        },
+      ]
+    : [
+        {
+          quote:
+            "BLXK Studio completely transformed our sales flow. WhatsApp integration increased conversions by 340%.",
+          author: "Carlos Mendoza",
+          role: "CEO, E-commerce Peru",
+          stars: 5,
+        },
+        {
+          quote:
+            "The admin dashboard is excellent. We now manage everything from one place.",
+          author: "Maria Garcia",
+          role: "Operations Manager, Startup Tech",
+          stars: 5,
+        },
+        {
+          quote:
+            "N8N automation removed hours of manual work. It was our best investment this year.",
+          author: "Jorge Lopez",
+          role: "Operations Director, Retail",
+          stars: 5,
+        },
+      ]
 
   return (
     <section className="py-24 relative overflow-hidden">
@@ -33,8 +62,8 @@ export function ProjectsTestimonials() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto space-y-12">
           <div className="text-center space-y-4">
-            <h2 className="text-4xl md:text-5xl font-bold neon-text">Lo que Dicen Nuestros Clientes</h2>
-            <p className="text-muted-foreground text-lg">Testimonios reales de empresas transformadas</p>
+            <h2 className="text-4xl md:text-5xl font-bold neon-text">{sectionTitle}</h2>
+            <p className="text-muted-foreground text-lg">{sectionSubtitle}</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">

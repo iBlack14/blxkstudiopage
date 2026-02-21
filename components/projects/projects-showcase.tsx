@@ -5,6 +5,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { ExternalLink, Play } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useLanguage } from "@/components/layout/language-provider"
 
 // Datos de proyectos con imágenes de vista previa
 const PROJECTS = [
@@ -112,6 +113,9 @@ const PROJECTS = [
 
 export function ProjectsShowcase() {
   const [hoveredId, setHoveredId] = useState<number | null>(null)
+  const { m } = useLanguage()
+  const localized = m.projectsShowcase.list
+  const byId = new Map(localized.map((item) => [item.id, item]))
 
   return (
     <section id="projects-showcase" className="py-16 md:py-24 relative">
@@ -126,24 +130,15 @@ export function ProjectsShowcase() {
                 onMouseEnter={() => setHoveredId(project.id)}
                 onMouseLeave={() => setHoveredId(null)}
               >
-                {/* Preview Area - Live preview or static image */}
+                {/* Preview Area - Always image to avoid iframe blank due to X-Frame-Options/CSP */}
                 <div className={`relative h-52 overflow-hidden bg-gradient-to-br ${project.gradient}`}>
-                  {project.previewUrl ? (
-                    <iframe
-                      src={project.previewUrl}
-                      title={project.title + " preview"}
-                      className="w-full h-full object-cover"
-                      sandbox="allow-scripts allow-same-origin"
-                    />
-                  ) : (
-                    <Image
-                      src={project.image}
-                      alt={`${project.title} - proyecto de ${project.category} desarrollado por BLXK Studio`}
-                      fill
-                      className="object-cover object-top transition-transform duration-700 group-hover:scale-110"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
-                  )}
+                  <Image
+                    src={project.image}
+                    alt={`${project.title} - proyecto de ${project.category} desarrollado por BLXK Studio`}
+                    fill
+                    className="object-cover object-top transition-transform duration-700 group-hover:scale-110"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
 
                   {/* Overlay oscuro */}
                   <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
@@ -169,14 +164,16 @@ export function ProjectsShowcase() {
                 {/* Info */}
                 <div className="p-5 space-y-3">
                   <div>
-                    <p className="text-xs font-semibold text-primary uppercase tracking-wider mb-1">{project.category}</p>
+                    <p className="text-xs font-semibold text-primary uppercase tracking-wider mb-1">
+                      {byId.get(project.id)?.category || project.category}
+                    </p>
                     <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors">
-                      {project.title}
+                      {byId.get(project.id)?.title || project.title}
                     </h3>
                   </div>
 
                   <p className="text-sm text-muted-foreground line-clamp-2">
-                    {project.description}
+                    {byId.get(project.id)?.description || project.description}
                   </p>
 
                   {/* Tech tags */}
@@ -198,11 +195,11 @@ export function ProjectsShowcase() {
           {/* CTA */}
           <div className="mt-16 text-center">
             <p className="text-muted-foreground mb-6">
-              ¿Tienes un proyecto en mente?
+              {m.projectsShowcase.ctaTitle}
             </p>
             <Link href="/contacto">
               <Button size="lg" className="neon-glow bg-primary text-primary-foreground hover:bg-primary/90">
-                Solicitar Cotización
+                {m.projectsShowcase.ctaButton}
                 <ExternalLink className="w-4 h-4 ml-2" />
               </Button>
             </Link>

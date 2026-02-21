@@ -8,8 +8,9 @@ import { ThemeProvider } from "@/components/layout/theme-provider"
 import { Footer } from "@/components/layout/footer"
 import { LanguageProvider } from "@/components/layout/language-provider"
 import { FloatingLanguageSelector } from "@/components/layout/language-floating"
+import { I18nDebugPanel } from "@/components/layout/i18n-debug"
 import { BlxkChatbot } from "@/components/home/blxk-chatbot"
-import { DEFAULT_LOCALE, LOCALE_COOKIE, Locale, resolveLocale } from "@/lib/i18n"
+import { DEFAULT_LOCALE, LOCALE_COOKIE, LOCALE_MANUAL_COOKIE, Locale, resolveLocale } from "@/lib/i18n"
 
 // Optimized font loading with display: swap
 const geistSans = Geist({
@@ -167,6 +168,7 @@ export default async function RootLayout({
   const headerStore = await headers()
   const locale = resolveLocale({
     cookieLocale: cookieStore.get(LOCALE_COOKIE)?.value,
+    manualLocale: cookieStore.get(LOCALE_MANUAL_COOKIE)?.value,
     countryCode: headerStore.get("x-vercel-ip-country") || headerStore.get("cf-ipcountry"),
     acceptLanguage: headerStore.get("accept-language"),
   }) as Locale
@@ -211,6 +213,7 @@ export default async function RootLayout({
         <ThemeProvider>
           <LanguageProvider initialLocale={locale || DEFAULT_LOCALE}>
             {children}
+            <I18nDebugPanel />
             <FloatingLanguageSelector />
             <BlxkChatbot />
             <Footer />

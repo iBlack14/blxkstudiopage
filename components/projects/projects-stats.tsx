@@ -15,9 +15,12 @@ import {
 } from "recharts"
 import { Card } from "@/components/ui/card"
 import { TrendingUp, Users, Zap, Target } from "lucide-react"
+import { useLanguage } from "@/components/layout/language-provider"
 
 export function ProjectsStats() {
   const [mounted, setMounted] = useState(false)
+  const { locale } = useLanguage()
+  const isEs = locale === "es"
 
   useEffect(() => {
     setMounted(true)
@@ -25,43 +28,43 @@ export function ProjectsStats() {
 
   const impactData = [
     { name: "E-commerce", value: 45, fill: "hsl(var(--primary))" },
-    { name: "Automatización", value: 30, fill: "hsl(var(--accent))" },
+    { name: isEs ? "Automatizacion" : "Automation", value: 30, fill: "hsl(var(--accent))" },
     { name: "Dashboard", value: 25, fill: "hsl(0 0% 45%)" },
   ]
 
   const growthData = [
-    { month: "Ene", adopción: 20, clientes: 8 },
-    { month: "Feb", adopción: 35, clientes: 12 },
-    { month: "Mar", adopción: 55, clientes: 18 },
-    { month: "Abr", adopción: 75, clientes: 28 },
-    { month: "May", adopción: 95, clientes: 38 },
-    { month: "Jun", adopción: 110, clientes: 45 },
+    { month: isEs ? "Ene" : "Jan", adopcion: 20, clients: 8 },
+    { month: isEs ? "Feb" : "Feb", adopcion: 35, clients: 12 },
+    { month: isEs ? "Mar" : "Mar", adopcion: 55, clients: 18 },
+    { month: isEs ? "Abr" : "Apr", adopcion: 75, clients: 28 },
+    { month: isEs ? "May" : "May", adopcion: 95, clients: 38 },
+    { month: isEs ? "Jun" : "Jun", adopcion: 110, clients: 45 },
   ]
 
   const stats = [
     {
       icon: TrendingUp,
-      label: "Incremento de Ventas",
+      label: isEs ? "Incremento de Ventas" : "Sales Increase",
       value: "340%",
-      description: "Promedio de clientes",
+      description: isEs ? "Promedio de clientes" : "Client average",
     },
     {
       icon: Users,
-      label: "Usuarios Activos",
+      label: isEs ? "Usuarios Activos" : "Active Users",
       value: "2,500+",
-      description: "Mensuales global",
+      description: isEs ? "Mensuales global" : "Monthly global",
     },
     {
       icon: Zap,
-      label: "Automatización",
+      label: isEs ? "Automatizacion" : "Automation",
       value: "10k+",
-      description: "Procesos/mes",
+      description: isEs ? "Procesos/mes" : "Processes/month",
     },
     {
       icon: Target,
-      label: "Tasa de Éxito",
+      label: isEs ? "Tasa de Exito" : "Success Rate",
       value: "99.8%",
-      description: "Uptime garantizado",
+      description: isEs ? "Uptime garantizado" : "Guaranteed uptime",
     },
   ]
 
@@ -75,9 +78,13 @@ export function ProjectsStats() {
         <div className="max-w-7xl mx-auto space-y-12 md:space-y-16">
           {/* Section Header */}
           <div className="text-center space-y-4">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold neon-text text-balance">Impacto Medible</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold neon-text text-balance">
+              {isEs ? "Impacto Medible" : "Measurable Impact"}
+            </h2>
             <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto px-2">
-              Resultados concretos que generan valor real para nuestros clientes
+              {isEs
+                ? "Resultados concretos que generan valor real para nuestros clientes"
+                : "Concrete results that create real value for our clients"}
             </p>
           </div>
 
@@ -108,8 +115,8 @@ export function ProjectsStats() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
             {/* Growth Chart */}
             <Card className="neon-card-rotating p-4 md:p-8 overflow-hidden bg-card/50 backdrop-blur-sm">
-              <h3 className="text-lg md:text-xl font-bold mb-6 text-foreground border-l-4 border-primary pl-3">
-                Crecimiento de Adopción
+                <h3 className="text-lg md:text-xl font-bold mb-6 text-foreground border-l-4 border-primary pl-3">
+                {isEs ? "Crecimiento de Adopcion" : "Adoption Growth"}
               </h3>
               <div className="w-full h-[300px]">
                 <ResponsiveContainer width="100%" height="100%">
@@ -151,7 +158,7 @@ export function ProjectsStats() {
                     />
                     <Line
                       type="monotone"
-                      dataKey="adopción"
+                      dataKey="adopcion"
                       stroke="hsl(var(--primary))"
                       strokeWidth={3}
                       dot={{ fill: "hsl(var(--background))", stroke: "hsl(var(--primary))", strokeWidth: 2, r: 4 }}
@@ -159,7 +166,7 @@ export function ProjectsStats() {
                     />
                     <Line
                       type="monotone"
-                      dataKey="clientes"
+                      dataKey="clients"
                       stroke="hsl(var(--accent))"
                       strokeWidth={3}
                       dot={{ fill: "hsl(var(--background))", stroke: "hsl(var(--accent))", strokeWidth: 2, r: 4 }}
@@ -172,7 +179,7 @@ export function ProjectsStats() {
 
             <Card className="neon-card-rotating p-4 md:p-8 flex flex-col bg-card/50 backdrop-blur-sm">
               <h3 className="text-lg md:text-xl font-bold mb-6 text-foreground border-l-4 border-accent pl-3">
-                Distribución de Proyectos
+                {isEs ? "Distribucion de Proyectos" : "Project Distribution"}
               </h3>
               <div className="flex-1 min-h-[300px] relative">
                 <ResponsiveContainer width="100%" height="100%">
@@ -206,7 +213,9 @@ export function ProjectsStats() {
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                   <div className="text-center">
                     <span className="block text-3xl font-bold text-foreground">100+</span>
-                    <span className="text-xs text-muted-foreground uppercase tracking-wider">Proyectos</span>
+                    <span className="text-xs text-muted-foreground uppercase tracking-wider">
+                      {isEs ? "Proyectos" : "Projects"}
+                    </span>
                   </div>
                 </div>
               </div>

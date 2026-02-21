@@ -1,4 +1,5 @@
 export const LOCALE_COOKIE = "blxk-locale"
+export const LOCALE_MANUAL_COOKIE = "blxk-locale-manual"
 
 export const SUPPORTED_LOCALES = ["es", "en", "pt", "fr", "de", "it"] as const
 export type Locale = (typeof SUPPORTED_LOCALES)[number]
@@ -76,12 +77,46 @@ export function localeFromAcceptLanguage(headerValue: string | undefined | null)
 
 export function resolveLocale(input: {
   cookieLocale?: string | null
+  manualLocale?: string | null
   countryCode?: string | null
   acceptLanguage?: string | null
 }): Locale {
-  if (isLocale(input.cookieLocale)) return input.cookieLocale
-  if (input.countryCode) return localeFromCountry(input.countryCode)
-  return localeFromAcceptLanguage(input.acceptLanguage)
+  return resolveLocaleWithMeta(input).locale
+}
+
+export function resolveLocaleWithMeta(input: {
+  cookieLocale?: string | null
+  manualLocale?: string | null
+  countryCode?: string | null
+  acceptLanguage?: string | null
+}): { locale: Locale; source: "country" | "manual" | "accept-language" | "cookie" | "default" } {
+  // 1) Manual override from UI selector.
+  if (isLocale(input.manualLocale)) return { locale: input.manualLocale, source: "manual" }
+
+  const fromCountry = input.countryCode
+    ? COUNTRY_TO_LOCALE[input.countryCode.toUpperCase()]
+    : undefined
+
+  const fromHeader = localeFromAcceptLanguage(input.acceptLanguage)
+  const fromAcceptLanguage = isLocale(fromHeader) ? fromHeader : undefined
+
+  // 2) If country and browser language disagree, prefer browser language.
+  // Mobile carrier/VPN exits can geolocate to a neighboring country.
+  if (fromCountry && fromAcceptLanguage && fromCountry !== fromAcceptLanguage) {
+    return { locale: fromAcceptLanguage, source: "accept-language" }
+  }
+
+  // 3) Country/IP locale.
+  if (fromCountry) return { locale: fromCountry, source: "country" }
+
+  // 4) Browser language preference.
+  if (fromAcceptLanguage) return { locale: fromAcceptLanguage, source: "accept-language" }
+
+  // 5) Last persisted locale cookie fallback.
+  if (isLocale(input.cookieLocale)) return { locale: input.cookieLocale, source: "cookie" }
+
+  // 6) Default.
+  return { locale: DEFAULT_LOCALE, source: "default" }
 }
 
 type Messages = {
