@@ -3,11 +3,12 @@
 import { Suspense } from "react"
 import dynamic from "next/dynamic"
 import Link from "next/link"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, Zap, Target, Lock, TrendingUp, Users, Palette } from "lucide-react"
 import { servicesData } from "@/lib/services-data"
 import { Navigation } from "@/components/layout/navigation"
 import { ServicesProposal } from "@/components/home/services-proposal"
 import { useLanguage } from "@/components/layout/language-provider"
+import { getIconBySlugs } from "@/lib/service-icons"
 
 const FloatingThemeToggle = dynamic(
   () => import("@/components/layout/theme-toggle").then((m) => ({ default: m.FloatingThemeToggle })),
@@ -48,7 +49,13 @@ export default function ServicesPage() {
               return (
                 <Link key={service.id} href={`/servicios/${service.slug}`}>
                   <div className="neon-card-rotating p-4 md:p-6 rounded-lg h-full cursor-pointer group transition-all md:hover:scale-105 min-w-0 overflow-x-clip">
-                    <div className="text-4xl md:text-5xl mb-3 md:mb-4">{translated?.icon || service.icon}</div>
+                    <div className="mb-3 md:mb-4">
+                      {(() => {
+                        const slug = translated?.slug || service.slug
+                        const IconComponent = getIconBySlugs(slug)
+                        return <IconComponent className="w-10 h-10 md:w-12 md:h-12 text-primary" strokeWidth={1.5} />
+                      })()}
+                    </div>
                     <h3 className="text-lg md:text-2xl font-bold text-foreground mb-2 break-words">
                       {translated?.title || service.title}
                     </h3>
@@ -82,18 +89,20 @@ export default function ServicesPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mt-8 md:mt-12">
               {[
-                { icon: "⚡", title: "Performance", desc: "Core Web Vitals 90+" },
-                { icon: "🎯", title: "ROI", desc: "Enfoque en resultados de negocio" },
-                { icon: "🔒", title: "Security", desc: "Infraestructura enterprise-grade" },
-                { icon: "📈", title: "Scale", desc: "Arquitectura lista para crecer" },
-                { icon: "🤝", title: "Support", desc: "Acompanamiento continuo" },
-                { icon: "🎨", title: "UX/UI", desc: "Diseno premium y usable" },
+                { Icon: Zap, title: "Performance", desc: "Core Web Vitals 90+" },
+                { Icon: Target, title: "ROI", desc: "Enfoque en resultados de negocio" },
+                { Icon: Lock, title: "Security", desc: "Infraestructura enterprise-grade" },
+                { Icon: TrendingUp, title: "Scale", desc: "Arquitectura lista para crecer" },
+                { Icon: Users, title: "Support", desc: "Acompanamiento continuo" },
+                { Icon: Palette, title: "UX/UI", desc: "Diseno premium y usable" },
               ].map((item, idx) => (
                 <div
                   key={idx}
                   className="space-y-2 md:space-y-3 p-4 md:p-6 rounded-lg border border-primary/20 bg-primary/5"
                 >
-                  <div className="text-3xl md:text-4xl">{item.icon}</div>
+                  <div className="flex items-center">
+                    <item.Icon className="w-7 h-7 md:w-8 md:h-8 text-primary" strokeWidth={1.5} />
+                  </div>
                   <h4 className="text-base md:text-lg font-bold text-foreground">{item.title}</h4>
                   <p className="text-xs md:text-sm text-muted-foreground">{item.desc}</p>
                 </div>

@@ -374,7 +374,7 @@ export const messages: Record<Locale, Messages> = {
           id: 1,
           slug: "desarrollo-web",
           title: "Desarrollo de Páginas Web",
-          icon: "🌐",
+          icon: "paginas-web",
           description: "Ingeniería de Conversión + Performance",
           introduction:
             "Nuestros planes de desarrollo web se centran en la ingeniería de conversión, asegurando que cada sitio no solo sea visualmente atractivo, sino una herramienta de negocio de alto rendimiento.",
@@ -428,7 +428,7 @@ export const messages: Record<Locale, Messages> = {
           id: 2,
           slug: "ecommerce",
           title: "Tiendas Virtuales",
-          icon: "🛒",
+          icon: "ecommerce",
           description: "E-commerce de Alto Impacto",
           introduction:
             "Las soluciones de e-commerce de BLXK vanen más allá de la simple venta, integrando logística, marketing de conversión y gestión avanzada.",
@@ -483,7 +483,7 @@ export const messages: Record<Locale, Messages> = {
           id: 3,
           slug: "hosting",
           title: "Hosting Web",
-          icon: "🔐",
+          icon: "hosting",
           description: "Infraestructura de Alto Rendimiento",
           introduction:
             "El servicio de hosting de BLXK está diseñado para la velocidad y la seguridad, superando las limitaciones de recursos compartidos.",
@@ -537,7 +537,7 @@ export const messages: Record<Locale, Messages> = {
           id: 4,
           slug: "marketing-digital",
           title: "Marketing Digital",
-          icon: "📈",
+          icon: "marketing-digital",
           description: "Estrategia Multicanal y Medible",
           introduction:
             "La estrategia de marketing de BLXK es integral, multicanal y enfocada en métricas de negocio reales, no en vanidad.",
@@ -601,7 +601,7 @@ export const messages: Record<Locale, Messages> = {
           title: "Páginas Web Profesionales",
           subtitle: "Ingeniería de Conversión + Performance 🔥",
           description: "Sitios web de alto rendimiento diseñados para convertir y escalar tu negocio",
-          icon: "🌐",
+          icon: "paginas-web",
           features: [
             "Desarrollo con Next.js / React",
             "Arquitectura de Conversión (CRO)",
@@ -628,7 +628,7 @@ export const messages: Record<Locale, Messages> = {
           title: "Páginas Corporativas / Institucionales",
           subtitle: "Nivel Empresarial 🔥",
           description: "Presencia digital profesional para empresas consolidadas",
-          icon: "🏢",
+          icon: "corporativas",
           features: [
             "Manual corporativo digital",
             "Diseño institucional con branding",
@@ -652,7 +652,7 @@ export const messages: Record<Locale, Messages> = {
           title: "E-commerce de Alto Rendimiento",
           subtitle: "Ventas Automatizadas 🔥",
           description: "Plataforma de venta online optimizada para máxima conversión",
-          icon: "🛒",
+          icon: "ecommerce",
           features: [
             "Carrito optimizado",
             "Recuperación por Email + WhatsApp + Push",
@@ -678,7 +678,7 @@ export const messages: Record<Locale, Messages> = {
           title: "BLXK LMS",
           subtitle: "Plataformas Educativas Profesionales 🔥",
           description: "Campus virtual estilo Udemy con todas las herramientas",
-          icon: "📚",
+          icon: "lms",
           features: [
             "Panel estudiante + instructores",
             "Certificados automáticos",
@@ -703,8 +703,8 @@ export const messages: Record<Locale, Messages> = {
           id: 5,
           title: "BLXK Automations",
           subtitle: "Automatización con IA y n8n 🔥",
-          description: "Workflows automáticos inteligentes para tu negocio",
-          icon: "⚙️",
+          description: "Workflows autom��ticos inteligentes para tu negocio",
+          icon: "automations",
           features: [
             "Bots WhatsApp con IA (GPT/Gemini)",
             "Workflows: Pedidos, Pagos, Confirmaciones",
@@ -729,7 +729,7 @@ export const messages: Record<Locale, Messages> = {
           title: "Homers",
           subtitle: "Solución Completa para Restaurantes 🔥",
           description: "Sistema integral para delivery y operación de restaurantes",
-          icon: "🍔",
+          icon: "homers",
           features: [
             "Sistema pedidos multicanal",
             "Panel cocina (KDS) profesional",
@@ -753,7 +753,7 @@ export const messages: Record<Locale, Messages> = {
           title: "TAS",
           subtitle: "Sistema de Logística y Transporte 🔥",
           description: "Plataforma completa para gestión de reparto tercerizado",
-          icon: "🚚",
+          icon: "tas",
           features: [
             "Sistema completo reparto",
             "Seguimiento en tiempo real",
@@ -774,7 +774,7 @@ export const messages: Record<Locale, Messages> = {
           title: "Rebrotal",
           subtitle: "Micro Logística Inteligente 🔥",
           description: "Delivery local instantáneo con ruteo inteligente",
-          icon: "📦",
+          icon: "rebrotal",
           features: [
             "Delivery local instantáneo",
             "Ruteo inteligente",
@@ -839,7 +839,7 @@ export const messages: Record<Locale, Messages> = {
           title: "Sistemas de Software a Medida",
           subtitle: "ERPs, CRMs y SaaS 🚀",
           description: "Arquitectura de software escalable para automatizar tu negocio",
-          icon: "⚙️",
+          icon: "automations",
           features: [
             "Sistemas de Gestión (ERP) personalizados",
             "CRMs a medida para tu flujo de ventas",
@@ -1052,7 +1052,7 @@ export const messages: Record<Locale, Messages> = {
           id: 1,
           slug: "web-development",
           title: "Web Development",
-          icon: "🌐",
+          icon: "paginas-web",
           description: "Conversion Engineering + Performance",
           introduction: "Our web development plans focus on conversion engineering, ensuring that each site is not only visually attractive but a high-performance business tool.",
           features: [
@@ -1106,7 +1106,7 @@ export const messages: Record<Locale, Messages> = {
           id: 2,
           slug: "ecommerce",
           title: "Online Stores",
-          icon: "🛒",
+          icon: "ecommerce",
           description: "High Impact E-commerce",
           introduction: "BLXK's e-commerce solutions go beyond simple sales, integrating logistics, conversion marketing, and advanced management.",
           features: [
@@ -1122,7 +1122,7 @@ export const messages: Record<Locale, Messages> = {
           id: 3,
           slug: "hosting",
           title: "Web Hosting",
-          icon: "🔐",
+          icon: "hosting",
           description: "High Performance Infrastructure",
           introduction: "BLXK hosting service is designed for speed and security.",
           features: [],
@@ -1134,7 +1134,7 @@ export const messages: Record<Locale, Messages> = {
           id: 4,
           slug: "marketing",
           title: "Digital Marketing",
-          icon: "📈",
+          icon: "marketing-digital",
           description: "Multichannel & Measurable Strategy",
           introduction: "BLXK's marketing strategy is integral, multichannel, and focused on real business metrics.",
           features: [],
@@ -1156,7 +1156,7 @@ export const messages: Record<Locale, Messages> = {
           title: "Professional Web Pages",
           subtitle: "Conversion Engineering + Performance 🔥",
           description: "High-performance websites designed to convert and scale your business",
-          icon: "🌐",
+          icon: "paginas-web",
           features: [
             "Development with Next.js / React",
             "Conversion Architecture (CRO)",
@@ -1183,7 +1183,7 @@ export const messages: Record<Locale, Messages> = {
           title: "Corporate / Institutional Pages",
           subtitle: "Enterprise Level 🔥",
           description: "Professional digital presence for established companies",
-          icon: "🏢",
+          icon: "corporativas",
           features: [
             "Digital Corporate Manual",
             "Institutional Design with Branding",
@@ -1207,7 +1207,7 @@ export const messages: Record<Locale, Messages> = {
           title: "High Performance E-commerce",
           subtitle: "Automated Sales 🔥",
           description: "Online sales platform optimized for maximum conversion",
-          icon: "🛒",
+          icon: "ecommerce",
           features: [
             "Optimized Cart",
             "Recovery via Email + WhatsApp + Push",
@@ -1233,7 +1233,7 @@ export const messages: Record<Locale, Messages> = {
           title: "BLXK LMS",
           subtitle: "Professional Educational Platforms 🔥",
           description: "Udemy-style virtual campus with all tools",
-          icon: "📚",
+          icon: "lms",
           features: [
             "Student + Instructor Panel",
             "Automatic Certificates",
@@ -1259,7 +1259,7 @@ export const messages: Record<Locale, Messages> = {
           title: "BLXK Automations",
           subtitle: "Automation with AI and n8n 🔥",
           description: "Smart automatic workflows for your business",
-          icon: "⚙️",
+          icon: "automations",
           features: [
             "WhatsApp Bots with AI (GPT/Gemini)",
             "Workflows: Orders, Payments, Confirmations",
@@ -1284,7 +1284,7 @@ export const messages: Record<Locale, Messages> = {
           title: "Homers",
           subtitle: "Complete Solution for Restaurants 🔥",
           description: "Comprehensive system for delivery and restaurant operation",
-          icon: "🍔",
+          icon: "homers",
           features: [
             "Multichannel Ordering System",
             "Professional Kitchen Panel (KDS)",
@@ -1308,7 +1308,7 @@ export const messages: Record<Locale, Messages> = {
           title: "TAS",
           subtitle: "Logistics and Transport System 🔥",
           description: "Complete platform for outsourced delivery management",
-          icon: "🚚",
+          icon: "tas",
           features: [
             "Complete Delivery System",
             "Real-time Tracking",
@@ -1329,7 +1329,7 @@ export const messages: Record<Locale, Messages> = {
           title: "Rebrotal",
           subtitle: "Smart Micro Logistics 🔥",
           description: "Instant local delivery with smart routing",
-          icon: "📦",
+          icon: "rebrotal",
           features: [
             "Instant Local Delivery",
             "Smart Routing",
@@ -1394,7 +1394,7 @@ export const messages: Record<Locale, Messages> = {
           title: "Custom Software Systems",
           subtitle: "ERPs, CRMs and SaaS 🚀",
           description: "Scalable software architecture to automate your business",
-          icon: "⚙️",
+          icon: "automations",
           features: [
             "Custom Management Systems (ERP)",
             "Custom CRMs for Sales Flow",
@@ -1631,7 +1631,7 @@ export const messages: Record<Locale, Messages> = {
           id: 1,
           slug: "desenvolvimento-web",
           title: "Desenvolvimento de Sites",
-          icon: "🌐",
+          icon: "paginas-web",
           description: "Engenharia de Conversão + Performance",
           introduction:
             "Nossos planos de desenvolvimento web focam na engenharia de conversão, garantindo que cada site não seja apenas visualmente atraente, mas uma ferramenta de negócios de alto desempenho.",
@@ -1685,7 +1685,7 @@ export const messages: Record<Locale, Messages> = {
           id: 2,
           slug: "ecommerce",
           title: "Lojas Virtuais",
-          icon: "🛒",
+          icon: "ecommerce",
           description: "E-commerce de Alto Impacto",
           introduction:
             "As soluções de e-commerce da BLXK vão além da simples venda, integrando logística, marketing de conversão e gestão avançada.",
@@ -1740,7 +1740,7 @@ export const messages: Record<Locale, Messages> = {
           id: 3,
           slug: "hosting",
           title: "Hospedagem Web",
-          icon: "🔐",
+          icon: "hosting",
           description: "Infraestrutura de Alto Desempenho",
           introduction:
             "O serviço de hospedagem da BLXK é projetado para velocidade e segurança, superando as limitações de recursos compartilhados.",
@@ -1794,7 +1794,7 @@ export const messages: Record<Locale, Messages> = {
           id: 4,
           slug: "marketing-digital",
           title: "Marketing Digital",
-          icon: "📈",
+          icon: "marketing-digital",
           description: "Estratégia Multicanal e Mensurável",
           introduction:
             "A estratégia de marketing da BLXK é integral, multicanal e focada em métricas de negócios reais, não em vaidade.",
@@ -1858,7 +1858,7 @@ export const messages: Record<Locale, Messages> = {
           title: "Páginas Web Profissionais",
           subtitle: "Engenharia de Conversão + Performance 🔥",
           description: "Sites de alto desempenho projetados para converter e escalar seu negócio",
-          icon: "🌐",
+          icon: "paginas-web",
           features: [
             "Desenvolvimento com Next.js / React",
             "Arquitetura de Conversão (CRO)",
@@ -1885,7 +1885,7 @@ export const messages: Record<Locale, Messages> = {
           title: "Páginas Corporativas / Institucionais",
           subtitle: "Nível Empresarial 🔥",
           description: "Presença digital profissional para empresas consolidadas",
-          icon: "🏢",
+          icon: "corporativas",
           features: [
             "Manual corporativo digital",
             "Design institucional com branding",
@@ -1909,7 +1909,7 @@ export const messages: Record<Locale, Messages> = {
           title: "E-commerce de Alto Desempenho",
           subtitle: "Vendas Automatizadas 🔥",
           description: "Plataforma de venda online otimizada para máxima conversão",
-          icon: "🛒",
+          icon: "ecommerce",
           features: [
             "Carrinho otimizado",
             "Recuperação por Email + WhatsApp + Push",
@@ -1935,7 +1935,7 @@ export const messages: Record<Locale, Messages> = {
           title: "BLXK LMS",
           subtitle: "Plataformas Educativas Profissionais 🔥",
           description: "Campus virtual estilo Udemy com todas as ferramentas",
-          icon: "📚",
+          icon: "lms",
           features: [
             "Painel estudante + instrutores",
             "Certificados automáticos",
@@ -1961,7 +1961,7 @@ export const messages: Record<Locale, Messages> = {
           title: "BLXK Automations",
           subtitle: "Automação com IA e n8n 🔥",
           description: "Workflows automáticos inteligentes para seu negócio",
-          icon: "⚙️",
+          icon: "automations",
           features: [
             "Bots WhatsApp com IA (GPT/Gemini)",
             "Workflows: Pedidos, Pagamentos, Confirmações",
@@ -1986,7 +1986,7 @@ export const messages: Record<Locale, Messages> = {
           title: "Homers",
           subtitle: "Solução Completa para Restaurantes 🔥",
           description: "Sistema integral para delivery e operação de restaurantes",
-          icon: "🍔",
+          icon: "homers",
           features: [
             "Sistema pedidos multicanal",
             "Painel cozinha (KDS) profissional",
@@ -2010,7 +2010,7 @@ export const messages: Record<Locale, Messages> = {
           title: "TAS",
           subtitle: "Sistema de Logística e Transporte 🔥",
           description: "Plataforma completa para gestão de entregas terceirizadas",
-          icon: "🚚",
+          icon: "tas",
           features: [
             "Sistema completo de entregas",
             "Rastreamento em tempo real",
@@ -2031,7 +2031,7 @@ export const messages: Record<Locale, Messages> = {
           title: "Rebrotal",
           subtitle: "Micro Logística Inteligente 🔥",
           description: "Delivery local instantâneo com roteamento inteligente",
-          icon: "📦",
+          icon: "rebrotal",
           features: [
             "Delivery local instantâneo",
             "Roteamento inteligente",
@@ -2096,7 +2096,7 @@ export const messages: Record<Locale, Messages> = {
           title: "Sistemas de Software Sob Medida",
           subtitle: "ERPs, CRMs e SaaS 🚀",
           description: "Arquitetura de software escalável para automatizar seu negócio",
-          icon: "⚙️",
+          icon: "automations",
           features: [
             "Sistemas de Gestão (ERP) personalizados",
             "CRMs sob medida para seu fluxo de vendas",
@@ -2333,7 +2333,7 @@ export const messages: Record<Locale, Messages> = {
           id: 1,
           slug: "developpement-web",
           title: "Développement de Sites Web",
-          icon: "🌐",
+          icon: "paginas-web",
           description: "Ingénierie de Conversion + Performance",
           introduction:
             "Nos plans de développement web se concentrent sur l'ingénierie de conversion, garantissant que chaque site n'est pas seulement visuellement attrayant, mais un outil commercial performant.",
@@ -2387,7 +2387,7 @@ export const messages: Record<Locale, Messages> = {
           id: 2,
           slug: "ecommerce",
           title: "Boutiques en Ligne",
-          icon: "🛒",
+          icon: "ecommerce",
           description: "E-commerce à Fort Impact",
           introduction:
             "Les solutions e-commerce de BLXK vont au-delà de la simple vente, intégrant la logistique, le marketing de conversion et une gestion avancée.",
@@ -2442,7 +2442,7 @@ export const messages: Record<Locale, Messages> = {
           id: 3,
           slug: "hosting",
           title: "Hébergement Web",
-          icon: "🔐",
+          icon: "hosting",
           description: "Infrastructure Haute Performance",
           introduction:
             "Le service d'hébergement de BLXK est conçu pour la vitesse et la sécurité, dépassant les limitations des ressources partagées.",
@@ -2496,7 +2496,7 @@ export const messages: Record<Locale, Messages> = {
           id: 4,
           slug: "marketing-digital",
           title: "Marketing Numérique",
-          icon: "📈",
+          icon: "marketing-digital",
           description: "Stratégie Multicanale et Mesurable",
           introduction:
             "La stratégie marketing de BLXK est intégrale, multicanale et axée sur des métriques commerciales réelles, pas de vanité.",
@@ -2560,7 +2560,7 @@ export const messages: Record<Locale, Messages> = {
           title: "Pages Web Professionnelles",
           subtitle: "Ingénierie de Conversion + Performance 🔥",
           description: "Sites performants conçus pour convertir et évoluer",
-          icon: "🌐",
+          icon: "paginas-web",
           features: [
             "Développement avec Next.js / React",
             "Architecture de Conversion (CRO)",
@@ -2587,7 +2587,7 @@ export const messages: Record<Locale, Messages> = {
           title: "Pages Corporatives / Institutionnelles",
           subtitle: "Niveau Entreprise 🔥",
           description: "Présence numérique professionnelle pour entreprises établies",
-          icon: "🏢",
+          icon: "corporativas",
           features: [
             "Manuel corporatif numérique",
             "Design institutionnel avec branding",
@@ -2611,7 +2611,7 @@ export const messages: Record<Locale, Messages> = {
           title: "E-commerce Haute Performance",
           subtitle: "Ventes Automatisées 🔥",
           description: "Plateforme de vente en ligne optimisée pour une conversion maximale",
-          icon: "🛒",
+          icon: "ecommerce",
           features: [
             "Panier optimisé",
             "Récupération par Email + WhatsApp + Push",
@@ -2637,7 +2637,7 @@ export const messages: Record<Locale, Messages> = {
           title: "BLXK LMS",
           subtitle: "Plateformes Éducatives Professionnelles 🔥",
           description: "Campus virtuel style Udemy avec tous les outils",
-          icon: "📚",
+          icon: "lms",
           features: [
             "Tableau de bord étudiant + instructeurs",
             "Certificats automatiques",
@@ -2663,7 +2663,7 @@ export const messages: Record<Locale, Messages> = {
           title: "BLXK Automations",
           subtitle: "Automatisation avec IA et n8n 🔥",
           description: "Workflows automatiques intelligents pour votre entreprise",
-          icon: "⚙️",
+          icon: "automations",
           features: [
             "Bots WhatsApp avec IA (GPT/Gemini)",
             "Workflows : Commandes, Paiements, Confirmations",
@@ -2688,7 +2688,7 @@ export const messages: Record<Locale, Messages> = {
           title: "Homers",
           subtitle: "Solution Complète pour Restaurants 🔥",
           description: "Système complet pour livraison et gestion de restaurants",
-          icon: "🍔",
+          icon: "homers",
           features: [
             "Système de commandes multicanal",
             "Écran cuisine (KDS) professionnel",
@@ -2712,7 +2712,7 @@ export const messages: Record<Locale, Messages> = {
           title: "TAS",
           subtitle: "Système de Logistique et Transport 🔥",
           description: "Plateforme complète pour la gestion de la livraison externalisée",
-          icon: "🚚",
+          icon: "tas",
           features: [
             "Système complet de livraison",
             "Suivi en temps réel",
@@ -2733,7 +2733,7 @@ export const messages: Record<Locale, Messages> = {
           title: "Rebrotal",
           subtitle: "Micro Logistique Intelligente 🔥",
           description: "Livraison locale instantanée avec routage intelligent",
-          icon: "📦",
+          icon: "rebrotal",
           features: [
             "Livraison locale instantanée",
             "Routage intelligent",
@@ -2798,7 +2798,7 @@ export const messages: Record<Locale, Messages> = {
           title: "Logiciels Sur Mesure",
           subtitle: "ERP, CRM et SaaS 🚀",
           description: "Architecture logicielle évolutive pour automatiser votre entreprise",
-          icon: "⚙️",
+          icon: "automations",
           features: [
             "Systèmes de Gestion (ERP) personnalisés",
             "CRM sur mesure pour votre flux de vente",
@@ -3035,7 +3035,7 @@ export const messages: Record<Locale, Messages> = {
           id: 1,
           slug: "desarrollo-web",
           title: "Webentwicklung",
-          icon: "🌐",
+          icon: "paginas-web",
           description: "Conversion Engineering + Leistung",
           introduction:
             "Unsere Webentwicklungspläne konzentrieren sich auf Conversion Engineering und stellen sicher, dass jede Website nicht nur visuell ansprechend ist, sondern ein leistungsstarkes Geschäftsinstrument.",
@@ -3089,7 +3089,7 @@ export const messages: Record<Locale, Messages> = {
           id: 2,
           slug: "ecommerce",
           title: "Online-Shops",
-          icon: "🛒",
+          icon: "ecommerce",
           description: "High Impact E-Commerce",
           introduction:
             "BLXK E-Commerce-Lösungen gehen über den einfachen Verkauf hinaus und integrieren Logistik, Conversion-Marketing und erweitertes Management.",
@@ -3144,7 +3144,7 @@ export const messages: Record<Locale, Messages> = {
           id: 3,
           slug: "hosting",
           title: "Webhosting",
-          icon: "🔐",
+          icon: "hosting",
           description: "Hochleistungs-Infrastruktur",
           introduction:
             "Der BLXK Hosting-Service ist für Geschwindigkeit und Sicherheit konzipiert und überwindet die Grenzen geteilter Ressourcen.",
@@ -3198,7 +3198,7 @@ export const messages: Record<Locale, Messages> = {
           id: 4,
           slug: "marketing-digital",
           title: "Digitales Marketing",
-          icon: "📈",
+          icon: "marketing-digital",
           description: "Multichannel & Messbare Strategie",
           introduction:
             "Die Marketingstrategie von BLXK ist umfassend, multikanal und auf echte Geschäftskennzahlen ausgerichtet, nicht auf Eitelkeit.",
@@ -3262,7 +3262,7 @@ export const messages: Record<Locale, Messages> = {
           title: "Professionelle Webseiten",
           subtitle: "Conversion Engineering + Performance 🔥",
           description: "Hochleistungs-Websites, entwickelt um Ihr Geschäft zu konvertieren und zu skalieren",
-          icon: "🌐",
+          icon: "paginas-web",
           features: [
             "Entwicklung mit Next.js / React",
             "Conversion-Architektur (CRO)",
@@ -3289,7 +3289,7 @@ export const messages: Record<Locale, Messages> = {
           title: "Unternehmens- / Institutionelle Seiten",
           subtitle: "Enterprise-Level 🔥",
           description: "Professionelle digitale Präsenz für etablierte Unternehmen",
-          icon: "🏢",
+          icon: "corporativas",
           features: [
             "Digitales Unternehmenshandbuch",
             "Institutionelles Design mit Branding",
@@ -3313,7 +3313,7 @@ export const messages: Record<Locale, Messages> = {
           title: "High Performance E-Commerce",
           subtitle: "Automatisierte Verkäufe 🔥",
           description: "Online-Verkaufsplattform optimiert für maximale Conversion",
-          icon: "🛒",
+          icon: "ecommerce",
           features: [
             "Optimierter Warenkorb",
             "Wiederherstellung per E-Mail + WhatsApp + Push",
@@ -3339,7 +3339,7 @@ export const messages: Record<Locale, Messages> = {
           title: "BLXK LMS",
           subtitle: "Professionelle Bildungsplattformen 🔥",
           description: "Virtueller Campus im Udemy-Stil mit allen Tools",
-          icon: "📚",
+          icon: "lms",
           features: [
             "Studenten + Dozenten Dashboard",
             "Automatische Zertifikate",
@@ -3365,7 +3365,7 @@ export const messages: Record<Locale, Messages> = {
           title: "BLXK Automations",
           subtitle: "Automatisierung mit KI und n8n 🔥",
           description: "Intelligente automatische Workflows für Ihr Unternehmen",
-          icon: "⚙️",
+          icon: "automations",
           features: [
             "WhatsApp Bots mit KI (GPT/Gemini)",
             "Workflows: Bestellungen, Zahlungen, Bestätigungen",
@@ -3390,7 +3390,7 @@ export const messages: Record<Locale, Messages> = {
           title: "Homers",
           subtitle: "Komplettlösung für Restaurants 🔥",
           description: "Komplettes System für Lieferung und Restaurantmanagement",
-          icon: "🍔",
+          icon: "homers",
           features: [
             "Multichannel-Bestellsystem",
             "Professioneller Küchenbildschirm (KDS)",
@@ -3414,7 +3414,7 @@ export const messages: Record<Locale, Messages> = {
           title: "TAS",
           subtitle: "Logistik- und Transportsystem 🔥",
           description: "Komplette Plattform für ausgelagertes Liefermanagement",
-          icon: "🚚",
+          icon: "tas",
           features: [
             "Komplettes Liefersystem",
             "Echtzeit-Tracking",
@@ -3435,7 +3435,7 @@ export const messages: Record<Locale, Messages> = {
           title: "Rebrotal",
           subtitle: "Smarte Mikro-Logistik 🔥",
           description: "Sofortige lokale Lieferung mit Smart Routing",
-          icon: "📦",
+          icon: "rebrotal",
           features: [
             "Sofortige lokale Lieferung",
             "Smart Routing",
@@ -3500,7 +3500,7 @@ export const messages: Record<Locale, Messages> = {
           title: "Benutzerdefinierte Software",
           subtitle: "ERP, CRM und SaaS 🚀",
           description: "Skalierbare Softwarearchitektur zur Automatisierung Ihres Unternehmens",
-          icon: "⚙️",
+          icon: "automations",
           features: [
             "Benutzerdefinierte Managementsysteme (ERP)",
             "Benutzerdefiniertes CRM für Ihren Verkaufsfluss",
@@ -3737,7 +3737,7 @@ export const messages: Record<Locale, Messages> = {
           id: 1,
           slug: "desarrollo-web",
           title: "Sviluppo Web",
-          icon: "🌐",
+          icon: "paginas-web",
           description: "Ingegneria della Conversione + Performance",
           introduction:
             "I nostri piani di sviluppo web si concentrano sull'ingegneria della conversione, garantendo che ogni sito non sia solo visivamente accattivante, ma uno strumento di business ad alte prestazioni.",
@@ -3791,7 +3791,7 @@ export const messages: Record<Locale, Messages> = {
           id: 2,
           slug: "ecommerce",
           title: "Negozi Online",
-          icon: "🛒",
+          icon: "ecommerce",
           description: "E-commerce ad Alto Impatto",
           introduction:
             "Le soluzioni di e-commerce di BLXK vanno oltre la semplice vendita, integrando logistica, marketing di conversione e gestione avanzata.",
@@ -3846,7 +3846,7 @@ export const messages: Record<Locale, Messages> = {
           id: 3,
           slug: "hosting",
           title: "Hosting Web",
-          icon: "🔐",
+          icon: "hosting",
           description: "Infrastruttura ad Alte Prestazioni",
           introduction:
             "Il servizio di hosting di BLXK è progettato per la velocità e la sicurezza, superando i limiti delle risorse condivise.",
@@ -3900,7 +3900,7 @@ export const messages: Record<Locale, Messages> = {
           id: 4,
           slug: "marketing-digital",
           title: "Marketing Digitale",
-          icon: "📈",
+          icon: "marketing-digital",
           description: "Strategia Multicanale e Misurabile",
           introduction:
             "La strategia di marketing di BLXK è integrale, multicanale e focalizzata su metriche di business reali, non sulla vanità.",
@@ -3964,7 +3964,7 @@ export const messages: Record<Locale, Messages> = {
           title: "Pagine Web Professionali",
           subtitle: "Conversion Engineering + Performance 🔥",
           description: "Siti web ad alte prestazioni progettati per convertire e scalare il tuo business",
-          icon: "🌐",
+          icon: "paginas-web",
           features: [
             "Sviluppo con Next.js / React",
             "Architettura di Conversione (CRO)",
@@ -3991,7 +3991,7 @@ export const messages: Record<Locale, Messages> = {
           title: "Pagine Aziendali / Istituzionali",
           subtitle: "Livello Enterprise 🔥",
           description: "Presenza digitale professionale per aziende consolidate",
-          icon: "🏢",
+          icon: "corporativas",
           features: [
             "Manuale Corporativo Digitale",
             "Design Istituzionale con Branding",
@@ -4015,7 +4015,7 @@ export const messages: Record<Locale, Messages> = {
           title: "E-Commerce ad Alte Prestazioni",
           subtitle: "Vendite Automatizzate 🔥",
           description: "Piattaforma di vendita online ottimizzata per la massima conversione",
-          icon: "🛒",
+          icon: "ecommerce",
           features: [
             "Carrello Ottimizzato",
             "Recupero via Email + WhatsApp + Push",
@@ -4041,7 +4041,7 @@ export const messages: Record<Locale, Messages> = {
           title: "BLXK LMS",
           subtitle: "Piattaforme Educative Professionali 🔥",
           description: "Campus virtuale stile Udemy con tutti gli strumenti",
-          icon: "📚",
+          icon: "lms",
           features: [
             "Pannello Studenti + Istruttori",
             "Certificati Automatici",
@@ -4067,7 +4067,7 @@ export const messages: Record<Locale, Messages> = {
           title: "BLXK Automations",
           subtitle: "Automazione con IA e n8n 🔥",
           description: "Flussi di lavoro automatici intelligenti per la tua azienda",
-          icon: "⚙️",
+          icon: "automations",
           features: [
             "Bot WhatsApp con IA (GPT/Gemini)",
             "Workflow: Ordini, Pagamenti, Conferme",
@@ -4092,7 +4092,7 @@ export const messages: Record<Locale, Messages> = {
           title: "Homers",
           subtitle: "Soluzione Completa per Ristoranti 🔥",
           description: "Sistema completo per delivery e gestione ristoranti",
-          icon: "🍔",
+          icon: "homers",
           features: [
             "Sistema ordini multicanale",
             "Schermo Cucina (KDS) Professionale",
@@ -4116,7 +4116,7 @@ export const messages: Record<Locale, Messages> = {
           title: "TAS",
           subtitle: "Sistema Logistica e Trasporti 🔥",
           description: "Piattaforma completa per gestione consegne in outsourcing",
-          icon: "🚚",
+          icon: "tas",
           features: [
             "Sistema completo consegne",
             "Tracciamento in tempo reale",
@@ -4137,7 +4137,7 @@ export const messages: Record<Locale, Messages> = {
           title: "Rebrotal",
           subtitle: "Micro Logistica Intelligente 🔥",
           description: "Consegna locale istantanea con routing intelligente",
-          icon: "📦",
+          icon: "rebrotal",
           features: [
             "Consegna locale istantanea",
             "Routing intelligente",
@@ -4202,7 +4202,7 @@ export const messages: Record<Locale, Messages> = {
           title: "Software Personalizzato",
           subtitle: "ERP, CRM e SaaS 🚀",
           description: "Architettura software scalabile per automatizzare la tua azienda",
-          icon: "⚙️",
+          icon: "automations",
           features: [
             "Sistemi di Gestione (ERP) personalizzati",
             "CRM su misura per il tuo flusso di vendita",

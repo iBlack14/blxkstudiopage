@@ -4,6 +4,7 @@ import { useLanguage } from "@/components/layout/language-provider"
 
 import { useState, memo, useCallback, useRef } from "react"
 import { ChevronDown } from "lucide-react"
+import { getIconBySlugs } from "@/lib/service-icons"
 
 // Memoized service card component
 const ServiceCard = memo(function ServiceCard({
@@ -52,7 +53,12 @@ const ServiceCard = memo(function ServiceCard({
         {/* Header */}
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1">
-            <div className="text-3xl mb-2">{service.icon}</div>
+            <div className="mb-2">
+              {(() => {
+                const IconComponent = getIconBySlugs(service.slug)
+                return <IconComponent className="w-8 h-8 text-primary" strokeWidth={1.5} />
+              })()}
+            </div>
             <h3 className="text-lg font-bold text-foreground">{service.title}</h3>
             <p className="text-xs text-primary font-medium mt-1">{service.subtitle}</p>
           </div>

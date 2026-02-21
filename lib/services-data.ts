@@ -34,7 +34,7 @@ export const servicesData: ServiceDetail[] = [
     slug: "paginas-web",
     title: "Páginas Web Profesionales",
     subtitle: "Ingeniería de Conversión + Performance 🔥",
-    icon: "🌐",
+    icon: "paginas-web",
     shortDescription: "Sitios web de alto rendimiento diseñados para convertir y escalar tu negocio",
     fullDescription:
       "Creamos páginas web profesionales construidas con las últimas tecnologías (Next.js, React) optimizadas al máximo para conversión. Cada sitio es diseñado científicamente con investigación UX, arquitectura de conversión y Core Web Vitals garantizados. No usamos plantillas, cada proyecto es único y escalable.",
@@ -113,7 +113,7 @@ export const servicesData: ServiceDetail[] = [
     slug: "corporativas",
     title: "Páginas Corporativas / Institucionales",
     subtitle: "Nivel Empresarial 🔥",
-    icon: "🏢",
+    icon: "corporativas",
     shortDescription: "Presencia digital profesional para empresas consolidadas",
     fullDescription:
       "Creamos portales corporativos que comunican tu identidad empresarial con autoridad. Diseñadas para licitaciones, inversionistas y alianzas estratégicas. Incluye manual corporativo digital, secciones premium y un diseño institucional que transmite confianza.",
@@ -180,7 +180,7 @@ export const servicesData: ServiceDetail[] = [
     slug: "ecommerce",
     title: "E-commerce de Alto Rendimiento",
     subtitle: "Ventas Automatizadas 🔥",
-    icon: "🛒",
+    icon: "ecommerce",
     shortDescription: "Plataforma de venta online optimizada para máxima conversión",
     fullDescription:
       "Construimos tiendas online que venden. Carrito optimizado en 3 clics, recuperación de ventas perdidas, métodos de pago locales, integración logística automática y tracking en tiempo real. Sistema preparado para vender 24/7 sin intervención manual.",
@@ -249,7 +249,7 @@ export const servicesData: ServiceDetail[] = [
     slug: "lms",
     title: "BLXK LMS",
     subtitle: "Plataformas Educativas Profesionales 🔥",
-    icon: "📚",
+    icon: "lms",
     shortDescription: "Campus virtual estilo Udemy con todas las herramientas",
     fullDescription:
       "Plataforma educativa profesional para vender cursos online. Campus virtual completo con certificados automáticos, gamificación, clases en vivo, foros comunitarios y sistema de pagos local. Escalable para miles de estudiantes.",
@@ -319,7 +319,7 @@ export const servicesData: ServiceDetail[] = [
     slug: "automations",
     title: "BLXK Automations",
     subtitle: "Automatización con IA y n8n 🔥",
-    icon: "⚙️",
+    icon: "automations",
     shortDescription: "Workflows automáticos inteligentes para tu negocio",
     fullDescription:
       "Automatizamos procesos operativos críticos con IA integrada. Bots inteligentes por WhatsApp, workflows de pedidos, CRM automático, facturación, embudos de ventas y analítica avanzada. Ahorra 60-80% del tiempo operativo.",
@@ -387,7 +387,7 @@ export const servicesData: ServiceDetail[] = [
     slug: "homers",
     title: "Homers",
     subtitle: "Solución Completa para Restaurantes 🔥",
-    icon: "🍔",
+    icon: "homers",
     shortDescription: "Sistema integral para delivery y operación de restaurantes",
     fullDescription:
       "Plataforma integral para restaurantes y delivery. Sistema de pedidos multicanal, panel de cocina profesional (KDS), app para repartidores, gestión de zonas de entrega, integración WhatsApp y métodos de pago locales. Reportes automáticos.",
@@ -450,7 +450,7 @@ export const servicesData: ServiceDetail[] = [
     slug: "tas",
     title: "TAS",
     subtitle: "Sistema de Logística y Transporte 🔥",
-    icon: "🚚",
+    icon: "tas",
     shortDescription: "Plataforma completa para gestión de reparto tercerizado",
     fullDescription:
       "Sistema profesional para empresas de logística y transporte. Seguimiento en tiempo real, tarifas dinámicas por zona, panel del conductor, reportes de tiempos y modo empresa para flota propia. Integración con tiendas y plataformas.",
@@ -512,7 +512,7 @@ export const servicesData: ServiceDetail[] = [
     slug: "rebrotal",
     title: "Rebrotal",
     subtitle: "Micro Logística Inteligente 🔥",
-    icon: "📦",
+    icon: "rebrotal",
     shortDescription: "Delivery local instantáneo con ruteo inteligente",
     fullDescription:
       "Solución de micro logística para entregas rápidas en zonas urbanas. Ruteo inteligente, delivery instantáneo, integración con e-commerce y Homers. Notificaciones automáticas y panel administrativo optimizado.",

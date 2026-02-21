@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { useLanguage } from "@/components/layout/language-provider"
 import { CheckCircle2, TrendingUp, Users, Zap } from "lucide-react"
+import { getIconBySlugs } from "@/lib/service-icons"
 
 export function ServicesProposal({ isHomeVersion = false }) {
   const [expandedId, setExpandedId] = useState<number | null>(isHomeVersion ? null : 1)
@@ -48,7 +49,12 @@ export function ServicesProposal({ isHomeVersion = false }) {
                 <div className="neon-card-rotating p-4 sm:p-6 rounded-lg space-y-4 transition-all duration-300 min-w-0 overflow-x-clip">
                   {/* Header */}
                   <div className="flex items-start gap-3 sm:gap-4">
-                    <div className="text-3xl sm:text-4xl">{service.icon}</div>
+                    <div className="flex-shrink-0">
+                      {(() => {
+                        const IconComponent = getIconBySlugs(service.slug)
+                        return <IconComponent className="w-8 h-8 sm:w-10 sm:h-10 text-primary" strokeWidth={1.5} />
+                      })()}
+                    </div>
                     <div className="flex-1 min-w-0 space-y-1">
                       <h3 className="text-xl sm:text-2xl font-bold text-foreground leading-tight break-words">{service.title}</h3>
                       <p className="text-base sm:text-lg text-primary font-semibold leading-snug">{service.description}</p>
