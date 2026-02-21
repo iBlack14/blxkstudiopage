@@ -53,11 +53,13 @@ const ServiceCard = memo(function ServiceCard({
         {/* Header */}
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1">
-            <div className="mb-2">
-              {(() => {
-                const IconComponent = getIconBySlugs(service.slug)
-                return <IconComponent className="w-8 h-8 text-primary" strokeWidth={1.5} />
-              })()}
+            <div className="mb-3 flex items-center">
+              <div className="p-2 rounded-lg bg-primary/10 border border-primary/30">
+                {(() => {
+                  const IconComponent = getIconBySlugs(service.slug)
+                  return <IconComponent className="w-6 h-6 text-primary" strokeWidth={1.5} />
+                })()}
+              </div>
             </div>
             <h3 className="text-lg font-bold text-foreground">{service.title}</h3>
             <p className="text-xs text-primary font-medium mt-1">{service.subtitle}</p>

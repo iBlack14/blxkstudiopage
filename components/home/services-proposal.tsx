@@ -42,11 +42,13 @@ export function ServicesProposal({ isHomeVersion = false }) {
                 <div className="neon-card-rotating p-4 sm:p-6 rounded-lg space-y-4 transition-all duration-300 min-w-0 overflow-x-clip">
                   {/* Header */}
                   <div className="flex items-start gap-3 sm:gap-4">
-                    <div className="flex-shrink-0">
-                      {(() => {
-                        const IconComponent = getIconBySlugs(service.slug || `service-${service.id}`)
-                        return <IconComponent className="w-8 h-8 sm:w-10 sm:h-10 text-primary" strokeWidth={1.5} />
-                      })()}
+                    <div className="flex-shrink-0 flex items-center justify-center">
+                      <div className="p-2 sm:p-3 rounded-lg bg-primary/10 border border-primary/30">
+                        {(() => {
+                          const IconComponent = getIconBySlugs(service.slug || `service-${service.id}`)
+                          return <IconComponent className="w-6 h-6 sm:w-8 sm:h-8 text-primary" strokeWidth={1.5} />
+                        })()}
+                      </div>
                     </div>
                     <div className="flex-1 min-w-0 space-y-1">
                       <h3 className="text-xl sm:text-2xl font-bold text-foreground leading-tight break-words">{service.title}</h3>

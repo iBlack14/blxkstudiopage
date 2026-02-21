@@ -49,12 +49,14 @@ export default function ServicesPage() {
               return (
                 <Link key={service.id} href={`/servicios/${service.slug}`}>
                   <div className="neon-card-rotating p-4 md:p-6 rounded-lg h-full cursor-pointer group transition-all md:hover:scale-105 min-w-0 overflow-x-clip">
-                    <div className="mb-3 md:mb-4">
-                      {(() => {
-                        const slug = translated?.slug || service.slug
-                        const IconComponent = getIconBySlugs(slug)
-                        return <IconComponent className="w-10 h-10 md:w-12 md:h-12 text-primary" strokeWidth={1.5} />
-                      })()}
+                    <div className="mb-3 md:mb-4 flex items-center">
+                      <div className="p-3 md:p-4 rounded-lg bg-primary/10 border border-primary/30">
+                        {(() => {
+                          const slug = translated?.slug || service.slug
+                          const IconComponent = getIconBySlugs(slug)
+                          return <IconComponent className="w-8 h-8 md:w-10 md:h-10 text-primary" strokeWidth={1.5} />
+                        })()}
+                      </div>
                     </div>
                     <h3 className="text-lg md:text-2xl font-bold text-foreground mb-2 break-words">
                       {translated?.title || service.title}
