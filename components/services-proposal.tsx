@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import Link from "next/link"
 import { useLanguage } from "@/components/layout/language-provider"
 import { CheckCircle2, TrendingUp, Users, Zap } from "lucide-react"
 
@@ -157,11 +156,15 @@ export function ServicesProposal({ isHomeVersion = false }) {
                       </div>
 
                       {/* CTA */}
-                      <Link href="/contacto" className="block w-full">
-                        <button className="w-full mt-4 px-4 py-3 bg-primary/10 hover:bg-primary/20 text-primary text-sm sm:text-base font-semibold rounded-lg transition-colors">
-                          {m.services?.ctaMore || "Solicitar Más Información"}
-                        </button>
-                      </Link>
+                      <a
+                        href="https://wa.me/51953576234?text=Hola%20BLXK%20Studio,%20me%20interesa%20conocer%20mas%20sobre%20sus%20servicios"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="block w-full mt-4 px-4 py-3 bg-primary/10 hover:bg-primary/20 text-primary text-sm sm:text-base font-semibold rounded-lg transition-colors text-center"
+                      >
+                        {m.services?.ctaMore || "Solicitar Más Información"}
+                      </a>
                     </div>
                   )}
 

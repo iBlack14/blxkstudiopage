@@ -37,8 +37,16 @@ const ServiceCard = memo(function ServiceCard({
       className={`spotlight-card neon-card-rotating rounded-lg transition-all duration-300 ${isExpanded ? "ring-2 ring-primary" : ""
         }`}
     >
-      <button
+      <div
         onClick={onToggle}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault()
+            onToggle()
+          }
+        }}
+        role="button"
+        tabIndex={0}
         className="text-left w-full p-6 space-y-3 cursor-pointer h-full"
       >
         {/* Header */}
@@ -86,12 +94,18 @@ const ServiceCard = memo(function ServiceCard({
             </div>
 
             {/* CTA */}
-            <span className="block w-full mt-3 px-4 py-2 bg-primary/10 text-primary text-sm font-semibold rounded-lg text-center">
+            <a
+              href="https://wa.me/51953576234?text=Hola%20BLXK%20Studio,%20me%20interesa%20conocer%20mas%20sobre%20sus%20servicios"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="block w-full mt-3 px-4 py-2 bg-primary/10 text-primary text-sm font-semibold rounded-lg text-center hover:bg-primary/20 transition-colors"
+            >
               {cta}
-            </span>
+            </a>
           </div>
         )}
-      </button>
+      </div>
     </div>
   )
 })
