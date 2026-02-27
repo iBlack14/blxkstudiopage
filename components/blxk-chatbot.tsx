@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useRef, useEffect, memo, useCallback } from "react"
-import { X, Send, Trash2 } from "lucide-react"
+import { X, Send, Trash2, Bot } from "lucide-react"
 import Image from "next/image"
 import { useTheme } from "@/hooks/use-theme"
 import { useChatHistory } from "@/hooks/use-chat-history"
@@ -191,7 +191,10 @@ function BlxkChatbotComponent() {
                 }`}
             >
               <div>
-                <h3 className="text-white font-bold text-lg">BLXK Assistant</h3>
+                <h3 className="text-white font-bold text-lg flex items-center gap-2">
+                  <Bot className="w-5 h-5 text-white" />
+                  BLXK Assistant
+                </h3>
                 <p className="text-white/80 text-sm">Información y soporte</p>
               </div>
               <div className="flex gap-2 flex-shrink-0">
