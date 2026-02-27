@@ -116,6 +116,17 @@ const PLUGINS = [
         tags: ["Multilenguaje", "Estable", "SEO", "Producción"],
         file: "Polylang Pro v3.7.6.zip",
     },
+    {
+        id: 11,
+        name: "WP Rocket",
+        version: "v3.20.4",
+        description: "El plugin de caché y rendimiento #1 de WordPress. Mejora la velocidad, Core Web Vitals y PageSpeed Score con un solo clic.",
+        category: "Performance",
+        cover: "/plugins/covers/wp-rocket.png",
+        size: "—",
+        tags: ["Caché", "PageSpeed", "Core Web Vitals", "Minificación"],
+        file: "wp-rocket_v3.20.4.zip",
+    },
 ]
 
 // ─── Componente principal ────────────────────────────────────────────────────

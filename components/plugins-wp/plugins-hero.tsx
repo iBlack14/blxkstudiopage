@@ -38,7 +38,7 @@ export function PluginsHero() {
                     {/* Stats row */}
                     <div className="flex flex-wrap justify-center gap-8 pt-4">
                         {[
-                            { label: "Plugins Disponibles", value: "10+" },
+                            { label: "Plugins Disponibles", value: "11+" },
                             { label: "Descarga Directa", value: "100%" },
                             { label: "Compatibilidad", value: "WP 6.x" },
                         ].map((stat) => (
