@@ -33,6 +33,30 @@ const ProductsShowcase = dynamic(
   }
 )
 
+const homeJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://blxkstudio.com/#webpage",
+  name: "BLXK Studio | Desarrollo Web, IA y Automatización",
+  url: "https://blxkstudio.com",
+  description:
+    "Desarrollo web, inteligencia artificial y automatización para empresas con foco en resultados.",
+  isPartOf: {
+    "@id": "https://blxkstudio.com/#website",
+  },
+  about: {
+    "@id": "https://blxkstudio.com/#organization",
+  },
+  mainEntity: {
+    "@type": "ItemList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Desarrollo Web", url: "https://blxkstudio.com/servicios" },
+      { "@type": "ListItem", position: 2, name: "Automatización e IA", url: "https://blxkstudio.com/servicios" },
+      { "@type": "ListItem", position: 3, name: "Proyectos", url: "https://blxkstudio.com/projects" },
+    ],
+  },
+}
+
 
 // Lightweight skeleton for services section
 function ServicesSkeleton() {
@@ -75,6 +99,11 @@ export default function Home() {
       <Suspense fallback={<div className="py-20 animate-pulse bg-muted/10" />}>
         <ProductsShowcase />
       </Suspense>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd) }}
+      />
     </main>
   )
 }

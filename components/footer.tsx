@@ -25,8 +25,8 @@ const SOCIAL_LINKS = [
   },
   {
     name: "GitHub",
-    url: "https://github.com/Darksea030",
-    label: "Darksea030",
+    url: "https://github.com/iBlack14",
+    label: "iBlack14",
   },
   {
     name: "Instagram",

@@ -153,6 +153,19 @@ const ABOUT_COPY: Record<Locale, AboutCopy> = {
   },
 }
 
+const aboutJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "@id": "https://blxkstudio.com/nosotros#about",
+  name: "Nosotros | BLXK Studio",
+  url: "https://blxkstudio.com/nosotros",
+  description:
+    "Conoce al equipo de BLXK Studio y su enfoque en desarrollo web, automatización e IA aplicada.",
+  about: {
+    "@id": "https://blxkstudio.com/#organization",
+  },
+}
+
 export default function NosotrosPage() {
   const { locale } = useLanguage()
   const copy = ABOUT_COPY[locale]
@@ -262,6 +275,11 @@ export default function NosotrosPage() {
           </div>
         </div>
       </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutJsonLd) }}
+      />
     </main>
   )
 }

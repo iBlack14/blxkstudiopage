@@ -1,6 +1,8 @@
+import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { Navigation } from "@/components/layout/navigation";
 import { ContactSkeleton } from "@/components/skeletons/contact-skeleton";
+import { buildPageMetadata } from "@/lib/seo";
 
 const Contact = dynamic(() => import("@/components/contact").then(m => ({ default: m.Contact })), {
   loading: () => <ContactSkeleton />,
@@ -10,10 +12,17 @@ const FloatingThemeToggle = dynamic(() => import("@/components/layout/theme-togg
   loading: () => null,
 })
 
-export const metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Contacto | BLXK Studio",
-  description: "Ponte en contacto con nosotros. Estamos listos para transformar tu negocio.",
-};
+  description: "Habla con BLXK Studio y cotiza tu proyecto de desarrollo web, automatización o inteligencia artificial.",
+  path: "/contacto",
+  keywords: [
+    "contacto blxk studio",
+    "cotizar desarrollo web",
+    "consultoría automatización",
+    "agencia ia",
+  ],
+});
 
 export default function ContactoPage() {
   return (

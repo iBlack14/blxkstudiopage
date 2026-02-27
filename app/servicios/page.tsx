@@ -18,6 +18,35 @@ const Contact = dynamic(() => import("@/components/contact").then((m) => ({ defa
   loading: () => null,
 })
 
+const servicesJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": "https://blxkstudio.com/servicios#collection",
+  name: "Servicios de BLXK Studio",
+  url: "https://blxkstudio.com/servicios",
+  description:
+    "Catálogo de servicios de desarrollo web, automatización e inteligencia artificial para empresas.",
+  mainEntity: {
+    "@type": "ItemList",
+    itemListElement: servicesData.map((service, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: `https://blxkstudio.com/servicios/${service.slug}`,
+      item: {
+        "@type": "Service",
+        name: service.title,
+        description: service.shortDescription,
+        serviceType: service.subtitle,
+        provider: {
+          "@type": "Organization",
+          name: "BLXK Studio",
+          url: "https://blxkstudio.com",
+        },
+      },
+    })),
+  },
+}
+
 export default function ServicesPage() {
   const { m } = useLanguage()
   const translatedServices = m.servicesDetailed.list
@@ -106,6 +135,11 @@ export default function ServicesPage() {
       <Suspense fallback={null}>
         <Contact />
       </Suspense>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd) }}
+      />
     </main>
   )
 }

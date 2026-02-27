@@ -4,102 +4,96 @@ import dynamic from "next/dynamic"
 import { Navigation } from "@/components/layout/navigation"
 import { PluginsHero } from "@/components/plugins-wp/plugins-hero"
 import { PluginsShowcase } from "@/components/plugins-wp/plugins-showcase"
+import { SITE_URL, buildPageMetadata } from "@/lib/seo"
 
 const Contact = dynamic(
     () => import("@/components/contact").then((m) => ({ default: m.Contact })),
     { loading: () => null, ssr: true }
 )
 
-export const metadata: Metadata = {
-    title: "Plugins WP | BLXK Studio",
+export const metadata: Metadata = buildPageMetadata({
+    title: "Plugins WordPress y WooCommerce | BLXK Studio",
     description:
-        "Plugins premium para WordPress y WooCommerce desarrollados por BLXK Studio: gateway de pagos WhatsApp, automatización de ventas, administración avanzada y más.",
-    keywords:
-        "plugins wordpress, woocommerce plugin, whatsapp payment wordpress, blxk studio plugins, automatización wordpress, woocommerce gateway",
-    authors: [{ name: "BLXK Studio" }],
-    creator: "BLXK Studio",
-    publisher: "BLXK Studio",
-    openGraph: {
-        type: "website",
-        locale: "es_ES",
-        url: "https://blxkstudio.com/plugins-wp",
-        title: "Plugins WP | BLXK Studio",
-        description:
-            "Plugins WordPress y WooCommerce premium para automatizar y potenciar tu negocio.",
-        siteName: "BLXK Studio",
-        images: ["/opengraph-image"],
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: "Plugins WP | BLXK Studio",
-        description: "Plugins WordPress premium: pagos WhatsApp, automatización y más.",
-        images: ["/twitter-image"],
-    },
-    alternates: {
-        canonical: "https://blxkstudio.com/plugins-wp",
-    },
-    robots: {
-        index: true,
-        follow: true,
-        googleBot: {
-            index: true,
-            follow: true,
-            "max-video-preview": -1,
-            "max-image-preview": "large",
-            "max-snippet": -1,
-        },
-    },
-}
+        "Plugins premium para WordPress y WooCommerce: pagos por WhatsApp, automatización comercial y mejoras administrativas para escalar ventas.",
+    path: "/plugins-wp",
+    keywords: [
+        "plugins wordpress premium",
+        "plugins woocommerce",
+        "pago por whatsapp woocommerce",
+        "automatización wordpress",
+        "plugins blxk studio",
+    ],
+})
 
 const pluginsJsonLd = {
     "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "@id": "https://blxkstudio.com/plugins-wp#collection",
-    name: "Plugins WordPress de BLXK Studio",
-    url: "https://blxkstudio.com/plugins-wp",
-    description:
-        "Plugins premium para WordPress y WooCommerce desarrollados por BLXK Studio",
-    hasPart: {
-        "@type": "ItemList",
-        itemListElement: [
-            {
-                "@type": "ListItem",
-                position: 1,
-                item: {
-                    "@type": "SoftwareApplication",
-                    name: "Black WhatsApp Payment",
-                    applicationCategory: "BusinessApplication",
-                    operatingSystem: "WordPress",
-                    description: "Gateway de pagos vía WhatsApp para WooCommerce",
-                    url: "https://blxkstudio.com/plugins-wp",
+    "@graph": [
+        {
+            "@type": "CollectionPage",
+            "@id": `${SITE_URL}/plugins-wp#collection`,
+            name: "Plugins WordPress de BLXK Studio",
+            url: `${SITE_URL}/plugins-wp`,
+            description:
+                "Plugins premium para WordPress y WooCommerce desarrollados por BLXK Studio",
+            isPartOf: { "@id": `${SITE_URL}/#website` },
+            about: { "@id": `${SITE_URL}/#organization` },
+        },
+        {
+            "@type": "BreadcrumbList",
+            itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Inicio", item: SITE_URL },
+                { "@type": "ListItem", position: 2, name: "Plugins WP", item: `${SITE_URL}/plugins-wp` },
+            ],
+        },
+        {
+            "@type": "ItemList",
+            "@id": `${SITE_URL}/plugins-wp#plugins`,
+            itemListElement: [
+                {
+                    "@type": "ListItem",
+                    position: 1,
+                    item: {
+                        "@type": "SoftwareApplication",
+                        name: "Black WhatsApp Payment",
+                        applicationCategory: "BusinessApplication",
+                        operatingSystem: "WordPress",
+                        description: "Gateway de pagos via WhatsApp para WooCommerce",
+                        url: `${SITE_URL}/plugins-wp`,
+                        creator: {
+                            "@type": "Organization",
+                            name: "BLXK Studio",
+                            url: SITE_URL,
+                            sameAs: "https://github.com/iBlack14",
+                        },
+                    },
                 },
-            },
-            {
-                "@type": "ListItem",
-                position: 2,
-                item: {
-                    "@type": "SoftwareApplication",
-                    name: "BLXK Woo Automator",
-                    applicationCategory: "BusinessApplication",
-                    operatingSystem: "WordPress",
-                    description: "Automatización de ventas y CRM para WooCommerce",
-                    url: "https://blxkstudio.com/plugins-wp",
+                {
+                    "@type": "ListItem",
+                    position: 2,
+                    item: {
+                        "@type": "SoftwareApplication",
+                        name: "BLXK Woo Automator",
+                        applicationCategory: "BusinessApplication",
+                        operatingSystem: "WordPress",
+                        description: "Automatizacion de ventas y CRM para WooCommerce",
+                        url: `${SITE_URL}/plugins-wp`,
+                    },
                 },
-            },
-            {
-                "@type": "ListItem",
-                position: 3,
-                item: {
-                    "@type": "SoftwareApplication",
-                    name: "BLXK Admin Enhancer",
-                    applicationCategory: "BusinessApplication",
-                    operatingSystem: "WordPress",
-                    description: "Panel administrativo mejorado para WordPress",
-                    url: "https://blxkstudio.com/plugins-wp",
+                {
+                    "@type": "ListItem",
+                    position: 3,
+                    item: {
+                        "@type": "SoftwareApplication",
+                        name: "BLXK Admin Enhancer",
+                        applicationCategory: "BusinessApplication",
+                        operatingSystem: "WordPress",
+                        description: "Panel administrativo mejorado para WordPress",
+                        url: `${SITE_URL}/plugins-wp`,
+                    },
                 },
-            },
-        ],
-    },
+            ],
+        },
+    ],
 }
 
 export default function PluginsWPPage() {

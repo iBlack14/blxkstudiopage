@@ -1,7 +1,14 @@
 import { MetadataRoute } from 'next'
+import { servicesData } from "@/lib/services-data"
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://blxkstudio.com'
+  const serviceUrls: MetadataRoute.Sitemap = servicesData.map((service) => ({
+    url: `${baseUrl}/servicios/${service.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.85,
+  }))
 
   return [
     {
@@ -35,6 +42,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/plugins-wp`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/contacto`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
@@ -52,5 +65,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
       priority: 0.5,
     },
+    ...serviceUrls,
   ]
 }

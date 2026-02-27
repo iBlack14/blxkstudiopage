@@ -1,6 +1,8 @@
+import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { Navigation } from "@/components/layout/navigation";
 import { TechStackSkeleton } from "@/components/skeletons/tech-stack-skeleton";
+import { buildPageMetadata } from "@/lib/seo";
 
 const TechStack = dynamic(() => import("@/components/tech-stack").then(m => ({ default: m.TechStack })), {
   loading: () => <TechStackSkeleton />,
@@ -10,10 +12,17 @@ const FloatingThemeToggle = dynamic(() => import("@/components/layout/theme-togg
   loading: () => null,
 })
 
-export const metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Stack Tecnológico | BLXK Studio",
-  description: "Descubre nuestro stack tecnológico y herramientas de vanguardia para soluciones de clase mundial.",
-};
+  description: "Tecnologías que usa BLXK Studio: Next.js, React, Node.js, IA, automatización y herramientas modernas para productos escalables.",
+  path: "/stack",
+  keywords: [
+    "stack tecnológico",
+    "next.js react node.js",
+    "herramientas ia",
+    "tecnologías blxk studio",
+  ],
+});
 
 export default function StackPage() {
   return (

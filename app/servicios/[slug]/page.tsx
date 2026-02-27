@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { Suspense } from "react"
 import dynamic from "next/dynamic"
 import { servicesData } from "@/lib/services-data"
@@ -7,6 +8,7 @@ import Link from "next/link"
 import { ArrowLeft, Check } from "lucide-react"
 import { notFound } from "next/navigation"
 import { ServiceIcon } from "@/components/services-icons"
+import { SITE_URL, buildPageMetadata } from "@/lib/seo"
 
 const Contact = dynamic(() => import("@/components/contact").then(m => ({ default: m.Contact })), {
   loading: () => null,
@@ -18,11 +20,80 @@ export function generateStaticParams() {
   }))
 }
 
+export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
+  const service = servicesData.find((item) => item.slug === params.slug)
+
+  if (!service) {
+    return buildPageMetadata({
+      title: "Servicio | BLXK Studio",
+      description: "Conoce nuestros servicios de desarrollo web, IA y automatización.",
+      path: "/servicios",
+    })
+  }
+
+  return buildPageMetadata({
+    title: `${service.title} | BLXK Studio`,
+    description: service.shortDescription,
+    path: `/servicios/${service.slug}`,
+    keywords: [
+      service.title,
+      service.subtitle,
+      "servicios blxk studio",
+      "desarrollo web",
+      "automatización empresarial",
+    ],
+  })
+}
+
 export default function ServiceDetailPage({ params }: { params: { slug: string } }) {
   const service = servicesData.find((s) => s.slug === params.slug)
 
   if (!service) {
     notFound()
+  }
+
+  const serviceJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "@id": `${SITE_URL}/servicios/${service.slug}#service`,
+        name: service.title,
+        serviceType: service.subtitle,
+        description: service.fullDescription,
+        url: `${SITE_URL}/servicios/${service.slug}`,
+        provider: {
+          "@type": "Organization",
+          "@id": `${SITE_URL}/#organization`,
+          name: "BLXK Studio",
+          url: SITE_URL,
+        },
+        areaServed: ["PE", "MX", "CO", "CL", "AR"],
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Inicio",
+            item: SITE_URL,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Servicios",
+            item: `${SITE_URL}/servicios`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: service.title,
+            item: `${SITE_URL}/servicios/${service.slug}`,
+          },
+        ],
+      },
+    ],
   }
 
   return (
@@ -208,6 +279,11 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
       <Suspense fallback={null}>
         <Contact />
       </Suspense>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+      />
     </main>
   )
 }
