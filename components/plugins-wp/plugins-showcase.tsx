@@ -160,7 +160,7 @@ export function PluginsShowcase() {
                         {PLUGINS.map((plugin) => (
                             <div
                                 key={plugin.id}
-                                className="group relative flex flex-col rounded-2xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-md transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10"
+                                className="group relative flex flex-col rounded-2xl overflow-hidden border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 backdrop-blur-md transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10"
                             >
                                 {/* ── Cover image ── */}
                                 <div className="relative h-[140px] overflow-hidden">
@@ -188,7 +188,7 @@ export function PluginsShowcase() {
                                 {/* ── Content ── */}
                                 <div className="flex flex-col flex-1 p-4 space-y-3">
                                     {/* Name */}
-                                    <h3 className="font-bold text-[15px] text-white leading-tight group-hover:text-primary transition-colors">
+                                    <h3 className="font-bold text-[15px] text-foreground leading-tight group-hover:text-primary transition-colors">
                                         {plugin.name}
                                     </h3>
 
@@ -202,7 +202,7 @@ export function PluginsShowcase() {
                                         {plugin.tags.map((tag) => (
                                             <span
                                                 key={tag}
-                                                className="px-1.5 py-0.5 text-[9px] font-medium bg-white/5 text-gray-400 rounded border border-white/8 leading-none"
+                                                className="px-1.5 py-0.5 text-[9px] font-medium bg-black/5 dark:bg-white/5 text-gray-500 dark:text-gray-400 rounded border border-black/10 dark:border-white/10 leading-none"
                                             >
                                                 {tag}
                                             </span>
@@ -210,7 +210,7 @@ export function PluginsShowcase() {
                                     </div>
 
                                     {/* Size + Stars */}
-                                    <div className="flex items-center justify-between text-[11px] text-muted-foreground pt-1 border-t border-white/5">
+                                    <div className="flex items-center justify-between text-[11px] text-muted-foreground pt-1 border-t border-black/10 dark:border-white/5">
                                         <span className="font-mono">{plugin.size}</span>
                                         <div className="flex gap-0.5">
                                             {[...Array(5)].map((_, i) => (
