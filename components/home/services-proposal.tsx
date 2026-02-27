@@ -2,11 +2,21 @@
 
 import { useState } from "react"
 import { useLanguage } from "@/components/layout/language-provider"
-import { CheckCircle2, TrendingUp, Users, Zap } from "lucide-react"
+import {
+  BarChart3,
+  CheckCircle2,
+  Scale,
+  Sparkles,
+  Target,
+  TrendingUp,
+  Users,
+  Zap
+} from "lucide-react"
+import { ServiceIcon } from "@/components/services-icons"
 
 export function ServicesProposal({ isHomeVersion = false }) {
   const { m } = useLanguage()
-  const [expandedId, setExpandedId] = useState<number | null>(isHomeVersion ? null : 1)
+  const [expandedId, setExpandedId] = useState<number | null>(null)
   const [activeTab, setActiveTab] = useState<string>("overview")
 
   const displayServices = isHomeVersion ? m.services.list.slice(0, 2) : m.services.list
@@ -36,19 +46,21 @@ export function ServicesProposal({ isHomeVersion = false }) {
               <div
                 key={service.id}
                 onClick={() => toggleExpand(service.id)}
-                className="cursor-pointer min-w-0"
+                className="cursor-pointer min-w-0 h-full"
               >
-                <div className="neon-card-rotating p-4 sm:p-6 rounded-lg space-y-4 transition-all duration-300 min-w-0 overflow-x-clip">
+                <div className="neon-card-rotating p-4 sm:p-6 rounded-lg space-y-4 transition-all duration-300 min-w-0 overflow-x-clip h-full flex flex-col border border-primary/20 bg-card/75 backdrop-blur-sm">
                   {/* Header */}
                   <div className="flex items-start gap-3 sm:gap-4">
-                    <div className="text-3xl sm:text-4xl">{service.icon}</div>
+                    <div className="inline-flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-lg border border-primary/25 bg-primary/10 text-primary shadow-sm">
+                      <ServiceIcon serviceId={service.id} className="h-5 w-5 sm:h-[22px] sm:w-[22px]" />
+                    </div>
                     <div className="flex-1 min-w-0 space-y-1">
-                      <h3 className="text-xl sm:text-2xl font-bold text-foreground leading-tight break-words">{service.title}</h3>
-                      <p className="text-base sm:text-lg text-primary font-semibold leading-snug">{service.description}</p>
+                      <h3 className="text-lg sm:text-xl font-bold text-foreground leading-tight break-words">{service.title}</h3>
+                      <p className="text-sm sm:text-base text-primary font-semibold leading-snug">{service.description}</p>
                     </div>
                   </div>
 
-                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{service.introduction}</p>
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed line-clamp-4">{service.introduction}</p>
 
                   {/* Expandable Content */}
                   {expandedId === service.id && (
@@ -57,10 +69,10 @@ export function ServicesProposal({ isHomeVersion = false }) {
                       <div className="space-y-4">
                         <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap pb-2">
                           {[
-                            { id: "overview", label: m.services.tabs.overview, icon: "📋" },
-                            { id: "comparison", label: m.services.tabs.comparison, icon: "⚖️" },
-                            { id: "advantages", label: m.services.tabs.advantages, icon: "⭐" },
-                            { id: "usecases", label: m.services.tabs.usecases, icon: "🎯" },
+                            { id: "overview", label: m.services.tabs.overview, Icon: BarChart3 },
+                            { id: "comparison", label: m.services.tabs.comparison, Icon: Scale },
+                            { id: "advantages", label: m.services.tabs.advantages, Icon: Sparkles },
+                            { id: "usecases", label: m.services.tabs.usecases, Icon: Target },
                           ].map((tab) => (
                             <button
                               key={tab.id}
@@ -73,7 +85,8 @@ export function ServicesProposal({ isHomeVersion = false }) {
                                 : "bg-primary/10 text-primary hover:bg-primary/20"
                                 }`}
                             >
-                              {tab.icon} {tab.label}
+                              <tab.Icon className="w-3.5 h-3.5 mr-1.5" />
+                              {tab.label}
                             </button>
                           ))}
                         </div>
@@ -163,7 +176,7 @@ export function ServicesProposal({ isHomeVersion = false }) {
 
                   {/* Collapse indicator */}
                   {expandedId !== service.id && (
-                    <div className="flex items-center gap-2 text-primary text-sm font-semibold pt-2">
+                    <div className="flex items-center gap-2 text-primary text-sm font-semibold pt-2 mt-auto">
                       <Zap className="w-4 h-4" />
                       {m.services.labels.clickDetails}
                     </div>

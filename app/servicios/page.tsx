@@ -8,6 +8,7 @@ import { servicesData } from "@/lib/services-data"
 import { Navigation } from "@/components/layout/navigation"
 import { ServicesProposal } from "@/components/home/services-proposal"
 import { useLanguage } from "@/components/layout/language-provider"
+import { ServiceIcon, servicesTrustItems } from "@/components/services-icons"
 
 const FloatingThemeToggle = dynamic(
   () => import("@/components/layout/theme-toggle").then((m) => ({ default: m.FloatingThemeToggle })),
@@ -47,8 +48,10 @@ export default function ServicesPage() {
               const translated = translatedServices.find((item) => item.id === service.id)
               return (
                 <Link key={service.id} href={`/servicios/${service.slug}`}>
-                  <div className="neon-card-rotating p-4 md:p-6 rounded-lg h-full cursor-pointer group transition-all md:hover:scale-105 min-w-0 overflow-x-clip">
-                    <div className="text-4xl md:text-5xl mb-3 md:mb-4">{translated?.icon || service.icon}</div>
+                  <div className="neon-card-rotating p-4 md:p-6 rounded-lg h-full cursor-pointer group transition-all md:hover:scale-[1.02] min-w-0 overflow-x-clip border border-primary/20 bg-card/75 backdrop-blur-sm">
+                    <div className="mb-3 md:mb-4 inline-flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-lg border border-primary/25 bg-primary/10 text-primary shadow-sm">
+                      <ServiceIcon serviceId={service.id} className="h-6 w-6 md:h-7 md:w-7" />
+                    </div>
                     <h3 className="text-lg md:text-2xl font-bold text-foreground mb-2 break-words">
                       {translated?.title || service.title}
                     </h3>
@@ -81,23 +84,20 @@ export default function ServicesPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mt-8 md:mt-12">
-              {[
-                { icon: "⚡", title: "Performance", desc: "Core Web Vitals 90+" },
-                { icon: "🎯", title: "ROI", desc: "Enfoque en resultados de negocio" },
-                { icon: "🔒", title: "Security", desc: "Infraestructura enterprise-grade" },
-                { icon: "📈", title: "Scale", desc: "Arquitectura lista para crecer" },
-                { icon: "🤝", title: "Support", desc: "Acompanamiento continuo" },
-                { icon: "🎨", title: "UX/UI", desc: "Diseno premium y usable" },
-              ].map((item, idx) => (
+              {servicesTrustItems.map((item, idx) => {
+                const Icon = item.icon
+                return (
                 <div
                   key={idx}
-                  className="space-y-2 md:space-y-3 p-4 md:p-6 rounded-lg border border-primary/20 bg-primary/5"
+                  className="space-y-2 md:space-y-3 p-4 md:p-6 rounded-lg border border-primary/20 bg-primary/5 hover:bg-primary/10 transition-colors"
                 >
-                  <div className="text-3xl md:text-4xl">{item.icon}</div>
+                  <div className="inline-flex h-10 w-10 md:h-11 md:w-11 items-center justify-center rounded-lg border border-primary/25 bg-background/70 text-primary">
+                    <Icon className="h-5 w-5 md:h-6 md:w-6" />
+                  </div>
                   <h4 className="text-base md:text-lg font-bold text-foreground">{item.title}</h4>
                   <p className="text-xs md:text-sm text-muted-foreground">{item.desc}</p>
                 </div>
-              ))}
+              )})}
             </div>
           </div>
         </div>

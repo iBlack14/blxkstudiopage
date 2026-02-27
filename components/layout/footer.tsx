@@ -60,6 +60,7 @@ function FooterComponent() {
     { name: m.footer.home, href: "/" },
     { name: m.footer.services, href: "/servicios" },
     { name: m.footer.projects, href: "/projects" },
+    { name: m.footer.pluginsWp, href: "/plugins-wp" },
     { name: m.footer.stack, href: "/stack" },
   ]
   const legalLinks = [

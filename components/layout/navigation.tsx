@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Home, Info, Briefcase, Code, FolderOpen, Mail } from "lucide-react"
+import { Home, Info, Briefcase, Code, FolderOpen, Mail, Puzzle } from "lucide-react"
 import { useLanguage } from "@/components/layout/language-provider"
 
 // Lazy load modal only when needed
@@ -20,6 +20,7 @@ const NAV_ITEMS = [
   { labelKey: "services", href: "/servicios", icon: Briefcase, id: "services" },
   { labelKey: "stack", href: "/stack", icon: Code, id: "tech" },
   { labelKey: "portfolio", href: "/projects", icon: FolderOpen, id: "portfolio" },
+  { labelKey: "pluginsWp", href: "/plugins-wp", icon: Puzzle, id: "plugins" },
   { labelKey: "contact", href: "/contacto", icon: Mail, id: "contact" },
 ] as const
 
@@ -32,6 +33,7 @@ const ROUTE_TO_SECTION: Record<string, string> = {
   "/stack": "tech",
   "/projects": "portfolio",
   "/portfolio": "portfolio",
+  "/plugins-wp": "plugins",
   "/contacto": "contact",
 }
 

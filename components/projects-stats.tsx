@@ -12,21 +12,30 @@ import {
   PieChart,
   Pie,
   Cell,
+  Legend,
 } from "recharts"
 import { Card } from "@/components/ui/card"
 import { TrendingUp, Users, Zap, Target } from "lucide-react"
 
 export function ProjectsStats() {
   const [mounted, setMounted] = useState(false)
+  const chartColors = {
+    adoption: "#0ea5e9",
+    clients: "#22c55e",
+    ecommerce: "#0ea5e9",
+    automation: "#22c55e",
+    dashboard: "#f59e0b",
+    grid: "#94a3b8",
+  }
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
   const impactData = [
-    { name: "E-commerce", value: 45, fill: "hsl(var(--primary))" },
-    { name: "Automatización", value: 30, fill: "hsl(var(--accent))" },
-    { name: "Dashboard", value: 25, fill: "hsl(0 0% 45%)" },
+    { name: "E-commerce", value: 45, fill: chartColors.ecommerce },
+    { name: "Automatización", value: 30, fill: chartColors.automation },
+    { name: "Dashboard", value: 25, fill: chartColors.dashboard },
   ]
 
   const growthData = [
@@ -107,13 +116,25 @@ export function ProjectsStats() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
             {/* Growth Chart */}
-            <Card className="neon-card-rotating p-4 md:p-8 overflow-hidden bg-card/50 backdrop-blur-sm">
-              <h3 className="text-lg md:text-xl font-bold mb-6 text-foreground border-l-4 border-primary pl-3">
+            <Card className="neon-card-rotating p-5 md:p-8 overflow-hidden border border-primary/20 bg-card/70 backdrop-blur-sm">
+              <div className="mb-6 flex items-center justify-between gap-3">
+                <h3 className="text-lg md:text-xl font-bold text-foreground border-l-4 border-primary pl-3">
                 Crecimiento de Adopción
-              </h3>
+                </h3>
+                <div className="hidden sm:flex items-center gap-2 text-xs text-muted-foreground">
+                  <span className="inline-flex items-center gap-1.5">
+                    <span className="h-2 w-2 rounded-full" style={{ backgroundColor: chartColors.adoption }} />
+                    Adopción
+                  </span>
+                  <span className="inline-flex items-center gap-1.5">
+                    <span className="h-2 w-2 rounded-full" style={{ backgroundColor: chartColors.clients }} />
+                    Clientes
+                  </span>
+                </div>
+              </div>
               <div className="w-full h-[300px]">
                 <ResponsiveContainer width="100%" height="100%">
-                  <LineChart data={growthData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                  <LineChart data={growthData} margin={{ top: 10, right: 16, left: -20, bottom: 0 }}>
                     <defs>
                       <linearGradient id="colorAdopcion" x1="0" y1="0" x2="0" y2="1">
                         <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.3} />
@@ -124,53 +145,54 @@ export function ProjectsStats() {
                         <stop offset="95%" stopColor="hsl(var(--accent))" stopOpacity={0} />
                       </linearGradient>
                     </defs>
-                    <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} opacity={0.5} />
+                    <CartesianGrid strokeDasharray="4 4" stroke={chartColors.grid} vertical={false} opacity={0.25} />
                     <XAxis
                       dataKey="month"
-                      stroke="hsl(var(--muted-foreground))"
+                      stroke="#64748b"
                       tick={{ fontSize: 12 }}
                       tickLine={false}
                       axisLine={false}
                       dy={10}
                     />
                     <YAxis
-                      stroke="hsl(var(--muted-foreground))"
+                      stroke="#64748b"
                       tick={{ fontSize: 12 }}
                       tickLine={false}
                       axisLine={false}
                     />
                     <Tooltip
+                      labelStyle={{ color: "#0f172a", fontWeight: 600 }}
                       contentStyle={{
-                        backgroundColor: "hsl(var(--card))",
-                        borderColor: "hsl(var(--primary)/0.3)",
-                        borderRadius: "8px",
-                        boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-                        fontSize: 12,
+                        backgroundColor: "rgba(255,255,255,0.96)",
+                        borderColor: "#bae6fd",
+                        borderRadius: "10px",
+                        boxShadow: "0 10px 24px rgba(2, 132, 199, 0.18)",
+                        fontSize: 12
                       }}
-                      itemStyle={{ color: "hsl(var(--foreground))" }}
+                      itemStyle={{ color: "#0f172a" }}
                     />
                     <Line
                       type="monotone"
                       dataKey="adopción"
-                      stroke="hsl(var(--primary))"
+                      stroke={chartColors.adoption}
                       strokeWidth={3}
-                      dot={{ fill: "hsl(var(--background))", stroke: "hsl(var(--primary))", strokeWidth: 2, r: 4 }}
-                      activeDot={{ r: 6, strokeWidth: 0 }}
+                      dot={false}
+                      activeDot={{ r: 5, fill: chartColors.adoption, stroke: "#ffffff", strokeWidth: 2 }}
                     />
                     <Line
                       type="monotone"
                       dataKey="clientes"
-                      stroke="hsl(var(--accent))"
+                      stroke={chartColors.clients}
                       strokeWidth={3}
-                      dot={{ fill: "hsl(var(--background))", stroke: "hsl(var(--accent))", strokeWidth: 2, r: 4 }}
-                      activeDot={{ r: 6, strokeWidth: 0 }}
+                      dot={false}
+                      activeDot={{ r: 5, fill: chartColors.clients, stroke: "#ffffff", strokeWidth: 2 }}
                     />
                   </LineChart>
                 </ResponsiveContainer>
               </div>
             </Card>
 
-            <Card className="neon-card-rotating p-4 md:p-8 flex flex-col bg-card/50 backdrop-blur-sm">
+            <Card className="neon-card-rotating p-5 md:p-8 flex flex-col border border-primary/20 bg-card/70 backdrop-blur-sm">
               <h3 className="text-lg md:text-xl font-bold mb-6 text-foreground border-l-4 border-accent pl-3">
                 Distribución de Proyectos
               </h3>
@@ -181,24 +203,35 @@ export function ProjectsStats() {
                       data={impactData}
                       cx="50%"
                       cy="50%"
-                      innerRadius={60}
-                      outerRadius={100}
-                      paddingAngle={5}
+                      innerRadius={68}
+                      outerRadius={102}
+                      paddingAngle={3}
                       dataKey="value"
-                      stroke="none"
+                      stroke="#ffffff"
+                      strokeWidth={2}
                     >
                       {impactData.map((entry, index) => (
                         <Cell key={`cell-${index}`} fill={entry.fill} />
                       ))}
                     </Pie>
+                    <Legend
+                      verticalAlign="bottom"
+                      align="center"
+                      iconType="circle"
+                      iconSize={8}
+                      formatter={(value) => <span style={{ color: "#334155", fontSize: 12, fontWeight: 600 }}>{value}</span>}
+                    />
                     <Tooltip
+                      formatter={(value) => [`${value}%`, "Participación"]}
+                      labelStyle={{ color: "#0f172a", fontWeight: 600 }}
                       contentStyle={{
-                        backgroundColor: "hsl(var(--card))",
-                        borderColor: "hsl(var(--border))",
-                        borderRadius: "8px",
-                        fontSize: 12,
+                        backgroundColor: "rgba(255,255,255,0.96)",
+                        borderColor: "#bae6fd",
+                        borderRadius: "10px",
+                        boxShadow: "0 10px 24px rgba(2, 132, 199, 0.18)",
+                        fontSize: 12
                       }}
-                      itemStyle={{ color: "hsl(var(--foreground))" }}
+                      itemStyle={{ color: "#0f172a" }}
                     />
                   </PieChart>
                 </ResponsiveContainer>
@@ -211,12 +244,15 @@ export function ProjectsStats() {
                 </div>
               </div>
 
-              <div className="flex flex-wrap justify-center gap-4 mt-6">
+              <div className="flex flex-wrap justify-center gap-3 mt-2">
                 {impactData.map((item, idx) => (
-                  <div key={idx} className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary/30 border border-secondary/50">
-                    <div className="w-3 h-3 rounded-full" style={{ backgroundColor: item.fill, boxShadow: `0 0 8px ${item.fill}` }} />
-                    <span className="text-xs font-medium text-foreground">{item.name}</span>
-                    <span className="text-xs font-bold text-muted-foreground ml-1">{item.value}%</span>
+                  <div
+                    key={idx}
+                    className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 border border-slate-200 shadow-sm"
+                  >
+                    <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: item.fill }} />
+                    <span className="text-xs font-semibold text-slate-700">{item.name}</span>
+                    <span className="text-xs font-bold text-slate-500 ml-1">{item.value}%</span>
                   </div>
                 ))}
               </div>

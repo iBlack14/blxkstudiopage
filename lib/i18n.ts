@@ -126,6 +126,7 @@ type Messages = {
     services: string
     stack: string
     portfolio: string
+    pluginsWp: string
     contact: string
     startProject: string
   }
@@ -142,6 +143,7 @@ type Messages = {
     home: string
     services: string
     projects: string
+    pluginsWp: string
     stack: string
     privacy: string
     terms: string
@@ -300,6 +302,7 @@ export const messages: Record<Locale, Messages> = {
       services: "Servicios",
       stack: "Stack",
       portfolio: "Portafolio",
+      pluginsWp: "Plugins WP",
       contact: "Contacto",
       startProject: "Iniciar Proyecto",
     },
@@ -318,6 +321,7 @@ export const messages: Record<Locale, Messages> = {
       home: "Inicio",
       services: "Servicios",
       projects: "Proyectos",
+      pluginsWp: "Plugins WP",
       stack: "Stack Tecnologico",
       privacy: "Politica de Privacidad",
       terms: "Terminos de Servicio",
@@ -978,6 +982,7 @@ export const messages: Record<Locale, Messages> = {
       services: "Services",
       stack: "Stack",
       portfolio: "Portfolio",
+      pluginsWp: "WP Plugins",
       contact: "Contact",
       startProject: "Start Project",
     },
@@ -996,6 +1001,7 @@ export const messages: Record<Locale, Messages> = {
       home: "Home",
       services: "Services",
       projects: "Projects",
+      pluginsWp: "WP Plugins",
       stack: "Technology Stack",
       privacy: "Privacy Policy",
       terms: "Terms of Service",
@@ -1560,6 +1566,7 @@ export const messages: Record<Locale, Messages> = {
       services: "Servicos",
       stack: "Stack",
       portfolio: "Portfolio",
+      pluginsWp: "Plugins WP",
       contact: "Contato",
       startProject: "Iniciar Projeto",
     },
@@ -1576,6 +1583,7 @@ export const messages: Record<Locale, Messages> = {
       home: "Inicio",
       services: "Servicos",
       projects: "Projetos",
+      pluginsWp: "Plugins WP",
       stack: "Stack Tecnologico",
       privacy: "Politica de Privacidade",
       terms: "Termos de Servico",
@@ -2262,6 +2270,7 @@ export const messages: Record<Locale, Messages> = {
       services: "Services",
       stack: "Stack",
       portfolio: "Portfolio",
+      pluginsWp: "Plugins WP",
       contact: "Contact",
       startProject: "Demarrer Projet",
     },
@@ -2278,6 +2287,7 @@ export const messages: Record<Locale, Messages> = {
       home: "Accueil",
       services: "Services",
       projects: "Projets",
+      pluginsWp: "Plugins WP",
       stack: "Stack Technologique",
       privacy: "Politique de Confidentialite",
       terms: "Conditions d'Utilisation",
@@ -2964,6 +2974,7 @@ export const messages: Record<Locale, Messages> = {
       services: "Services",
       stack: "Stack",
       portfolio: "Portfolio",
+      pluginsWp: "WP Plugins",
       contact: "Kontakt",
       startProject: "Projekt Starten",
     },
@@ -2980,6 +2991,7 @@ export const messages: Record<Locale, Messages> = {
       home: "Start",
       services: "Services",
       projects: "Projekte",
+      pluginsWp: "WP Plugins",
       stack: "Technologie-Stack",
       privacy: "Datenschutz",
       terms: "Nutzungsbedingungen",
@@ -3666,6 +3678,7 @@ export const messages: Record<Locale, Messages> = {
       services: "Servizi",
       stack: "Stack",
       portfolio: "Portfolio",
+      pluginsWp: "Plugin WP",
       contact: "Contatto",
       startProject: "Avvia Progetto",
     },
@@ -3682,6 +3695,7 @@ export const messages: Record<Locale, Messages> = {
       home: "Home",
       services: "Servizi",
       projects: "Progetti",
+      pluginsWp: "Plugin WP",
       stack: "Stack Tecnologico",
       privacy: "Privacy Policy",
       terms: "Termini di Servizio",

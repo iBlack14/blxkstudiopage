@@ -6,6 +6,7 @@ import { FloatingThemeToggle } from "@/components/layout/theme-toggle"
 import Link from "next/link"
 import { ArrowLeft, Check } from "lucide-react"
 import { notFound } from "next/navigation"
+import { ServiceIcon } from "@/components/services-icons"
 
 const Contact = dynamic(() => import("@/components/contact").then(m => ({ default: m.Contact })), {
   loading: () => null,
@@ -47,7 +48,9 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
           <div className="max-w-4xl mx-auto space-y-6 md:space-y-8">
             {/* Icon and Title */}
             <div className="space-y-3 md:space-y-4">
-              <div className="text-5xl md:text-7xl">{service.icon}</div>
+              <div className="inline-flex h-16 w-16 md:h-20 md:w-20 items-center justify-center rounded-2xl border border-primary/25 bg-primary/10 text-primary shadow-sm">
+                <ServiceIcon serviceId={service.id} className="h-8 w-8 md:h-10 md:w-10" />
+              </div>
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold neon-text-sm">{service.title}</h1>
               <p className="text-lg md:text-2xl text-primary font-semibold">{service.subtitle}</p>
               <p className="text-sm md:text-lg text-muted-foreground leading-relaxed">{service.fullDescription}</p>
@@ -184,7 +187,9 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
                 .map((relatedService) => (
                   <Link key={relatedService.id} href={`/servicios/${relatedService.slug}`}>
                     <div className="neon-card-rotating p-4 md:p-6 rounded-lg h-full cursor-pointer group">
-                      <div className="text-4xl md:text-5xl mb-2 md:mb-3">{relatedService.icon}</div>
+                      <div className="mb-2 md:mb-3 inline-flex h-11 w-11 md:h-12 md:w-12 items-center justify-center rounded-lg border border-primary/25 bg-primary/10 text-primary shadow-sm">
+                        <ServiceIcon serviceId={relatedService.id} className="h-5 w-5 md:h-6 md:w-6" />
+                      </div>
                       <h3 className="text-base md:text-lg font-bold text-foreground mb-2">{relatedService.title}</h3>
                       <p className="text-xs md:text-sm text-muted-foreground mb-3 md:mb-4 line-clamp-2">
                         {relatedService.shortDescription}
@@ -202,7 +207,8 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
 
       <Suspense fallback={null}>
         <Contact />
-      </Suspense>`r`n    </main>
+      </Suspense>
+    </main>
   )
 }
 

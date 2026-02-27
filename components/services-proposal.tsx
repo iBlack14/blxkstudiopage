@@ -5,7 +5,7 @@ import { useLanguage } from "@/components/layout/language-provider"
 import { CheckCircle2, TrendingUp, Users, Zap } from "lucide-react"
 
 export function ServicesProposal({ isHomeVersion = false }) {
-  const [expandedId, setExpandedId] = useState<number | null>(isHomeVersion ? null : 1)
+  const [expandedId, setExpandedId] = useState<number | null>(null)
   const [activeTab, setActiveTab] = useState<string>("overview")
 
   const { m } = useLanguage()
