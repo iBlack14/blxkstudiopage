@@ -245,10 +245,67 @@ export function PluginsShowcase() {
                         ))}
                     </div>
 
-                    {/* Footer note */}
-                    <div className="text-center pt-2">
-                        <p className="text-xs text-muted-foreground">
-                            🔒 Archivos originales · Uso personal/cliente · No redistribuir públicamente
+                    {/* ── GPL Disclaimer ── */}
+                    <div className="mt-10 rounded-2xl border border-amber-500/20 bg-amber-50/60 dark:bg-amber-500/5 backdrop-blur-sm p-6 space-y-4 text-center">
+                        {/* Headline */}
+                        <div className="flex items-center justify-center gap-2">
+                            <span className="text-amber-500 text-lg">⚖️</span>
+                            <p className="text-sm font-bold text-amber-700 dark:text-amber-400 uppercase tracking-widest">
+                                Aviso Legal · Licencia GPL
+                            </p>
+                            <span className="text-amber-500 text-lg">⚖️</span>
+                        </div>
+
+                        {/* Main text */}
+                        <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed max-w-3xl mx-auto">
+                            Todo software publicado en este sitio ha sido desarrollado por terceros.{" "}
+                            <span className="font-semibold text-gray-900 dark:text-white">Plugins WP</span>{" "}
+                            solo lo redistribuye según los términos de la{" "}
+                            <span className="font-semibold text-amber-600 dark:text-amber-400">
+                                Licencia Pública General (GPL)
+                            </span>
+                            . Creemos en el software libre y apoyamos a{" "}
+                            <span className="font-semibold text-gray-900 dark:text-white">
+                                The Free Software Foundation
+                            </span>
+                            .
+                        </p>
+
+                        {/* Brand disclaimer */}
+                        <p className="text-xs text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
+                            No tenemos afiliación con los desarrolladores de temas y plugins, ni con los propietarios de marcas como:
+                        </p>
+
+                        {/* Brand pills */}
+                        <div className="flex flex-wrap justify-center gap-2 pt-1">
+                            {[
+                                "Elementor",
+                                "ThemeForest",
+                                "CodeCanyon",
+                                "Envato Market",
+                                "WooCommerce",
+                                "FunnelKit",
+                                "Amelia",
+                                "Polylang",
+                                "WP Rocket",
+                                "WP Mail SMTP",
+                                "Tutor LMS",
+                            ].map((brand) => (
+                                <span
+                                    key={brand}
+                                    className="px-3 py-1 text-[11px] font-semibold rounded-full bg-white dark:bg-white/10 border border-gray-200 dark:border-white/10 text-gray-700 dark:text-gray-300 shadow-sm"
+                                >
+                                    {brand}
+                                </span>
+                            ))}
+                            <span className="px-3 py-1 text-[11px] font-semibold rounded-full bg-white dark:bg-white/10 border border-gray-200 dark:border-white/10 text-gray-500 dark:text-gray-400 shadow-sm italic">
+                                entre otros…
+                            </span>
+                        </div>
+
+                        {/* Bottom note */}
+                        <p className="text-[11px] text-gray-400 dark:text-gray-500 pt-1">
+                            🔒 Uso personal / cliente · Redistribución permitida bajo los términos de la GPL
                         </p>
                     </div>
                 </div>
