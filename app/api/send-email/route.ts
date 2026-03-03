@@ -11,9 +11,11 @@ export async function POST(request: NextRequest) {
   const resend = new Resend(process.env.RESEND_API_KEY)
 
   try {
-    const { name, email, phone, company, message } = await request.json()
+    const { name, email, phone, company, service, message } = await request.json()
 
-    console.log("[v0] Received form submission:", name)
+    const serviceLabel = service ? service.replace(/-/g, " ") : "Consulta general"
+
+    console.log("[blxk] Received form submission:", name, "| Service:", serviceLabel)
 
     if (!email || !isValidEmail(email)) {
       return NextResponse.json({ success: false, error: "Email inválido" }, { status: 400 })
@@ -180,7 +182,7 @@ export async function POST(request: NextRequest) {
               </div>
               <div class="info-row">
                 <div class="label">Servicio</div>
-                <div class="value">Solicitud General</div>
+                <div class="value">${serviceLabel}</div>
               </div>
               <div class="info-row">
                 <div class="label">Fecha</div>
@@ -394,6 +396,10 @@ export async function POST(request: NextRequest) {
                 <td class="data-label">Teléfono</td>
                 <td class="data-val">${phone || "No indicado"}</td>
               </tr>
+              <tr>
+                <td class="data-label">Servicio</td>
+                <td class="data-val" style="color:#d946ef;font-weight:700;">${serviceLabel}</td>
+              </tr>
             </table>
             
             <div class="section-title" style="margin-top: 30px;">Mensaje</div>
@@ -419,7 +425,7 @@ export async function POST(request: NextRequest) {
 
     return Response.json({ data: null, error: null }) as any
   } catch (error) {
-    console.error("[v0] Contact API error:", error)
+    console.error("[blxk] Contact API error:", error)
     return Response.json({ error: (error as any).message }, { status: 500 }) as any
   }
 }
