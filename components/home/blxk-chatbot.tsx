@@ -162,7 +162,7 @@ function BlxkChatbotComponent() {
       {!isOpen && (
         <button
           onClick={toggleOpen}
-          className={`fixed z-40 p-4 rounded-full shadow-2xl transition-all duration-300 md:bottom-8 md:right-8 bottom-24 right-8 ${isDayMode
+          className={`fixed z-[60] p-4 rounded-full shadow-2xl transition-all duration-300 md:bottom-8 md:right-8 bottom-24 right-8 ${isDayMode
             ? "bg-gradient-to-br from-cyan-400 to-cyan-500 hover:shadow-cyan-400/50"
             : "bg-gradient-to-br from-cyan-500 to-magenta-500 hover:shadow-cyan-500/50"
             } hover:scale-110 shadow-lg hover:shadow-2xl`}
@@ -180,9 +180,15 @@ function BlxkChatbotComponent() {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-20 left-0 right-0 z-30 flex items-end justify-center p-4 md:inset-auto md:bottom-8 md:right-8 md:w-96 md:max-h-[600px] md:flex md:items-stretch md:justify-end md:p-0">
+        <div className="fixed inset-0 z-[70] flex items-end justify-center bg-slate-950/50 p-0 backdrop-blur-[2px] md:pointer-events-none md:bg-transparent md:inset-auto md:bottom-8 md:right-8 md:w-96 md:max-h-[600px] md:items-stretch md:justify-end">
+          <button
+            type="button"
+            aria-label="Cerrar chat"
+            onClick={closeChat}
+            className="absolute inset-0 md:hidden"
+          />
           <div
-            className={`w-full max-h-[80vh] md:h-auto rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 flex flex-col ${isDayMode ? "bg-white border border-gray-200" : "bg-slate-900 border border-slate-700"
+            className={`relative z-[71] w-full max-h-[calc(100vh-5rem)] rounded-t-[28px] shadow-2xl overflow-hidden transition-all duration-300 flex flex-col md:pointer-events-auto md:h-auto md:max-h-[600px] md:rounded-2xl ${isDayMode ? "bg-white border border-gray-200" : "bg-slate-900 border border-slate-700"
               }`}
           >
             {/* Header */}
@@ -207,10 +213,11 @@ function BlxkChatbotComponent() {
                 </button>
                 <button
                   onClick={closeChat}
-                  className="p-1 hover:bg-white/20 rounded transition-colors"
+                  className="p-2 hover:bg-white/20 rounded-full transition-colors touch-manipulation"
                   title="Cerrar chat"
+                  aria-label="Cerrar chat"
                 >
-                  <X className="w-4 h-4 text-white" />
+                  <X className="w-5 h-5 text-white" />
                 </button>
               </div>
             </div>
