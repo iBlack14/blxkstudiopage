@@ -1,81 +1,146 @@
-'use client'
+"use client"
 
-import { useEffect } from 'react'
-import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { AlertTriangle, RefreshCw } from 'lucide-react'
+import { useEffect, useMemo } from "react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { Button } from "@/components/ui/button"
+import { AlertTriangle, RefreshCw } from "lucide-react"
+import { DEFAULT_LOCALE, getLocaleFromPathname, Locale } from "@/lib/i18n"
 
 interface ErrorProps {
   error: Error & { digest?: string }
   reset: () => void
 }
 
+const COPY: Record<
+  Locale,
+  {
+    title: string
+    description: string
+    retry: string
+    home: string
+    supportPrefix: string
+    supportLink: string
+    errorId: string
+  }
+> = {
+  es: {
+    title: "Algo salio mal",
+    description:
+      "Encontramos un error inesperado. Intenta de nuevo o contactanos si el problema persiste.",
+    retry: "Intentar de Nuevo",
+    home: "Ir a Inicio",
+    supportPrefix: "Necesitas ayuda?",
+    supportLink: "Contacta con nuestro equipo",
+    errorId: "Error ID:",
+  },
+  en: {
+    title: "Something went wrong",
+    description:
+      "We hit an unexpected error. Please try again or contact us if the problem continues.",
+    retry: "Try Again",
+    home: "Go Home",
+    supportPrefix: "Need help?",
+    supportLink: "Contact our team",
+    errorId: "Error ID:",
+  },
+  pt: {
+    title: "Algo deu errado",
+    description:
+      "Encontramos um erro inesperado. Tente novamente ou fale conosco se o problema continuar.",
+    retry: "Tentar Novamente",
+    home: "Ir para Inicio",
+    supportPrefix: "Precisa de ajuda?",
+    supportLink: "Fale com nossa equipe",
+    errorId: "ID do erro:",
+  },
+  fr: {
+    title: "Une erreur est survenue",
+    description:
+      "Nous avons rencontre une erreur inattendue. Reessayez ou contactez-nous si le probleme persiste.",
+    retry: "Reessayer",
+    home: "Retour a l'accueil",
+    supportPrefix: "Besoin d'aide ?",
+    supportLink: "Contactez notre equipe",
+    errorId: "ID erreur :",
+  },
+  de: {
+    title: "Etwas ist schiefgelaufen",
+    description:
+      "Es ist ein unerwarteter Fehler aufgetreten. Bitte versuchen Sie es erneut oder kontaktieren Sie uns.",
+    retry: "Erneut versuchen",
+    home: "Zur Startseite",
+    supportPrefix: "Brauchen Sie Hilfe?",
+    supportLink: "Kontaktieren Sie unser Team",
+    errorId: "Fehler-ID:",
+  },
+  it: {
+    title: "Si e verificato un errore",
+    description:
+      "Abbiamo riscontrato un errore imprevisto. Riprova o contattaci se il problema continua.",
+    retry: "Riprova",
+    home: "Vai alla Home",
+    supportPrefix: "Hai bisogno di aiuto?",
+    supportLink: "Contatta il nostro team",
+    errorId: "ID errore:",
+  },
+}
+
 export default function Error({ error, reset }: ErrorProps) {
+  const pathname = usePathname()
+  const locale = useMemo(() => getLocaleFromPathname(pathname || "/") || DEFAULT_LOCALE, [pathname])
+  const copy = COPY[locale]
+
   useEffect(() => {
-    // Optionally log the error to an error reporting service
     console.error(error)
   }, [error])
 
   return (
-    <main className="min-h-screen flex items-center justify-center px-4 bg-background">
-      <div className="text-center space-y-6 max-w-2xl">
-        {/* Error Icon */}
+    <main className="flex min-h-screen items-center justify-center bg-background px-4">
+      <div className="max-w-2xl space-y-6 text-center">
         <div className="flex justify-center">
-          <div className="w-24 h-24 rounded-full bg-red-500/10 border border-red-500/30 flex items-center justify-center">
-            <AlertTriangle className="w-12 h-12 text-red-500" />
+          <div className="flex h-24 w-24 items-center justify-center rounded-full border border-red-500/30 bg-red-500/10">
+            <AlertTriangle className="h-12 w-12 text-red-500" />
           </div>
         </div>
 
-        {/* Error Message */}
         <div className="space-y-3">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground">
-            Algo salió mal
-          </h1>
-          <p className="text-lg text-muted-foreground">
-            Encontramos un error inesperado. Por favor, intenta de nuevo o contacta con nosotros si el problema persiste.
-          </p>
+          <h1 className="text-4xl font-bold text-foreground md:text-5xl">{copy.title}</h1>
+          <p className="text-lg text-muted-foreground">{copy.description}</p>
         </div>
 
-        {/* Error Details (development only) */}
-        {process.env.NODE_ENV === 'development' && error.message && (
-          <div className="p-4 rounded-lg bg-red-500/10 border border-red-500/30 text-left">
-            <p className="text-xs font-mono text-red-400 break-words">
-              {error.message}
-            </p>
+        {process.env.NODE_ENV === "development" && error.message && (
+          <div className="rounded-lg border border-red-500/30 bg-red-500/10 p-4 text-left">
+            <p className="break-words font-mono text-xs text-red-400">{error.message}</p>
             {error.digest && (
-              <p className="text-xs text-muted-foreground mt-2">
-                Error ID: {error.digest}
+              <p className="mt-2 text-xs text-muted-foreground">
+                {copy.errorId} {error.digest}
               </p>
             )}
           </div>
         )}
 
-        {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
+        <div className="flex flex-col justify-center gap-4 pt-6 sm:flex-row">
           <Button
             onClick={reset}
             size="lg"
-            className="neon-glow bg-primary text-primary-foreground hover:bg-primary/90 w-full sm:w-auto"
+            className="neon-glow w-full bg-primary text-primary-foreground hover:bg-primary/90 sm:w-auto"
           >
-            <RefreshCw className="w-5 h-5 mr-2" />
-            Intentar de Nuevo
+            <RefreshCw className="mr-2 h-5 w-5" />
+            {copy.retry}
           </Button>
-          <Link href="/es">
+          <Link href={`/${locale}`}>
             <Button size="lg" variant="outline" className="w-full sm:w-auto">
-              Ir a Inicio
+              {copy.home}
             </Button>
           </Link>
         </div>
 
-        {/* Support Message */}
-        <div className="pt-8 border-t border-primary/20">
+        <div className="border-t border-primary/20 pt-8">
           <p className="text-sm text-muted-foreground">
-            ¿Necesitas ayuda?{' '}
-            <Link
-              href="/es/contacto"
-              className="text-primary hover:underline font-semibold"
-            >
-              Contacta con nuestro equipo
+            {copy.supportPrefix}{" "}
+            <Link href={`/${locale}/contacto`} className="font-semibold text-primary hover:underline">
+              {copy.supportLink}
             </Link>
           </p>
         </div>
