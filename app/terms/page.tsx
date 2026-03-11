@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import { buildPageMetadata } from "@/lib/seo";
+import { buildNoIndexMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = buildPageMetadata({
+export const metadata: Metadata = buildNoIndexMetadata({
     title: "Términos de Servicio | BLXK Studio",
     description: "Revisa los términos y condiciones de uso de los servicios de BLXK Studio.",
     path: "/terms",
-    keywords: ["términos de servicio", "condiciones de uso", "blxk studio legal"],
 });
 
 export default function TermsPage() {

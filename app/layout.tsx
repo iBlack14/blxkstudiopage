@@ -10,7 +10,7 @@ import { LanguageProvider } from "@/components/layout/language-provider"
 import { FloatingLanguageSelector } from "@/components/layout/language-floating"
 import { I18nDebugPanel } from "@/components/layout/i18n-debug"
 import { BlxkChatbot } from "@/components/home/blxk-chatbot"
-import { DEFAULT_LOCALE, LOCALE_COOKIE, LOCALE_MANUAL_COOKIE, Locale, resolveLocale } from "@/lib/i18n"
+import { DEFAULT_LOCALE, LOCALE_COOKIE, LOCALE_MANUAL_COOKIE, Locale, localeToHrefLang, localizePath } from "@/lib/i18n"
 
 // Optimized font loading with display: swap
 const geistSans = Geist({
@@ -48,17 +48,22 @@ export const metadata: Metadata = {
   creator: "Alonso",
   metadataBase: new URL("https://blxkstudio.com"),
   alternates: {
-    canonical: "https://blxkstudio.com",
+    canonical: "https://blxkstudio.com/es",
     languages: {
-      "es-PE": "https://blxkstudio.com",
-      es: "https://blxkstudio.com",
+      "es-PE": "https://blxkstudio.com/es",
+      en: "https://blxkstudio.com/en",
+      pt: "https://blxkstudio.com/pt",
+      fr: "https://blxkstudio.com/fr",
+      de: "https://blxkstudio.com/de",
+      it: "https://blxkstudio.com/it",
+      "x-default": "https://blxkstudio.com/es",
     },
   },
   openGraph: {
     title: "BLXK Studio | Desarrollo Web, IA y Automatización",
     description:
       "Software web, automatización e IA para hacer crecer tu negocio.",
-    url: "https://blxkstudio.com",
+    url: "https://blxkstudio.com/es",
     siteName: "BLXK Studio",
     locale: "es_PE",
     type: "website",
@@ -166,12 +171,7 @@ export default async function RootLayout({
 }>) {
   const cookieStore = await cookies()
   const headerStore = await headers()
-  const locale = resolveLocale({
-    cookieLocale: cookieStore.get(LOCALE_COOKIE)?.value,
-    manualLocale: cookieStore.get(LOCALE_MANUAL_COOKIE)?.value,
-    countryCode: headerStore.get("x-vercel-ip-country") || headerStore.get("cf-ipcountry"),
-    acceptLanguage: headerStore.get("accept-language"),
-  }) as Locale
+  const locale = (headerStore.get("x-blxk-locale") || cookieStore.get(LOCALE_MANUAL_COOKIE)?.value || DEFAULT_LOCALE) as Locale
 
   return (
     <html

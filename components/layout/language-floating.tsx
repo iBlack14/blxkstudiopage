@@ -1,12 +1,15 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { usePathname, useRouter } from "next/navigation"
 import { Languages } from "lucide-react"
-import { LOCALE_OPTIONS, Locale } from "@/lib/i18n"
+import { LOCALE_OPTIONS, Locale, localizePath } from "@/lib/i18n"
 import { useLanguage } from "@/components/layout/language-provider"
 
 export function FloatingLanguageSelector() {
   const { locale, setLocale } = useLanguage()
+  const pathname = usePathname()
+  const router = useRouter()
   const [mounted, setMounted] = useState(false)
   const [open, setOpen] = useState(false)
   const current = LOCALE_OPTIONS.find((item) => item.value === locale)
@@ -43,9 +46,10 @@ export function FloatingLanguageSelector() {
                 type="button"
                 onClick={() => {
                   setOpen(false)
-                  // Small delay to let the UI close the menu first, making it feel snappier
                   requestAnimationFrame(() => {
-                    setLocale(option.value as Locale)
+                    const nextLocale = option.value as Locale
+                    setLocale(nextLocale)
+                    router.push(localizePath(pathname || "/", nextLocale))
                   })
                 }}
                 className={`w-full text-left px-3 py-2 text-xs md:text-sm transition-colors ${locale === option.value

@@ -5,8 +5,9 @@ import { usePathname } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Home, Info, Briefcase, Code, FolderOpen, Mail, Puzzle } from "lucide-react"
+import { Home, Info, Briefcase, Code, FolderOpen, Mail, Puzzle, ShieldCheck } from "lucide-react"
 import { useLanguage } from "@/components/layout/language-provider"
+import { localizePath, stripLocaleFromPathname } from "@/lib/i18n"
 
 // Lazy load modal only when needed
 const ProjectFormModal = lazy(() =>
@@ -21,6 +22,7 @@ const NAV_ITEMS = [
   { labelKey: "stack", href: "/stack", icon: Code, id: "tech" },
   { labelKey: "portfolio", href: "/projects", icon: FolderOpen, id: "portfolio" },
   { labelKey: "pluginsWp", href: "/plugins-wp", icon: Puzzle, id: "plugins" },
+  { labelKey: "security", href: "/seguridad", icon: ShieldCheck, id: "security" },
   { labelKey: "contact", href: "/contacto", icon: Mail, id: "contact" },
 ] as const
 
@@ -34,7 +36,20 @@ const ROUTE_TO_SECTION: Record<string, string> = {
   "/projects": "portfolio",
   "/portfolio": "portfolio",
   "/plugins-wp": "plugins",
+  "/seguridad": "security",
   "/contacto": "contact",
+}
+
+// Fallback labels in case i18n key is missing (prevents hydration errors)
+const NAV_FALLBACK_LABELS: Record<string, string> = {
+  home: "Inicio",
+  about: "Nosotros",
+  services: "Servicios",
+  stack: "Stack",
+  portfolio: "Portafolio",
+  pluginsWp: "Plugins WP",
+  security: "Seguridad",
+  contact: "Contacto",
 }
 
 // Memoized nav link component
@@ -93,8 +108,8 @@ function NavigationContent() {
   const pathname = usePathname()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isFormOpen, setIsFormOpen] = useState(false)
-  const { m } = useLanguage()
-  const activeSection = useMemo(() => ROUTE_TO_SECTION[pathname] || "hero", [pathname])
+  const { locale, m } = useLanguage()
+  const activeSection = useMemo(() => ROUTE_TO_SECTION[stripLocaleFromPathname(pathname || "/")] || "hero", [pathname])
 
   useEffect(() => {
     let ticking = false
@@ -127,7 +142,7 @@ function NavigationContent() {
       >
         <div className="container mx-auto px-4 py-4 max-w-7xl">
           <div className="flex items-center justify-between">
-            <Link href="/" className="inline-flex items-center" aria-label="BLXK Studio">
+            <Link href={localizePath("/", locale)} className="inline-flex items-center" aria-label="BLXK Studio">
               <Image
                 src="/logo.png"
                 alt="Logo BLXK Studio"
@@ -146,13 +161,13 @@ function NavigationContent() {
               <span className="sr-only">BLXK STUDIO</span>
             </Link>
 
-            <div className="flex items-center gap-8">
+            <div className="flex items-center gap-8" suppressHydrationWarning>
               {NAV_ITEMS.map((item) => (
                 <NavLink
                   key={item.href}
-                  item={item}
+                  item={{ ...item, href: localizePath(item.href, locale) } as typeof NAV_ITEMS[number]}
                   isActive={activeSection === item.id}
-                  label={m.nav[item.labelKey]}
+                  label={m.nav[item.labelKey] ?? NAV_FALLBACK_LABELS[item.labelKey]}
                 />
               ))}
               <Button
@@ -171,14 +186,15 @@ function NavigationContent() {
         <div
           className="flex items-center gap-2 px-2 py-3 overflow-x-auto scrollbar-hide"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          suppressHydrationWarning
         >
           {NAV_ITEMS.map((item, index) => (
             <MobileNavLink
               key={`${item.href}-${index}`}
-              item={item}
+              item={{ ...item, href: localizePath(item.href, locale) } as typeof NAV_ITEMS[number]}
               isActive={activeSection === item.id}
               index={index}
-              label={m.nav[item.labelKey]}
+              label={m.nav[item.labelKey] ?? NAV_FALLBACK_LABELS[item.labelKey]}
             />
           ))}
         </div>
@@ -187,7 +203,7 @@ function NavigationContent() {
       {/* Mobile Navigation - Top Header */}
       <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-background border-none shadow-none outline-none" style={{ border: 'none', boxShadow: 'none' }}>
         <div className="container mx-auto px-4 py-4 max-w-7xl flex items-center justify-center relative">
-          <Link href="/" className="inline-flex items-center justify-center gap-2.5" aria-label="BLXK Studio">
+          <Link href={localizePath("/", locale)} className="inline-flex items-center justify-center gap-2.5" aria-label="BLXK Studio">
             <Image
               src="/logo.png"
               alt="Logo BLXK Studio"
@@ -234,7 +250,5 @@ function NavigationContent() {
 }
 
 export const Navigation = memo(NavigationContent)
-
-
 
 

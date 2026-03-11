@@ -3,12 +3,13 @@
 import { useState } from "react"
 import { useLanguage } from "@/components/layout/language-provider"
 import { CheckCircle2, TrendingUp, Users, Zap } from "lucide-react"
+import { localizePath } from "@/lib/i18n"
 
 export function ServicesProposal({ isHomeVersion = false }) {
   const [expandedId, setExpandedId] = useState<number | null>(null)
   const [activeTab, setActiveTab] = useState<string>("overview")
 
-  const { m } = useLanguage()
+  const { locale, m } = useLanguage()
   const servicesList = m.services?.list || []
 
   // Ensure servicesList is an array avoids runtime errors if i18n is loading or malformed
@@ -184,7 +185,7 @@ export function ServicesProposal({ isHomeVersion = false }) {
           {isHomeVersion && (
             <div className="text-center pt-8">
               <a
-                href="/servicios"
+                href={localizePath("/servicios", locale)}
                 className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-all hover:scale-105"
               >
                 {m.services?.ctaAll || "Ver Todos los Servicios"}

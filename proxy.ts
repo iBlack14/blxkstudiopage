@@ -1,7 +1,30 @@
 import { NextRequest, NextResponse } from "next/server"
-import { LOCALE_COOKIE, LOCALE_MANUAL_COOKIE, resolveLocaleWithMeta } from "@/lib/i18n"
+import {
+  DEFAULT_LOCALE,
+  LOCALE_COOKIE,
+  LOCALE_MANUAL_COOKIE,
+  NON_LOCALIZED_PATHS,
+  getLocaleFromPathname,
+  localizePath,
+  resolveLocaleWithMeta,
+} from "@/lib/i18n"
 
 export function proxy(request: NextRequest) {
+  const pathname = request.nextUrl.pathname
+  const isPublicAsset = /\.[a-z0-9]+$/i.test(pathname)
+  const localeFromPath = getLocaleFromPathname(pathname)
+  const isNonLocalizedPath = NON_LOCALIZED_PATHS.includes(pathname as (typeof NON_LOCALIZED_PATHS)[number])
+
+  if (isPublicAsset) {
+    return NextResponse.next()
+  }
+
+  if (!localeFromPath && !isNonLocalizedPath) {
+    const redirectUrl = request.nextUrl.clone()
+    redirectUrl.pathname = localizePath(pathname, DEFAULT_LOCALE)
+    return NextResponse.redirect(redirectUrl, 308)
+  }
+
   const currentCookie = request.cookies.get(LOCALE_COOKIE)?.value
   const manualCookie = request.cookies.get(LOCALE_MANUAL_COOKIE)?.value
   const country =
@@ -10,15 +33,22 @@ export function proxy(request: NextRequest) {
     null
   const acceptLanguage = request.headers.get("accept-language")
 
-  const { locale, source } = resolveLocaleWithMeta({
+  const resolvedLocale = localeFromPath || resolveLocaleWithMeta({
     cookieLocale: currentCookie,
     manualLocale: manualCookie,
     countryCode: country,
     acceptLanguage,
-  })
+  }).locale
+  const source = localeFromPath ? "path" : "fallback"
+  const requestHeaders = new Headers(request.headers)
+  requestHeaders.set("x-blxk-locale", resolvedLocale)
 
-  const response = NextResponse.next()
-  response.cookies.set(LOCALE_COOKIE, locale, {
+  const response = NextResponse.next({
+    request: {
+      headers: requestHeaders,
+    },
+  })
+  response.cookies.set(LOCALE_COOKIE, resolvedLocale, {
     path: "/",
     maxAge: 60 * 60 * 24 * 365,
     sameSite: "lax",
@@ -55,7 +85,7 @@ export function proxy(request: NextRequest) {
     sameSite: "lax",
     httpOnly: false,
   })
-  response.cookies.set("blxk-debug-locale", locale, {
+  response.cookies.set("blxk-debug-locale", resolvedLocale, {
     path: "/",
     maxAge: 60 * 60 * 24,
     sameSite: "lax",

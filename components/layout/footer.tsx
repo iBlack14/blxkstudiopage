@@ -5,6 +5,7 @@ import { Mail, MapPin, Phone, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { useLanguage } from "@/components/layout/language-provider"
+import { localizePath } from "@/lib/i18n"
 
 // Static data - defined outside component to prevent recreation
 const CONTACT_INFO = {
@@ -51,17 +52,15 @@ const SOCIAL_ICON_CLASS_MAP: Record<string, string> = {
 
 const WHATSAPP_ICON = "/social/whatsapp.svg"
 
-// Hardcoded year to avoid hydration mismatch (update annually)
-const CURRENT_YEAR = 2025
-
 function FooterComponent() {
-  const { m } = useLanguage()
+  const { locale, m } = useLanguage()
+  const currentYear = new Date().getFullYear()
   const quickLinks = [
-    { name: m.footer.home, href: "/" },
-    { name: m.footer.services, href: "/servicios" },
-    { name: m.footer.projects, href: "/projects" },
-    { name: m.footer.pluginsWp, href: "/plugins-wp" },
-    { name: m.footer.stack, href: "/stack" },
+    { name: m.footer.home, href: localizePath("/", locale) },
+    { name: m.footer.services, href: localizePath("/servicios", locale) },
+    { name: m.footer.projects, href: localizePath("/projects", locale) },
+    { name: m.footer.pluginsWp, href: localizePath("/plugins-wp", locale) },
+    { name: m.footer.stack, href: localizePath("/stack", locale) },
   ]
   const legalLinks = [
     { name: m.footer.privacy, href: "/privacy" },
@@ -221,7 +220,7 @@ function FooterComponent() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             {/* Copyright */}
             <p className="text-xs text-muted-foreground text-center md:text-left">
-              © {CURRENT_YEAR} BLXK Studio. {m.footer.rights}
+              © {currentYear} BLXK Studio. {m.footer.rights}
             </p>
 
             {/* Legal Links */}

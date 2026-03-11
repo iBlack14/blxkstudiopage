@@ -5,6 +5,7 @@ export const SUPPORTED_LOCALES = ["es", "en", "pt", "fr", "de", "it"] as const
 export type Locale = (typeof SUPPORTED_LOCALES)[number]
 
 export const DEFAULT_LOCALE: Locale = "es"
+export const NON_LOCALIZED_PATHS = ["/privacy", "/terms"] as const
 
 export const LOCALE_OPTIONS: Array<{ value: Locale; label: string }> = [
   { value: "es", label: "Español" },
@@ -53,6 +54,47 @@ const COUNTRY_TO_LOCALE: Record<string, Locale> = {
 
 export function isLocale(value: string | undefined | null): value is Locale {
   return SUPPORTED_LOCALES.includes((value || "") as Locale)
+}
+
+export function getLocaleFromPathname(pathname: string): Locale | null {
+  const segment = pathname.split("/")[1]
+  return isLocale(segment) ? segment : null
+}
+
+export function stripLocaleFromPathname(pathname: string): string {
+  const locale = getLocaleFromPathname(pathname)
+  if (!locale) return pathname || "/"
+
+  const stripped = pathname.slice(`/${locale}`.length)
+  return stripped ? stripped : "/"
+}
+
+export function localizePath(pathname: string, locale: Locale): string {
+  const normalized = stripLocaleFromPathname(pathname || "/")
+  if (normalized === "/") return `/${locale}`
+  return `/${locale}${normalized.startsWith("/") ? normalized : `/${normalized}`}`
+}
+
+export function localeToHrefLang(locale: Locale): string {
+  return {
+    es: "es-PE",
+    en: "en",
+    pt: "pt",
+    fr: "fr",
+    de: "de",
+    it: "it",
+  }[locale]
+}
+
+export function localeToOpenGraphLocale(locale: Locale): string {
+  return {
+    es: "es_PE",
+    en: "en_US",
+    pt: "pt_BR",
+    fr: "fr_FR",
+    de: "de_DE",
+    it: "it_IT",
+  }[locale]
 }
 
 export function localeFromCountry(countryCode: string | undefined | null): Locale {
@@ -127,6 +169,7 @@ type Messages = {
     stack: string
     portfolio: string
     pluginsWp: string
+    security: string
     contact: string
     startProject: string
   }
@@ -303,6 +346,7 @@ export const messages: Record<Locale, Messages> = {
       stack: "Stack",
       portfolio: "Portafolio",
       pluginsWp: "Plugins WP",
+      security: "Seguridad",
       contact: "Contacto",
       startProject: "Iniciar Proyecto",
     },
@@ -983,6 +1027,7 @@ export const messages: Record<Locale, Messages> = {
       stack: "Stack",
       portfolio: "Portfolio",
       pluginsWp: "WP Plugins",
+      security: "Security",
       contact: "Contact",
       startProject: "Start Project",
     },
@@ -1567,6 +1612,7 @@ export const messages: Record<Locale, Messages> = {
       stack: "Stack",
       portfolio: "Portfolio",
       pluginsWp: "Plugins WP",
+      security: "Segurança",
       contact: "Contato",
       startProject: "Iniciar Projeto",
     },
@@ -2271,6 +2317,7 @@ export const messages: Record<Locale, Messages> = {
       stack: "Stack",
       portfolio: "Portfolio",
       pluginsWp: "Plugins WP",
+      security: "Sécurité",
       contact: "Contact",
       startProject: "Demarrer Projet",
     },
@@ -2975,6 +3022,7 @@ export const messages: Record<Locale, Messages> = {
       stack: "Stack",
       portfolio: "Portfolio",
       pluginsWp: "WP Plugins",
+      security: "Sicherheit",
       contact: "Kontakt",
       startProject: "Projekt Starten",
     },
@@ -3679,6 +3727,7 @@ export const messages: Record<Locale, Messages> = {
       stack: "Stack",
       portfolio: "Portfolio",
       pluginsWp: "Plugin WP",
+      security: "Sicurezza",
       contact: "Contatto",
       startProject: "Avvia Progetto",
     },

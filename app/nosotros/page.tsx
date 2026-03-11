@@ -3,7 +3,7 @@
 import { Navigation } from "@/components/layout/navigation"
 import { FloatingThemeToggle } from "@/components/layout/theme-toggle"
 import { useLanguage } from "@/components/layout/language-provider"
-import { Locale } from "@/lib/i18n"
+import { Locale, localizePath } from "@/lib/i18n"
 import { ArrowUpRight, Rocket, ShieldCheck, Target, Users } from "lucide-react"
 
 type AboutCopy = {
@@ -278,7 +278,13 @@ export default function NosotrosPage() {
 
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutJsonLd) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            ...aboutJsonLd,
+            "@id": `https://blxkstudio.com${localizePath("/nosotros", locale)}#about`,
+            url: `https://blxkstudio.com${localizePath("/nosotros", locale)}`,
+          }),
+        }}
       />
     </main>
   )

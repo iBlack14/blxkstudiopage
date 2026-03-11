@@ -1,10 +1,12 @@
 import type { Metadata } from "next"
 import { Suspense } from "react"
 import dynamic from "next/dynamic"
+import { headers } from "next/headers"
 import { Navigation } from "@/components/layout/navigation"
 import { PluginsHero } from "@/components/plugins-wp/plugins-hero"
 import { PluginsShowcase } from "@/components/plugins-wp/plugins-showcase"
 import { SITE_URL, buildPageMetadata } from "@/lib/seo"
+import { Locale, localizePath } from "@/lib/i18n"
 
 const Contact = dynamic(
     () => import("@/components/contact").then((m) => ({ default: m.Contact })),
@@ -25,7 +27,7 @@ export const metadata: Metadata = buildPageMetadata({
     ],
 })
 
-const pluginsJsonLd = {
+const basePluginsJsonLd = {
     "@context": "https://schema.org",
     "@graph": [
         {
@@ -96,7 +98,32 @@ const pluginsJsonLd = {
     ],
 }
 
-export default function PluginsWPPage() {
+export default async function PluginsWPPage() {
+    const locale = ((await headers()).get("x-blxk-locale") || "es") as Locale
+    const localizedPluginsPath = localizePath("/plugins-wp", locale)
+    const localizedPluginsJsonLd = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "CollectionPage",
+                "@id": `${SITE_URL}${localizedPluginsPath}#collection`,
+                name: "Plugins WordPress de BLXK Studio",
+                url: `${SITE_URL}${localizedPluginsPath}`,
+                description:
+                    "Plugins premium para WordPress y WooCommerce desarrollados por BLXK Studio",
+                isPartOf: { "@id": `${SITE_URL}/#website` },
+                about: { "@id": `${SITE_URL}/#organization` },
+            },
+            {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                    { "@type": "ListItem", position: 1, name: "Inicio", item: `${SITE_URL}${localizePath("/", locale)}` },
+                    { "@type": "ListItem", position: 2, name: "Plugins WP", item: `${SITE_URL}${localizedPluginsPath}` },
+                ],
+            },
+            basePluginsJsonLd["@graph"][2],
+        ],
+    }
     return (
         <main className="min-h-screen bg-background">
             <Navigation />
@@ -107,7 +134,7 @@ export default function PluginsWPPage() {
             </Suspense>
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(pluginsJsonLd) }}
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(localizedPluginsJsonLd) }}
             />
         </main>
     )

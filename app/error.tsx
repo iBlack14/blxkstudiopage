@@ -60,7 +60,7 @@ export default function Error({ error, reset }: ErrorProps) {
             <RefreshCw className="w-5 h-5 mr-2" />
             Intentar de Nuevo
           </Button>
-          <Link href="/">
+          <Link href="/es">
             <Button size="lg" variant="outline" className="w-full sm:w-auto">
               Ir a Inicio
             </Button>
@@ -72,7 +72,7 @@ export default function Error({ error, reset }: ErrorProps) {
           <p className="text-sm text-muted-foreground">
             ¿Necesitas ayuda?{' '}
             <Link
-              href="/contacto"
+              href="/es/contacto"
               className="text-primary hover:underline font-semibold"
             >
               Contacta con nuestro equipo

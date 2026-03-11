@@ -9,6 +9,7 @@ import { Navigation } from "@/components/layout/navigation"
 import { ServicesProposal } from "@/components/home/services-proposal"
 import { useLanguage } from "@/components/layout/language-provider"
 import { ServiceIcon, servicesTrustItems } from "@/components/services-icons"
+import { localizePath } from "@/lib/i18n"
 
 const FloatingThemeToggle = dynamic(
   () => import("@/components/layout/theme-toggle").then((m) => ({ default: m.FloatingThemeToggle })),
@@ -48,8 +49,36 @@ const servicesJsonLd = {
 }
 
 export default function ServicesPage() {
-  const { m } = useLanguage()
+  const { locale, m } = useLanguage()
   const translatedServices = m.servicesDetailed.list
+  const servicesJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": `https://blxkstudio.com${localizePath("/servicios", locale)}#collection`,
+    name: "Servicios de BLXK Studio",
+    url: `https://blxkstudio.com${localizePath("/servicios", locale)}`,
+    description:
+      "Catalogo de servicios de desarrollo web, automatizacion e inteligencia artificial para empresas.",
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: servicesData.map((service, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        url: `https://blxkstudio.com${localizePath(`/servicios/${service.slug}`, locale)}`,
+        item: {
+          "@type": "Service",
+          name: service.title,
+          description: service.shortDescription,
+          serviceType: service.subtitle,
+          provider: {
+            "@type": "Organization",
+            name: "BLXK Studio",
+            url: "https://blxkstudio.com",
+          },
+        },
+      })),
+    },
+  }
 
   return (
     <main className="min-h-screen bg-background overflow-x-hidden">
@@ -76,7 +105,7 @@ export default function ServicesPage() {
             {servicesData.map((service) => {
               const translated = translatedServices.find((item) => item.id === service.id)
               return (
-                <Link key={service.id} href={`/servicios/${service.slug}`}>
+                <Link key={service.id} href={localizePath(`/servicios/${service.slug}`, locale)}>
                   <div className="neon-card-rotating p-4 md:p-6 rounded-lg h-full cursor-pointer group transition-all md:hover:scale-[1.02] min-w-0 overflow-x-clip border border-primary/20 bg-card/75 backdrop-blur-sm">
                     <div className="mb-3 md:mb-4 inline-flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-lg border border-primary/25 bg-primary/10 text-primary shadow-sm">
                       <ServiceIcon serviceId={service.id} className="h-6 w-6 md:h-7 md:w-7" />
@@ -136,10 +165,7 @@ export default function ServicesPage() {
         <Contact />
       </Suspense>
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd) }} />
     </main>
   )
 }

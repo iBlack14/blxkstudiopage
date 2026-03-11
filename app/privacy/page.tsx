@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import { buildPageMetadata } from "@/lib/seo";
+import { buildNoIndexMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = buildPageMetadata({
+export const metadata: Metadata = buildNoIndexMetadata({
     title: "Política de Privacidad | BLXK Studio",
     description: "Conoce cómo BLXK Studio recopila, usa y protege tus datos personales en sus servicios digitales.",
     path: "/privacy",
-    keywords: ["política de privacidad", "protección de datos", "blxk studio legal"],
 });
 
 export default function PrivacyPage() {

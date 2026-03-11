@@ -1,12 +1,15 @@
 import type { Metadata } from "next"
 import { Suspense } from "react"
 import dynamic from "next/dynamic"
+import { headers } from "next/headers"
 import { Navigation } from "@/components/layout/navigation"
 import { ProjectsShowcase } from "@/components/projects/projects-showcase"
 import { ProjectsHero } from "@/components/projects/projects-hero"
 import { ProjectsComparison } from "@/components/projects/projects-comparison"
 import { ProjectsTestimonials } from "@/components/projects/projects-testimonials"
 import { ProjectDemos } from "@/components/home/project-demos"
+import { buildPageMetadata } from "@/lib/seo"
+import { Locale, localizePath } from "@/lib/i18n"
 
 const ProjectsStats = dynamic(() => import("@/components/projects/projects-stats").then(m => ({ default: m.ProjectsStats })), {
   loading: () => null,
@@ -17,51 +20,20 @@ const Contact = dynamic(() => import("@/components/contact").then(m => ({ defaul
   ssr: true,
 })
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Portafolio | BLXK Studio",
   description:
-    "Conoce proyectos reales de desarrollo web, automatización e IA creados por BLXK Studio.",
-  keywords:
-    "portafolio desarrollo web, proyectos fullstack, whatsapp payment, n8n automation, next.js, react, supabase, dashboard administrativo, chatbot whatsapp",
-  authors: [{ name: "BLXK Studio" }],
-  creator: "BLXK Studio",
-  publisher: "BLXK Studio",
-  formatDetection: {
-    email: false,
-    telephone: false,
-    address: false,
-  },
-  openGraph: {
-    type: "website",
-    locale: "es_ES",
-    url: "https://blxkstudio.com/projects",
-    title: "Portafolio | BLXK Studio",
-    description:
-      "Proyectos de software, automatización e inteligencia artificial para empresas.",
-    siteName: "BLXK Studio",
-    images: ["/opengraph-image"],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Portafolio | BLXK Studio",
-    description: "Proyectos reales de desarrollo web y automatización.",
-    images: ["/twitter-image"],
-  },
-  alternates: {
-    canonical: "https://blxkstudio.com/projects",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-}
+    "Conoce proyectos reales de desarrollo web, automatizacion e IA creados por BLXK Studio.",
+  path: "/projects",
+  keywords: [
+    "portafolio desarrollo web",
+    "proyectos fullstack",
+    "whatsapp payment",
+    "n8n automation",
+    "dashboard administrativo",
+    "chatbot whatsapp",
+  ],
+})
 
 const PROJECTS_SCHEMA = [
   {
@@ -155,7 +127,35 @@ const projectsJsonLd = {
   },
 }
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+  const locale = ((await headers()).get("x-blxk-locale") || "es") as Locale
+  const localizedProjectsPath = localizePath("/projects", locale)
+  const projectsJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": `https://blxkstudio.com${localizedProjectsPath}#collection`,
+    name: "Portafolio de Proyectos BLXK Studio",
+    url: `https://blxkstudio.com${localizedProjectsPath}`,
+    hasPart: {
+      "@type": "ItemList",
+      itemListElement: PROJECTS_SCHEMA.map((project, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "CreativeWork",
+          name: project.name,
+          category: project.category,
+          description: project.description,
+          url: project.url ?? `https://blxkstudio.com${localizedProjectsPath}`,
+          image: {
+            "@type": "ImageObject",
+            url: `https://blxkstudio.com${project.image}`,
+            representativeOfPage: false,
+          },
+        },
+      })),
+    },
+  }
   return (
     <main className="min-h-screen bg-background">
       <Navigation />

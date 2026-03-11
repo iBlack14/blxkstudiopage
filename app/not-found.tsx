@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { ArrowLeft, Home } from 'lucide-react'
+import { Home } from 'lucide-react'
 
 export default function NotFound() {
   return (
@@ -25,13 +25,13 @@ export default function NotFound() {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
-          <Link href="/">
+          <Link href="/es">
             <Button size="lg" className="neon-glow bg-primary text-primary-foreground hover:bg-primary/90 w-full sm:w-auto">
               <Home className="w-5 h-5 mr-2" />
               Ir a Inicio
             </Button>
           </Link>
-          <Link href="/servicios">
+          <Link href="/es/servicios">
             <Button size="lg" variant="outline" className="w-full sm:w-auto">
               Ver Servicios
             </Button>
@@ -43,11 +43,11 @@ export default function NotFound() {
           <p className="text-sm text-muted-foreground mb-4">Enlaces rápidos:</p>
           <div className="flex flex-wrap gap-2 justify-center">
             {[
-              { href: '/', label: 'Inicio' },
-              { href: '/nosotros', label: 'Nosotros' },
-              { href: '/servicios', label: 'Servicios' },
-              { href: '/projects', label: 'Portafolio' },
-              { href: '/contacto', label: 'Contacto' },
+              { href: '/es', label: 'Inicio' },
+              { href: '/es/nosotros', label: 'Nosotros' },
+              { href: '/es/servicios', label: 'Servicios' },
+              { href: '/es/projects', label: 'Portafolio' },
+              { href: '/es/contacto', label: 'Contacto' },
             ].map((link) => (
               <Link
                 key={link.href}

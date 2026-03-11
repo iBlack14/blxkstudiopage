@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Suspense } from "react"
 import dynamic from "next/dynamic"
+import { headers } from "next/headers"
 import { servicesData } from "@/lib/services-data"
 import { Navigation } from "@/components/layout/navigation"
 import { FloatingThemeToggle } from "@/components/layout/theme-toggle"
@@ -9,6 +10,7 @@ import { ArrowLeft, Check } from "lucide-react"
 import { notFound } from "next/navigation"
 import { ServiceIcon } from "@/components/services-icons"
 import { SITE_URL, buildPageMetadata } from "@/lib/seo"
+import { localizePath } from "@/lib/i18n"
 
 const Contact = dynamic(() => import("@/components/contact").then(m => ({ default: m.Contact })), {
   loading: () => null,
@@ -45,8 +47,9 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   })
 }
 
-export default function ServiceDetailPage({ params }: { params: { slug: string } }) {
+export default async function ServiceDetailPage({ params }: { params: { slug: string } }) {
   const service = servicesData.find((s) => s.slug === params.slug)
+  const locale = (((await headers()).get("x-blxk-locale") || "es") as "es" | "en" | "pt" | "fr" | "de" | "it")
 
   if (!service) {
     notFound()
@@ -57,11 +60,11 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
     "@graph": [
       {
         "@type": "Service",
-        "@id": `${SITE_URL}/servicios/${service.slug}#service`,
+        "@id": `${SITE_URL}${localizePath(`/servicios/${service.slug}`, locale)}#service`,
         name: service.title,
         serviceType: service.subtitle,
         description: service.fullDescription,
-        url: `${SITE_URL}/servicios/${service.slug}`,
+        url: `${SITE_URL}${localizePath(`/servicios/${service.slug}`, locale)}`,
         provider: {
           "@type": "Organization",
           "@id": `${SITE_URL}/#organization`,
@@ -83,13 +86,13 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
             "@type": "ListItem",
             position: 2,
             name: "Servicios",
-            item: `${SITE_URL}/servicios`,
+            item: `${SITE_URL}${localizePath("/servicios", locale)}`,
           },
           {
             "@type": "ListItem",
             position: 3,
             name: service.title,
-            item: `${SITE_URL}/servicios/${service.slug}`,
+            item: `${SITE_URL}${localizePath(`/servicios/${service.slug}`, locale)}`,
           },
         ],
       },
@@ -104,7 +107,7 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
       {/* Header Navigation */}
       <div className="sticky top-0 z-40 bg-background/50 backdrop-blur-md border-b border-primary/20">
         <div className="container mx-auto px-4 py-4">
-          <Link href="/servicios" className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors">
+          <Link href={localizePath("/servicios", locale)} className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors">
             <ArrowLeft className="w-4 h-4" />
             Volver a servicios
           </Link>
@@ -256,7 +259,7 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
                 .filter((s) => s.id !== service.id)
                 .slice(0, 3)
                 .map((relatedService) => (
-                  <Link key={relatedService.id} href={`/servicios/${relatedService.slug}`}>
+                  <Link key={relatedService.id} href={localizePath(`/servicios/${relatedService.slug}`, locale)}>
                     <div className="neon-card-rotating p-4 md:p-6 rounded-lg h-full cursor-pointer group">
                       <div className="mb-2 md:mb-3 inline-flex h-11 w-11 md:h-12 md:w-12 items-center justify-center rounded-lg border border-primary/25 bg-primary/10 text-primary shadow-sm">
                         <ServiceIcon serviceId={relatedService.id} className="h-5 w-5 md:h-6 md:w-6" />

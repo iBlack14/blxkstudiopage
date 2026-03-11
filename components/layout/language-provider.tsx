@@ -21,17 +21,9 @@ export function LanguageProvider({
   const [locale, setLocaleState] = useState<Locale>(initialLocale || DEFAULT_LOCALE)
 
   useEffect(() => {
-    const manualFromStorage = window.localStorage.getItem(LOCALE_MANUAL_COOKIE)
-    const manualFromCookie = document.cookie
-      .split("; ")
-      .find((row) => row.startsWith(`${LOCALE_MANUAL_COOKIE}=`))
-      ?.split("=")[1]
-
-    const resolvedManual = (manualFromStorage || manualFromCookie) as Locale | undefined
-    if (resolvedManual && resolvedManual !== locale) {
-      setLocaleState(resolvedManual)
-    }
-  }, [locale])
+    setLocaleState(initialLocale || DEFAULT_LOCALE)
+    document.documentElement.lang = initialLocale || DEFAULT_LOCALE
+  }, [initialLocale])
 
   const setLocale = (nextLocale: Locale) => {
     setLocaleState(nextLocale)

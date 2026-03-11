@@ -4,6 +4,8 @@ import { Suspense } from "react"
 import dynamic from "next/dynamic"
 import { FounderHero } from "@/components/home/founder-hero"
 import { Navigation } from "@/components/layout/navigation"
+import { useLanguage } from "@/components/layout/language-provider"
+import { localizePath } from "@/lib/i18n"
 
 // Dynamic imports with skeleton loading for better UX
 // Components below the fold are lazy loaded
@@ -80,6 +82,7 @@ function ServicesSkeleton() {
 }
 
 export default function Home() {
+  const { locale } = useLanguage()
   return (
     <main className="min-h-screen bg-background">
       {/* Critical path - loaded immediately */}
@@ -102,7 +105,20 @@ export default function Home() {
 
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            ...homeJsonLd,
+            "@id": `https://blxkstudio.com${localizePath("/", locale)}#webpage`,
+            url: `https://blxkstudio.com${localizePath("/", locale)}`,
+            mainEntity: {
+              ...homeJsonLd.mainEntity,
+              itemListElement: homeJsonLd.mainEntity.itemListElement.map((item) => ({
+                ...item,
+                url: `https://blxkstudio.com${localizePath(item.url.replace("https://blxkstudio.com", ""), locale)}`,
+              })),
+            },
+          }),
+        }}
       />
     </main>
   )

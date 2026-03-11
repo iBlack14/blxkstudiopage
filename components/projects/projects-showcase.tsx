@@ -6,6 +6,7 @@ import Image from "next/image"
 import { ExternalLink, Play } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/components/layout/language-provider"
+import { localizePath } from "@/lib/i18n"
 
 // Datos de proyectos con imágenes de vista previa
 const PROJECTS = [
@@ -113,7 +114,7 @@ const PROJECTS = [
 
 export function ProjectsShowcase() {
   const [hoveredId, setHoveredId] = useState<number | null>(null)
-  const { m } = useLanguage()
+  const { locale, m } = useLanguage()
   const localized = m.projectsShowcase.list
   const byId = new Map(localized.map((item) => [item.id, item]))
 
@@ -197,7 +198,7 @@ export function ProjectsShowcase() {
             <p className="text-muted-foreground mb-6">
               {m.projectsShowcase.ctaTitle}
             </p>
-            <Link href="/contacto">
+            <Link href={localizePath("/contacto", locale)}>
               <Button size="lg" className="neon-glow bg-primary text-primary-foreground hover:bg-primary/90">
                 {m.projectsShowcase.ctaButton}
                 <ExternalLink className="w-4 h-4 ml-2" />

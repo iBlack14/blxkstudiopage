@@ -39,6 +39,7 @@ const QUICK_LINKS = [
   { name: "Inicio", href: "/" },
   { name: "Servicios", href: "/servicios" },
   { name: "Proyectos", href: "/projects" },
+  { name: "Seguridad", href: "/seguridad" },
   { name: "Stack Tecnológico", href: "/stack" },
 ] as const
 
