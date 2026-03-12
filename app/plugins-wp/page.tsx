@@ -9,7 +9,7 @@ import { SITE_URL, buildPageMetadata } from "@/lib/seo"
 import { Locale, localizePath } from "@/lib/i18n"
 
 const Contact = dynamic(
-    () => import("@/components/contact").then((m) => ({ default: m.Contact })),
+    () => import("@/components/utilities/contact").then((m) => ({ default: m.Contact })),
     { loading: () => null, ssr: true }
 )
 

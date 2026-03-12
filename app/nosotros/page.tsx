@@ -26,19 +26,19 @@ type AboutCopy = {
 const ABOUT_COPY: Record<Locale, AboutCopy> = {
   es: {
     badge: "Nosotros",
-    titleLine1: "Diseno y tecnologia",
-    titleLine2: "con direccion de negocio",
+    titleLine1: "Diseño y tecnología",
+    titleLine2: "con dirección de negocio",
     description:
       "BLXK Studio es un equipo senior que construye productos digitales, automatizaciones e IA aplicada para empresas con metas claras.",
     clients: "Clientes activos",
-    years: "Anos de experiencia",
-    positionLabel: "Posicion",
-    positionTitle: "Boutique tecnologica para crecimiento serio",
+    years: "Años de experiencia",
+    positionLabel: "Posición",
+    positionTitle: "Boutique tecnológica para crecimiento serio",
     positionDesc:
-      "Combinamos creatividad, arquitectura y automatizacion para transformar operaciones y acelerar resultados.",
-    statementLabel: "Declaracion",
-    statementTitle: "Tecnologia con criterio ejecutivo",
-    statementDesc: "Convertimos complejidad tecnica en sistemas claros, rentables y listos para escalar.",
+      "Combinamos creatividad, arquitectura y automatización para transformar operaciones y acelerar resultados.",
+    statementLabel: "Declaración",
+    statementTitle: "Tecnología con criterio ejecutivo",
+    statementDesc: "Convertimos complejidad técnica en sistemas claros, rentables y listos para escalar.",
     cta: "Ver servicios",
     principles: [
       { title: "Estrategia primero", description: "Cada entrega responde a un objetivo de negocio medible." },

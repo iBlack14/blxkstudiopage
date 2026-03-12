@@ -15,38 +15,9 @@ const FloatingThemeToggle = dynamic(
   () => import("@/components/layout/theme-toggle").then((m) => ({ default: m.FloatingThemeToggle })),
   { loading: () => null }
 )
-const Contact = dynamic(() => import("@/components/contact").then((m) => ({ default: m.Contact })), {
+const Contact = dynamic(() => import("@/components/utilities/contact").then((m) => ({ default: m.Contact })), {
   loading: () => null,
 })
-
-const servicesJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "@id": "https://blxkstudio.com/servicios#collection",
-  name: "Servicios de BLXK Studio",
-  url: "https://blxkstudio.com/servicios",
-  description:
-    "Catálogo de servicios de desarrollo web, automatización e inteligencia artificial para empresas.",
-  mainEntity: {
-    "@type": "ItemList",
-    itemListElement: servicesData.map((service, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      url: `https://blxkstudio.com/servicios/${service.slug}`,
-      item: {
-        "@type": "Service",
-        name: service.title,
-        description: service.shortDescription,
-        serviceType: service.subtitle,
-        provider: {
-          "@type": "Organization",
-          name: "BLXK Studio",
-          url: "https://blxkstudio.com",
-        },
-      },
-    })),
-  },
-}
 
 export default function ServicesPage() {
   const { locale, m } = useLanguage()

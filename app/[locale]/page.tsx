@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import HomePage from "@/app/page"
-import { DEFAULT_LOCALE, Locale } from "@/lib/i18n"
+import { Locale } from "@/lib/i18n"
 import { buildPageMetadata } from "@/lib/seo"
 
 export async function generateMetadata({

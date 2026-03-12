@@ -1,5 +1,7 @@
-import { Resend } from "resend"
 import { type NextRequest, NextResponse } from "next/server"
+
+import { env } from "@/lib/env"
+import { createResendClient } from "@/lib/integrations/resend"
 
 function isValidEmail(email: string | undefined): boolean {
   if (!email) return false
@@ -8,9 +10,8 @@ function isValidEmail(email: string | undefined): boolean {
 }
 
 export async function POST(request: NextRequest) {
-  const resend = new Resend(process.env.RESEND_API_KEY)
-
   try {
+    const resend = createResendClient(env.resendApiKey())
     const { name, email, phone, company, service, message } = await request.json()
 
     const serviceLabel = service ? service.replace(/-/g, " ") : "Consulta general"
@@ -22,7 +23,7 @@ export async function POST(request: NextRequest) {
     }
 
     const fromEmail = "admin@blxkstudio.com"
-    const adminEmails = ["alonsoyhc@gmail.com", "admin@blxkstudio.com"]
+    const adminEmails = ["alonsoyhc@gmail.com", env.adminEmail()]
 
     // Send user confirmation email (New Design)
     const userEmailResult = await resend.emails.send({
@@ -235,7 +236,7 @@ export async function POST(request: NextRequest) {
     console.log("[v0] User email result:", userEmailResult)
 
     // Send Admin Notification (New Design) - To BOTH emails
-    const adminEmailResult = await resend.emails.send({
+    await resend.emails.send({
       from: `BLXK STUDIO <${fromEmail}>`,
       to: adminEmails,
       subject: `Nueva Solicitud de Proyecto - ${name}`,

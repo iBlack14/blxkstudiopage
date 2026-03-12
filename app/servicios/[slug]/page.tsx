@@ -12,7 +12,7 @@ import { ServiceIcon } from "@/components/services-icons"
 import { SITE_URL, buildPageMetadata } from "@/lib/seo"
 import { localizePath } from "@/lib/i18n"
 
-const Contact = dynamic(() => import("@/components/contact").then(m => ({ default: m.Contact })), {
+const Contact = dynamic(() => import("@/components/utilities/contact").then(m => ({ default: m.Contact })), {
   loading: () => null,
 })
 

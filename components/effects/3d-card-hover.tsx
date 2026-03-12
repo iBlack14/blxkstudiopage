@@ -1,7 +1,5 @@
 "use client"
 
-import { ReactNode } from "react"
-
 interface Card3DHoverProps {
   children: any
   className?: string

@@ -4,7 +4,7 @@ import { Navigation } from "@/components/layout/navigation";
 import { TechStackSkeleton } from "@/components/skeletons/tech-stack-skeleton";
 import { buildPageMetadata } from "@/lib/seo";
 
-const TechStack = dynamic(() => import("@/components/tech-stack").then(m => ({ default: m.TechStack })), {
+const TechStack = dynamic(() => import("@/components/utilities/tech-stack").then(m => ({ default: m.TechStack })), {
   loading: () => <TechStackSkeleton />,
 })
 

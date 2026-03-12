@@ -15,7 +15,7 @@ const ProjectsStats = dynamic(() => import("@/components/projects/projects-stats
   loading: () => null,
   ssr: true,
 })
-const Contact = dynamic(() => import("@/components/contact").then(m => ({ default: m.Contact })), {
+const Contact = dynamic(() => import("@/components/utilities/contact").then(m => ({ default: m.Contact })), {
   loading: () => null,
   ssr: true,
 })
@@ -99,33 +99,6 @@ const PROJECTS_SCHEMA = [
     image: "/projects/proyecto-facturacion-sunat.png",
   },
 ]
-
-const projectsJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "@id": "https://blxkstudio.com/projects#collection",
-  name: "Portafolio de Proyectos BLXK Studio",
-  url: "https://blxkstudio.com/projects",
-  hasPart: {
-    "@type": "ItemList",
-    itemListElement: PROJECTS_SCHEMA.map((project, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      item: {
-        "@type": "CreativeWork",
-        name: project.name,
-        category: project.category,
-        description: project.description,
-        url: project.url ?? "https://blxkstudio.com/projects",
-        image: {
-          "@type": "ImageObject",
-          url: `https://blxkstudio.com${project.image}`,
-          representativeOfPage: false,
-        },
-      },
-    })),
-  },
-}
 
 export default async function ProjectsPage() {
   const locale = ((await headers()).get("x-blxk-locale") || "es") as Locale

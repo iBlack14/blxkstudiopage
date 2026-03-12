@@ -1,5 +1,10 @@
-import { generateText } from "ai"
-import { openai } from "@ai-sdk/openai"
+import { env, hasEnv } from "@/lib/env"
+import { postToN8n } from "@/lib/integrations/n8n"
+import { generateBlxkChatResponse } from "@/lib/integrations/openai"
+
+function jsonError(error: string, status: number) {
+  return Response.json({ success: false, error }, { status })
+}
 
 export async function POST(request: Request) {
   try {
@@ -7,58 +12,44 @@ export async function POST(request: Request) {
     const { message, conversationHistory = [], useN8n } = body
 
     if (!message || typeof message !== "string") {
-      return Response.json({ error: "Invalid message" }, { status: 400 })
+      return jsonError("Invalid message", 400)
     }
 
-    if (!process.env.OPENAI_API_KEY) {
-      console.error("Missing OPENAI_API_KEY environment variable")
-      return Response.json(
-        { error: "Chat service not configured" },
-        { status: 503 }
-      )
-    }
-
-    if (useN8n && process.env.N8N_WEBHOOK_URL) {
+    if (useN8n && hasEnv("N8N_WEBHOOK_URL")) {
       try {
-        const n8nResponse = await fetch(process.env.N8N_WEBHOOK_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            message,
-            conversationHistory,
-            action: "chat",
-          }),
+        const n8nResponse = await postToN8n(env.n8nWebhookUrl(), {
+          message,
+          conversationHistory,
+          action: "chat",
         })
 
-        if (n8nResponse.ok) {
-          const data = await n8nResponse.json()
-          if (data.success && data.data?.response) {
-            return Response.json({
-              response: data.data.response,
-              success: true,
-              source: "n8n",
-            })
-          }
+        const n8nData = n8nResponse.data as {
+          success?: boolean
+          data?: { response?: string }
+          response?: string
+        }
+
+        const responseText = n8nData?.data?.response || n8nData?.response
+        if (n8nResponse.ok && n8nData?.success && responseText) {
+          return Response.json({
+            response: responseText,
+            success: true,
+            source: "n8n",
+          })
         }
       } catch (error) {
         console.error("[Chat API] N8N fallback error:", error)
-        // Fall back to AI SDK if n8n fails
       }
     }
 
-    const systemPrompt = `Eres BLXK, un asistente de IA para BLXK Studio, una startup tecnológica peruana especializada en:
-- Desarrollo de software personalizado
-- Automatización inteligente con n8n
-- Soluciones digitales innovadoras
-- Consultoría tecnológica
+    if (!hasEnv("OPENAI_API_KEY")) {
+      console.error("Missing OPENAI_API_KEY environment variable")
+      return jsonError("Chat service not configured", 503)
+    }
 
-Proporciona respuestas útiles, profesionales y amigables sobre nuestros servicios. Si el usuario pregunta algo fuera de tu ámbito, sugiere que se comunique directamente con el equipo.`
-
-    const { text } = await generateText({
-      model: openai("gpt-4o-mini"),
-      system: systemPrompt,
-      messages: [...conversationHistory, { role: "user", content: message }],
-      temperature: 0.7,
+    const text = await generateBlxkChatResponse({
+      message,
+      conversationHistory,
     })
 
     return Response.json({
@@ -74,10 +65,6 @@ Proporciona respuestas útiles, profesionales y amigables sobre nuestros servici
       error: String(error),
     })
 
-    // Don't expose internal errors to client
-    return Response.json(
-      { error: "Failed to generate response. Please try again later." },
-      { status: 500 }
-    )
+    return jsonError("Failed to generate response. Please try again later.", 500)
   }
 }

@@ -1,6 +1,6 @@
 ﻿"use client"
 
-import { useState, useEffect, useRef, useMemo, memo, useCallback, lazy, Suspense } from "react"
+import { useState, useEffect, useMemo, memo, useCallback, lazy, Suspense } from "react"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
@@ -250,5 +250,4 @@ function NavigationContent() {
 }
 
 export const Navigation = memo(NavigationContent)
-
 

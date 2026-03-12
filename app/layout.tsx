@@ -10,7 +10,7 @@ import { LanguageProvider } from "@/components/layout/language-provider"
 import { FloatingLanguageSelector } from "@/components/layout/language-floating"
 import { I18nDebugPanel } from "@/components/layout/i18n-debug"
 import { BlxkChatbot } from "@/components/home/blxk-chatbot"
-import { DEFAULT_LOCALE, LOCALE_COOKIE, LOCALE_MANUAL_COOKIE, Locale, localeToHrefLang, localizePath } from "@/lib/i18n"
+import { DEFAULT_LOCALE, LOCALE_MANUAL_COOKIE, Locale } from "@/lib/i18n"
 
 // Optimized font loading with display: swap
 const geistSans = Geist({
@@ -198,10 +198,6 @@ export default async function RootLayout({
         {/* DNS prefetch for external resources */}
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-
-        {/* Preconnect for faster font loading */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
         {/* JSON-LD structured data */}
         <script

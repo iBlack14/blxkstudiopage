@@ -174,7 +174,11 @@ export function SmartChatbotHandler() {
             onChange={(e) => setInputValue(e.target.value)}
             onKeyPress={(e) => {
               if (e.key === "Enter") {
-                isOwnerMode ? handleOwnerResponse() : handleUserMessage(inputValue)
+                if (isOwnerMode) {
+                  handleOwnerResponse()
+                } else {
+                  handleUserMessage(inputValue)
+                }
               }
             }}
             placeholder={isOwnerMode ? "Respuesta del owner..." : "Mensaje del usuario..."}
