@@ -2,7 +2,11 @@
 
 import { useEffect, useState } from "react"
 
+// Check if we're in production at build time
+const IS_PRODUCTION = process.env.NODE_ENV === "production"
+
 function readCookie(name: string): string {
+  if (typeof document === "undefined") return ""
   const parts = document.cookie.split("; ").find((row) => row.startsWith(`${name}=`))
   return parts ? decodeURIComponent(parts.split("=")[1] || "") : ""
 }
@@ -16,6 +20,11 @@ type DebugData = {
 }
 
 export function I18nDebugPanel() {
+  // Always hide in production - no need to check anything
+  if (IS_PRODUCTION) {
+    return null
+  }
+
   const [data, setData] = useState<DebugData | null>(null)
 
   useEffect(() => {
