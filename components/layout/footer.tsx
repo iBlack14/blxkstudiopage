@@ -4,8 +4,9 @@ import { memo } from "react"
 import { Mail, MapPin, Phone, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { usePathname } from "next/navigation"
 import { useLanguage } from "@/components/layout/language-provider"
-import { localizePath } from "@/lib/i18n"
+import { localizePath, stripLocaleFromPathname } from "@/lib/i18n"
 
 // Static data - defined outside component to prevent recreation
 const CONTACT_INFO = {
@@ -53,7 +54,9 @@ const SOCIAL_ICON_CLASS_MAP: Record<string, string> = {
 const WHATSAPP_ICON = "/social/whatsapp.svg"
 
 function FooterComponent() {
+  const pathname = usePathname()
   const { locale, m } = useLanguage()
+  const normalizedPath = stripLocaleFromPathname(pathname || "/")
   const currentYear = new Date().getFullYear()
   const quickLinks = [
     { name: m.footer.home, href: localizePath("/", locale) },
@@ -66,6 +69,10 @@ function FooterComponent() {
     { name: m.footer.privacy, href: "/privacy" },
     { name: m.footer.terms, href: "/terms" },
   ]
+
+  if (normalizedPath === "/cv") {
+    return null
+  }
 
   return (
     <footer className="w-full bg-gradient-to-b from-background to-background/95 border-t border-primary/10">

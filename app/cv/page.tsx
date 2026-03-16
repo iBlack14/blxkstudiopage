@@ -2,7 +2,7 @@
 
 import { useLanguage } from "@/components/layout/language-provider"
 import { Locale } from "@/lib/i18n"
-import { Mail, MapPin, Phone, Globe, Linkedin, Github, ExternalLink, Calendar } from "lucide-react"
+import { Mail, MapPin, Phone, Globe, Linkedin, Github, Calendar } from "lucide-react"
 
 type CVCopy = {
   about: string
@@ -11,63 +11,76 @@ type CVCopy = {
   education: string
   skills: string
   contact: string
-  download: string
+  role: string
+  intro: string
 }
 
 const CV_COPY: Record<Locale, CVCopy> = {
   es: {
-    about: "Sobre mí",
+    about: "Perfil",
     professionalSummary: "Resumen Profesional",
     experience: "Experiencia",
-    education: "Educación",
+    education: "Educacion",
     skills: "Habilidades",
     contact: "Contacto",
-    download: "Descargar CV",
+    role: "Full-Stack Developer & Founder",
+    intro:
+      "Desarrollo productos web, automatizaciones e integraciones de IA con enfoque practico, ejecucion rapida y criterio de negocio.",
   },
   en: {
-    about: "About",
+    about: "Profile",
     professionalSummary: "Professional Summary",
     experience: "Experience",
     education: "Education",
     skills: "Skills",
     contact: "Contact",
-    download: "Download CV",
+    role: "Full-Stack Developer & Founder",
+    intro:
+      "I build web products, automations, and AI integrations with a practical mindset, fast execution, and strong business judgment.",
   },
   pt: {
-    about: "Sobre",
+    about: "Perfil",
     professionalSummary: "Resumo Profissional",
-    experience: "Experiência",
-    education: "Educação",
+    experience: "Experiencia",
+    education: "Educacao",
     skills: "Habilidades",
     contact: "Contato",
-    download: "Baixar CV",
+    role: "Full-Stack Developer & Founder",
+    intro:
+      "Desenvolvo produtos web, automacoes e integracoes de IA com foco pratico, execucao rapida e visao de negocio.",
   },
   fr: {
-    about: "À propos",
-    professionalSummary: "Résumé Professionnel",
-    experience: "Expérience",
-    education: "Éducation",
-    skills: "Compétences",
+    about: "Profil",
+    professionalSummary: "Resume Professionnel",
+    experience: "Experience",
+    education: "Education",
+    skills: "Competences",
     contact: "Contact",
-    download: "Télécharger CV",
+    role: "Full-Stack Developer & Founder",
+    intro:
+      "Je construis des produits web, des automatisations et des integrations IA avec un esprit pratique, une execution rapide et une vision business.",
   },
   de: {
-    about: "Über mich",
+    about: "Profil",
     professionalSummary: "Professionelles Profil",
     experience: "Erfahrung",
     education: "Ausbildung",
-    skills: "Fähigkeiten",
+    skills: "Fahigkeiten",
     contact: "Kontakt",
-    download: "CV Herunterladen",
+    role: "Full-Stack Developer & Founder",
+    intro:
+      "Ich entwickle Webprodukte, Automatisierungen und KI-Integrationen mit pragmatischem Ansatz, schneller Umsetzung und Geschaftssinn.",
   },
   it: {
-    about: "Su di me",
+    about: "Profilo",
     professionalSummary: "Riepilogo Professionale",
     experience: "Esperienza",
     education: "Istruzione",
     skills: "Competenze",
     contact: "Contatti",
-    download: "Scarica CV",
+    role: "Full-Stack Developer & Founder",
+    intro:
+      "Sviluppo prodotti web, automazioni e integrazioni IA con approccio pratico, esecuzione rapida e visione di business.",
   },
 }
 
@@ -76,23 +89,24 @@ const EXPERIENCE = [
     role: "Founder & Full-Stack Developer",
     company: "BLXK Studio",
     period: "2022 - Presente",
-    description: "Agencia tecnológica especializada en desarrollo web, automatización con n8n e inteligencia artificial. Desarrollo de soluciones digitales para empresas en Perú y Latinoamérica.",
+    description:
+      "Agencia tecnologica especializada en desarrollo web, automatizacion con n8n e inteligencia artificial. Desarrollo de soluciones digitales para empresas en Peru y Latinoamerica.",
     highlights: [
       "Desarrollo de aplicaciones web con Next.js y React",
-      "Implementación de sistemas de automatización empresarial",
-      "Integración de IA para procesos de negocio",
-      "Creación de plataformas de e-commerce y LMS",
+      "Implementacion de sistemas de automatizacion empresarial",
+      "Integracion de IA para procesos de negocio",
+      "Creacion de plataformas de e-commerce y LMS",
     ],
   },
   {
     role: "Desarrollador Full-Stack",
     company: "Freelance / Proyectos Independientes",
     period: "2020 - 2022",
-    description: "Desarrollo de proyectos web para diversos clientes en múltiples industrias.",
+    description: "Desarrollo de proyectos web para diversos clientes en multiples industrias.",
     highlights: [
       "Sitios web corporativos y portafolios",
       "Tiendas online con pasarelas de pago locales",
-      "Sistemas de gestión y dashboards administrativos",
+      "Sistemas de gestion y dashboards administrativos",
     ],
   },
 ]
@@ -107,20 +121,30 @@ const SKILLS = {
 
 const EDUCATION = [
   {
-    degree: "Ingeniería de Sistemas / Ciencias de la Computación",
-    school: "Universidad / Formación Técnica",
+    degree: "Ingenieria de Sistemas / Ciencias de la Computacion",
+    school: "Universidad / Formacion Tecnica",
     period: "2018 - 2022",
-    description: "Formación en desarrollo de software y tecnologías de información.",
+    description: "Formacion en desarrollo de software y tecnologias de informacion.",
   },
 ]
 
 const CONTACT = {
   email: "admin@blxkstudio.com",
   phone: "+51 913 259 652",
-  location: "Lima, Perú",
+  location: "Lima, Peru",
   website: "blxkstudio.com",
   linkedin: "linkedin.com/company/blxkstudio",
   github: "github.com/iBlack14",
+}
+
+function SectionHeading({ title }: { title: string }) {
+  return (
+    <div className="mb-5 border-b border-neutral-200 pb-3 dark:border-neutral-800">
+      <h2 className="text-sm font-semibold uppercase tracking-[0.22em] text-neutral-500 dark:text-neutral-400">
+        {title}
+      </h2>
+    </div>
+  )
 }
 
 export default function CVPage() {
@@ -128,211 +152,199 @@ export default function CVPage() {
   const t = CV_COPY[locale] || CV_COPY.es
 
   return (
-    <main className="min-h-screen bg-neutral-50 dark:bg-neutral-950">
-        <div className="max-w-4xl mx-auto px-6 py-16">
-          {/* Header */}
-          <header className="mb-12 border-b border-neutral-200 dark:border-neutral-800 pb-8">
-            <h1 className="text-4xl font-bold text-neutral-900 dark:text-neutral-50 mb-2">
-              Alonso Huancas Cruz
-            </h1>
-            <p className="text-xl text-neutral-600 dark:text-neutral-400 mb-6">
-              Full-Stack Developer & Founder
-            </p>
-            
-            <div className="flex flex-wrap gap-4 text-sm text-neutral-600 dark:text-neutral-400">
-              <a 
-                href={`mailto:${CONTACT.email}`}
-                className="flex items-center gap-2 hover:text-neutral-900 dark:hover:text-neutral-200 transition-colors"
-              >
-                <Mail className="w-4 h-4" />
+    <main className="min-h-screen bg-neutral-100 px-4 py-6 dark:bg-neutral-950 md:px-6 md:py-10">
+      <div className="mx-auto max-w-5xl overflow-hidden rounded-[28px] border border-neutral-200 bg-white shadow-[0_24px_80px_-40px_rgba(0,0,0,0.35)] dark:border-neutral-800 dark:bg-neutral-900">
+        <section className="border-b border-neutral-200 px-6 py-8 dark:border-neutral-800 md:px-10 md:py-10">
+          <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-3xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.26em] text-neutral-500 dark:text-neutral-400">
+                Curriculum Vitae
+              </p>
+              <h1 className="mt-3 text-4xl font-semibold tracking-tight text-neutral-950 dark:text-neutral-50 md:text-5xl">
+                Alonso Huancas Cruz
+              </h1>
+              <p className="mt-3 text-lg text-neutral-600 dark:text-neutral-300">
+                {t.role}
+              </p>
+              <p className="mt-5 max-w-2xl text-sm leading-7 text-neutral-700 dark:text-neutral-300 md:text-[15px]">
+                {t.intro}
+              </p>
+            </div>
+
+            <div className="grid gap-3 text-sm text-neutral-600 dark:text-neutral-300">
+              <a href={`mailto:${CONTACT.email}`} className="flex items-center gap-2 hover:text-neutral-950 dark:hover:text-neutral-50">
+                <Mail className="h-4 w-4" />
                 {CONTACT.email}
               </a>
               <span className="flex items-center gap-2">
-                <Phone className="w-4 h-4" />
+                <Phone className="h-4 w-4" />
                 {CONTACT.phone}
               </span>
               <span className="flex items-center gap-2">
-                <MapPin className="w-4 h-4" />
+                <MapPin className="h-4 w-4" />
                 {CONTACT.location}
               </span>
-              <a 
+              <a
                 href={`https://${CONTACT.website}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-neutral-900 dark:hover:text-neutral-200 transition-colors"
+                className="flex items-center gap-2 hover:text-neutral-950 dark:hover:text-neutral-50"
               >
-                <Globe className="w-4 h-4" />
+                <Globe className="h-4 w-4" />
                 {CONTACT.website}
               </a>
             </div>
-          </header>
+          </div>
+        </section>
 
-          {/* Professional Summary */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-semibold text-neutral-900 dark:text-neutral-50 mb-4 pb-2 border-b border-neutral-200 dark:border-neutral-800">
-              {t.professionalSummary}
-            </h2>
-            <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">
-              Fundador y desarrollador full-stack de BLXK Studio, agencia tecnológica especializada 
-              en desarrollo web moderno, automatización de procesos e inteligencia artificial. 
-              Combino habilidades técnicas en React, Next.js y sistemas de automatización con un 
-              enfoque estratégico de negocio para crear soluciones digitales que generan resultados 
-              tangibles para las empresas. Experiencia en el desarrollo de plataformas de e-commerce, 
-              sistemas LMS, integraciones con n8n y implementaciones de IA conversacional.
-            </p>
-          </section>
+        <section className="grid gap-0 lg:grid-cols-[280px_minmax(0,1fr)]">
+          <aside className="border-b border-neutral-200 bg-neutral-50 px-6 py-8 dark:border-neutral-800 dark:bg-neutral-900/40 md:px-10 lg:border-b-0 lg:border-r">
+            <div className="mb-10">
+              <SectionHeading title={t.about} />
+              <p className="text-sm leading-7 text-neutral-700 dark:text-neutral-300">
+                Fundador y desarrollador full-stack con experiencia en productos digitales, automatizacion de procesos e integraciones de IA para empresas que necesitan soluciones claras, escalables y bien ejecutadas.
+              </p>
+            </div>
 
-          {/* Experience */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-semibold text-neutral-900 dark:text-neutral-50 mb-6 pb-2 border-b border-neutral-200 dark:border-neutral-800">
-              {t.experience}
-            </h2>
-            
-            <div className="space-y-8">
-              {EXPERIENCE.map((exp, index) => (
-                <div key={index} className="relative pl-6 border-l-2 border-neutral-300 dark:border-neutral-700">
-                  <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-neutral-400 dark:bg-neutral-600" />
-                  
-                  <div className="mb-2">
-                    <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-50">
-                      {exp.role}
+            <div className="mb-10">
+              <SectionHeading title={t.contact} />
+              <div className="space-y-3 text-sm text-neutral-700 dark:text-neutral-300">
+                <a href={`mailto:${CONTACT.email}`} className="flex items-center gap-3 hover:text-neutral-950 dark:hover:text-neutral-50">
+                  <Mail className="h-4 w-4 text-neutral-500" />
+                  {CONTACT.email}
+                </a>
+                <a
+                  href={`https://${CONTACT.linkedin}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 hover:text-neutral-950 dark:hover:text-neutral-50"
+                >
+                  <Linkedin className="h-4 w-4 text-neutral-500" />
+                  LinkedIn
+                </a>
+                <a
+                  href={`https://${CONTACT.github}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 hover:text-neutral-950 dark:hover:text-neutral-50"
+                >
+                  <Github className="h-4 w-4 text-neutral-500" />
+                  GitHub
+                </a>
+                <a
+                  href={`https://${CONTACT.website}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 hover:text-neutral-950 dark:hover:text-neutral-50"
+                >
+                  <Globe className="h-4 w-4 text-neutral-500" />
+                  {CONTACT.website}
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <SectionHeading title={t.skills} />
+              <div className="space-y-5">
+                {Object.entries(SKILLS).map(([category, skills]) => (
+                  <div key={category}>
+                    <h3 className="mb-2 text-sm font-medium text-neutral-900 dark:text-neutral-100">
+                      {category === "frontend" && "Frontend"}
+                      {category === "backend" && "Backend"}
+                      {category === "automation" && "Automatizacion"}
+                      {category === "ai" && "Inteligencia Artificial"}
+                      {category === "tools" && "Herramientas"}
                     </h3>
-                    <p className="text-neutral-600 dark:text-neutral-400 font-medium">
-                      {exp.company}
-                    </p>
-                    <p className="text-sm text-neutral-500 dark:text-neutral-500 flex items-center gap-1 mt-1">
-                      <Calendar className="w-3 h-3" />
-                      {exp.period}
-                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {skills.map((skill) => (
+                        <span
+                          key={skill}
+                          className="rounded-full border border-neutral-200 px-3 py-1 text-xs text-neutral-700 dark:border-neutral-700 dark:text-neutral-300"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                  
-                  <p className="text-neutral-700 dark:text-neutral-300 mb-3">
-                    {exp.description}
-                  </p>
-                  
-                  <ul className="space-y-1">
-                    {exp.highlights.map((highlight, hIndex) => (
-                      <li key={hIndex} className="text-sm text-neutral-600 dark:text-neutral-400 flex items-start gap-2">
-                        <span className="text-neutral-400 mt-1">•</span>
-                        {highlight}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </section>
+          </aside>
 
-          {/* Skills */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-semibold text-neutral-900 dark:text-neutral-50 mb-6 pb-2 border-b border-neutral-200 dark:border-neutral-800">
-              {t.skills}
-            </h2>
-            
-            <div className="grid md:grid-cols-2 gap-6">
-              {Object.entries(SKILLS).map(([category, skills]) => (
-                <div key={category}>
-                  <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-50 uppercase tracking-wide mb-3">
-                    {category === 'frontend' && 'Frontend'}
-                    {category === 'backend' && 'Backend'}
-                    {category === 'automation' && 'Automatización'}
-                    {category === 'ai' && 'Inteligencia Artificial'}
-                    {category === 'tools' && 'Herramientas'}
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {skills.map((skill) => (
-                      <span 
-                        key={skill}
-                        className="px-3 py-1 text-sm bg-neutral-200 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-full"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
+          <div className="px-6 py-8 md:px-10">
+            <section className="mb-12">
+              <SectionHeading title={t.professionalSummary} />
+              <p className="text-sm leading-8 text-neutral-700 dark:text-neutral-300 md:text-[15px]">
+                Fundador y desarrollador full-stack de BLXK Studio, agencia tecnologica especializada en desarrollo web moderno, automatizacion de procesos e inteligencia artificial. Combino habilidades tecnicas en React, Next.js y sistemas de automatizacion con un enfoque estrategico de negocio para crear soluciones digitales que generan resultados tangibles para las empresas. Experiencia en el desarrollo de plataformas de e-commerce, sistemas LMS, integraciones con n8n y implementaciones de IA conversacional.
+              </p>
+            </section>
 
-          {/* Education */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-semibold text-neutral-900 dark:text-neutral-50 mb-6 pb-2 border-b border-neutral-200 dark:border-neutral-800">
-              {t.education}
-            </h2>
-            
-            <div className="space-y-6">
-              {EDUCATION.map((edu, index) => (
-                <div key={index}>
-                  <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-50">
-                    {edu.degree}
-                  </h3>
-                  <p className="text-neutral-600 dark:text-neutral-400">
-                    {edu.school}
-                  </p>
-                  <p className="text-sm text-neutral-500 dark:text-neutral-500 flex items-center gap-1 mt-1">
-                    <Calendar className="w-3 h-3" />
-                    {edu.period}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </section>
+            <section className="mb-12">
+              <SectionHeading title={t.experience} />
+              <div className="space-y-8">
+                {EXPERIENCE.map((exp, index) => (
+                  <article key={index} className="border-l border-neutral-200 pl-5 dark:border-neutral-800">
+                    <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
+                      <div>
+                        <h3 className="text-lg font-semibold text-neutral-950 dark:text-neutral-50">
+                          {exp.role}
+                        </h3>
+                        <p className="text-sm font-medium text-neutral-600 dark:text-neutral-400">
+                          {exp.company}
+                        </p>
+                      </div>
+                      <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.14em] text-neutral-500 dark:text-neutral-400">
+                        <Calendar className="h-3.5 w-3.5" />
+                        {exp.period}
+                      </p>
+                    </div>
 
-          {/* Contact */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-semibold text-neutral-900 dark:text-neutral-50 mb-6 pb-2 border-b border-neutral-200 dark:border-neutral-800">
-              {t.contact}
-            </h2>
-            
-            <div className="grid md:grid-cols-2 gap-4">
-              <a 
-                href={`mailto:${CONTACT.email}`}
-                className="flex items-center gap-3 p-4 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors"
-              >
-                <Mail className="w-5 h-5 text-neutral-600 dark:text-neutral-400" />
-                <span className="text-neutral-700 dark:text-neutral-300">{CONTACT.email}</span>
-              </a>
-              
-              <a 
-                href={`https://${CONTACT.linkedin}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 p-4 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors"
-              >
-                <Linkedin className="w-5 h-5 text-neutral-600 dark:text-neutral-400" />
-                <span className="text-neutral-700 dark:text-neutral-300">LinkedIn</span>
-                <ExternalLink className="w-3 h-3 text-neutral-400 ml-auto" />
-              </a>
-              
-              <a 
-                href={`https://${CONTACT.github}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 p-4 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors"
-              >
-                <Github className="w-5 h-5 text-neutral-600 dark:text-neutral-400" />
-                <span className="text-neutral-700 dark:text-neutral-300">GitHub</span>
-                <ExternalLink className="w-3 h-3 text-neutral-400 ml-auto" />
-              </a>
-              
-              <a 
-                href={`https://${CONTACT.website}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 p-4 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors"
-              >
-                <Globe className="w-5 h-5 text-neutral-600 dark:text-neutral-400" />
-                <span className="text-neutral-700 dark:text-neutral-300">{CONTACT.website}</span>
-                <ExternalLink className="w-3 h-3 text-neutral-400 ml-auto" />
-              </a>
-            </div>
-          </section>
+                    <p className="mt-4 text-sm leading-7 text-neutral-700 dark:text-neutral-300 md:text-[15px]">
+                      {exp.description}
+                    </p>
 
-          {/* Footer */}
-          <footer className="pt-8 border-t border-neutral-200 dark:border-neutral-800 text-center text-sm text-neutral-500 dark:text-neutral-500">
-            <p>© {new Date().getFullYear()} Alonso Huancas Cruz. Todos los derechos reservados.</p>
-          </footer>
-        </div>
-      </main>
+                    <ul className="mt-4 space-y-2 text-sm leading-7 text-neutral-700 dark:text-neutral-300">
+                      {exp.highlights.map((highlight, hIndex) => (
+                        <li key={hIndex} className="flex gap-3">
+                          <span className="mt-[11px] h-1.5 w-1.5 rounded-full bg-neutral-400 dark:bg-neutral-500" />
+                          <span>{highlight}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </article>
+                ))}
+              </div>
+            </section>
+
+            <section>
+              <SectionHeading title={t.education} />
+              <div className="space-y-6">
+                {EDUCATION.map((edu, index) => (
+                  <article key={index}>
+                    <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
+                      <div>
+                        <h3 className="text-lg font-semibold text-neutral-950 dark:text-neutral-50">
+                          {edu.degree}
+                        </h3>
+                        <p className="text-sm text-neutral-600 dark:text-neutral-400">
+                          {edu.school}
+                        </p>
+                      </div>
+                      <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.14em] text-neutral-500 dark:text-neutral-400">
+                        <Calendar className="h-3.5 w-3.5" />
+                        {edu.period}
+                      </p>
+                    </div>
+                    <p className="mt-3 text-sm leading-7 text-neutral-700 dark:text-neutral-300 md:text-[15px]">
+                      {edu.description}
+                    </p>
+                  </article>
+                ))}
+              </div>
+            </section>
+          </div>
+        </section>
+      </div>
+    </main>
   )
 }
